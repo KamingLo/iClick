@@ -1,0 +1,165 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #eadcc2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  user-select: none;
+}
+
+.Gambar-Pertamina {
+  display: block;
+  margin: 10px auto;
+  width: 400px;
+  height: auto;
+}
+
+.montserrat-Judul {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 1.5rem;
+  user-select: none;
+  pointer-events: none;
+}
+
+.montserrat-Text {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.5rem;
+  user-select: none;
+  pointer-events: none;
+}
+
+.RoundedBox {
+  height: 600px;
+  width: 450px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  align-items: center;
+  background-color: #f9f8f8;
+  position: relative;
+  text-align: center;
+}
+
+.BoxWaktu {
+  height: 40px;
+  width: 380px;
+  padding: 10px;
+  border-radius: 10px;
+  left: 35px;
+  bottom: 350px;
+  color: white;
+  background-color: #007a85;
+  align-items: center;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+
+.BoxKecepatan {
+  height: 40px;
+  width: 380px;
+  padding: 10px;
+  border-radius: 10px;
+  left: 35px;
+  bottom: 280px;
+  color: white;
+  background-color: #d95d39;
+  align-items: center;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+.BoxNilai {
+  height: 40px;
+  width: 380px;
+  padding: 10px;
+  border-radius: 10px;
+  left: 35px;
+  bottom: 210px;
+  color: white;
+  background-color: #007a85;
+  align-items: center;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+
+.ButtonPlay {
+  height: 120px;
+  width: 400px;
+  border-radius: 60px;
+  background-color: #007a85;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  left: 35px;
+  bottom: 30px;
+  text-align: center;
+  display: flex;
+  color: white;
+}
+
+.ButtonRestart {
+  height: 60px;
+  width: 170px;
+  border-radius: 60px;
+  background-color: #d95d39;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  bottom: 60px;
+  text-align: center;
+  display: flex;
+  color: white;
+  gap: 10px;
+}
+
+.montserrat-TextRestart {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 1.2rem;
+  font-style: normal;
+  user-select: none;
+  pointer-events: none;
+}
+
+.ButtonPlay,
+.ButtonRestart {
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
