@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iClick</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    
+    <nav>
+      <div class="logo">
+        <h1>iClick<span>.</span></h1>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <h1>Clicking Counter</h1>
+
+      
+      <h3 name="SpeedDisplay">Speed: <script></script>
+      </h3>
+      
+
+      <button onclick="addScore()"></button>
+    </main> 
+
+    <script src="script.js">
+      function addScore() {
+        var score = 0;
+        score++;
+        document.querySelector("button").innerHTML = score;
+      }
+
+      function displaySpeed() {
+        var score = 0;
+        var time = 0;
+        var speed = 0;
+        score++;
+        time++;
+        speed = score / time;
+        document.querySelector("h3").innerHTML = speed;
+      }
+    </script>
+  </body>
+</html>
