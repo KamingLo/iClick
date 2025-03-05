@@ -1,0 +1,59 @@
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iClick</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <h1>iClick<span>.</span></h1>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="RoundedBox">
+      <h1 class="clicking-counter">Clicking Counter</h1>
+      <div class="mode-selector">
+        <button id="modeButton">Mode: 5 Seconds</button>
+      </div>
+
+      <div class="BoxWaktu">
+        <p class="montserrat-Text">Timer:</p>
+        <i data-feather="clock"></i>
+      </div>
+      <div class="BoxKecepatan">
+        <p class="montserrat-Text">Speed:</p>
+        <i data-feather="mouse-pointer"></i>
+      </div>
+      <div class="BoxNilai">
+        <p class="montserrat-Text">Score:</p>
+        <i data-feather="check"></i>
+      </div>
+      <div class="ButtonPlay" id="startButton">
+        <span class="montserrat-Text">Klik disini untuk mulai 🔥</span>
+      </div>
+    </div>
+
+    <div class="ButtonRestart" id="restartButton">
+      <span class="montserrat-TextRestart">Restart</span>
+      <i data-feather="rotate-cw"></i>
+    </div>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace();
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
