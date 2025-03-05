@@ -1,6 +1,7 @@
 body {
   font-family: "Montserrat", sans-serif;
-  background-color: #1a1a1a;
+  background-color: #78a1bb;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +17,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #222222;
+  background-color: #283044;
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
@@ -57,24 +58,133 @@ nav a:hover {
   color: #b13918;
 }
 
-main {
-  margin-top: 80px;
-  width: 80%;
-  height: 450px;
-  max-width: 400px;
-  padding: 30px;
-  background-color: #222222;
+.clicking-counter {
+  margin: 50px 0;
+  color: #0f0f0f;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.RoundedBox {
+  height: 600px;
+  width: 450px;
   border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #ebf5ee;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-main h1{
-    color: rgb(210, 210, 210);
-    text-align: center;
-    margin: 0;
+.mode-selector {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
 }
 
-main h3{
-    color: rgb(210, 210, 210);
-    text-align: center;
+#modeButton {
+  padding: 10px 20px;
+  background: #8b786d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+#modeButton:hover {
+  background: #c4c4c4;
+}
+
+.BoxWaktu,
+.BoxKecepatan,
+.BoxNilai {
+  height: 40px;
+  width: 380px;
+  padding: 10px;
+  border-radius: 10px;
+  left: 35px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  text-align: left;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+
+.BoxWaktu {
+  bottom: 350px;
+  background-color: #283044;
+}
+
+.BoxKecepatan {
+  bottom: 280px;
+  background-color: #283044;
+}
+
+.BoxNilai {
+  bottom: 210px;
+  background-color: #283044;
+}
+
+.ButtonPlay,
+.ButtonRestart {
+  height: 120px;
+  width: 400px;
+  border-radius: 60px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  left: 35px;
+  text-align: center;
+  display: flex;
+  color: white;
+}
+
+.ButtonPlay {
+  background-color: #007a85;
+  bottom: 30px;
+}
+
+.ButtonRestart {
+  height: 60px;
+  width: 170px;
+  border-radius: 60px;
+  background-color: #b13918;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 10px;
+}
+
+.ButtonPlay,
+.ButtonRestart {
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
