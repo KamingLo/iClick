@@ -135,7 +135,7 @@ nav a:hover {
 .ButtonRestart {
   height: 7.5rem; /* 120px */
   width: 25rem; /* 400px */
-  border-radius: 1rem; /* 20px */
+  border-radius: 0.5rem; /* 20px */
   align-items: center;
   justify-content: center;
   cursor: pointer;
