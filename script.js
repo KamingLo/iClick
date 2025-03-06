@@ -1,294 +1,175 @@
-body {
-  font-family: "Montserrat", sans-serif;
-  background-color: #78a1bb;
-  background-image: url("image/topografi.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  user-select: none;
-  flex-direction: column;
-  padding-top: 0;
-}
+// Inisialisasi variabel yang nanti nya akan digunakan pada program
+let nilaiKlik = 0;
+let permainanSelesai = false;
+let sedangBermain = false;
+let waktuPermainan = 5;
+let bonusAktif = false;
+let sudahDapatBonus = false;
 
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(40, 48, 68, 0.9);
-  padding: 0.9375rem 2.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  z-index: 1000;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
-}
+// Ambil semua elemen HTML yang kita butuhkan
+let tombolMain = document.querySelector(".ButtonPlay");
+let tombolUlang = document.querySelector(".ButtonRestart");
+let tombolMode = document.getElementById("modeButton");
+let textTimer = document.querySelector(".BoxWaktu p");
+let textKecepatan = document.querySelector(".BoxKecepatan p");
+let textNilai = document.querySelector(".BoxNilai p");
+let textBonus = document.getElementById("bonusIndicator");
 
-nav .logo h1 {
-  color: white;
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
+// ini akan berfungsi untuk menyembunyikan tombol ulang pada saat awal permainan
+tombolUlang.style.visibility = "hidden";
 
-nav .logo span {
-  color: #b13918;
-}
+// Fungsi untuk mengganti mode permainan
+function gantiMode() {
+  // Cek dulu apakah sedang tidak bermain
+  if (!sedangBermain) {
+    // Ganti waktu permainan
+    if (waktuPermainan === 5) {
+      waktuPermainan = 10;
+    } else if (waktuPermainan === 10) {
+      waktuPermainan = 15;
+    } else {
+      waktuPermainan = 5;
+    }
 
-nav ul {
-  display: flex;
-  gap: 1.25rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all ease 0.3s;
-}
-
-nav a:hover {
-  background-color: #55648a;
-  padding: 0.625rem 1.25rem;
-  border-radius: 0.375rem;
-}
-
-.clicking-counter {
-  margin: 3.125rem 0;
-  color: #292929;
-  font-size: 2rem;
-  text-align: center;
-}
-
-.RoundedBox {
-  height: 37.5rem;
-  width: 28.125rem;
-  border-radius: 0.5rem;
-  padding: 0.625rem;
-  margin: 0.625rem;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
-  background-color: rgba(235, 245, 238, 0.9);
-  position: relative;
-  text-align: center;
-  overflow: hidden;
-}
-
-.mode-selector {
-  margin: 3.125rem 0;
-  display: flex;
-  justify-content: center;
-}
-
-#modeButton {
-  padding: 0.625rem 1.25rem;
-  background: #20366d;
-  border: none;
-  border-radius: 0.3125rem;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  color: white;
-}
-
-#modeButton:hover {
-  background: #7d8eb9;
-}
-
-.BoxWaktu,
-.BoxKecepatan,
-.BoxNilai {
-  height: 2.5rem;
-  width: 23.75rem;
-  padding: 0.625rem;
-  border-radius: 0.625rem;
-  margin: 0.625rem auto;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-  display: flex;
-  color: white;
-  justify-content: space-between;
-}
-
-.BoxWaktu {
-  background-color: #6d82b7;
-}
-
-.BoxKecepatan {
-  background-color: #6d82b7;
-}
-
-.BoxNilai {
-  background-color: #6d82b7;
-}
-
-.ButtonPlay,
-.ButtonRestart {
-  height: 7.5rem;
-  width: 25rem;
-  border-radius: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  text-align: center;
-  display: flex;
-  color: white;
-  margin: 2rem auto;
-  overflow: hidden;
-  position: relative;
-}
-
-.ButtonPlay {
-  background-color: #213054;
-  transition: all 0.3s ease;
-}
-
-.ButtonPlay:hover {
-  background-color: #7084b6;
-}
-
-.ButtonRestart {
-  height: 3.75rem;
-  width: 10.625rem;
-  border-radius: 3.75rem;
-  background-color: #e81616;
-  justify-content: center;
-  align-items: center;
-  margin: 0.625rem auto;
-  gap: 0.625rem;
-  transition: all 0.3s ease;
-}
-
-.ButtonRestart:hover {
-  background-color: #ff4d4d;
-}
-
-.ButtonPlay,
-.ButtonRestart {
-  overflow: hidden;
-}
-
-.ripple {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  transform: scale(0);
-  animation: rippleEffect 0.6s linear;
-  pointer-events: none;
-}
-
-@keyframes rippleEffect {
-  to {
-    transform: scale(4);
-    opacity: 0;
+    // Perbarui text di tombol
+    tombolMode.innerText = "Mode: " + waktuPermainan + " Seconds";
   }
 }
 
-.bonus-text {
-  color: #ffffff;
-  width: auto;
-  max-width: 90%;
-  position: fixed;
-  top: 46rem auto;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  animation: pulse 1s infinite;
-}
+// Fungsi untuk memulai permainan
+function mulaiPermainan() {
+  // Cek dulu apakah sedang tidak bermain
+  if (!sedangBermain && !permainanSelesai) {
+    // Atur ulang nilai-nilai awal
+    sedangBermain = true;
+    nilaiKlik = 0;
+    sudahDapatBonus = false;
+    tombolMain.innerHTML = "Klik secepat mungkin!";
+    tombolUlang.style.visibility = "hidden";
 
-.hidden {
-  display: none;
-}
+    // Catat waktu mulai
+    let waktuMulai = Date.now();
 
-@keyframes pulse {
-  0% {
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    transform: translateX(-50%) scale(1.1);
-  }
-  100% {
-    transform: translateX(-50%) scale(1);
-  }
-}
+    // Jalankan penghitung waktu
+    let hitungWaktu = setInterval(function () {
+      // Hitung waktu yang sudah berlalu
+      let waktuBerjalan = (Date.now() - waktuMulai) / 1000;
 
-/* Media Queries for Responsiveness */
+      // Perbarui tampilan
+      textTimer.innerHTML = "Waktu: " + waktuBerjalan.toFixed(2) + "s";
+      textKecepatan.innerHTML =
+        "Kecepatan: " + (nilaiKlik / waktuBerjalan).toFixed(2) + " klik/detik";
+      textNilai.innerHTML = "Nilai: " + nilaiKlik;
 
-/* Small devices (phones, 600px and down) */
-@media only screen and (max-width: 37.5rem) {
-  .RoundedBox {
-    width: 90%;
-    height: auto;
-    padding: 1.25rem;
-  }
-
-  .BoxWaktu,
-  .BoxKecepatan,
-  .BoxNilai {
-    width: 90%;
-  }
-
-  .ButtonPlay,
-  .ButtonRestart {
-    width: 90%;
-  }
-
-  .clicking-counter {
-    font-size: 1.5rem;
+      // Cek apakah waktu sudah habis
+      if (waktuBerjalan >= waktuPermainan) {
+        clearInterval(hitungWaktu);
+        akhirPermainan();
+      }
+    }, 100);
   }
 }
 
-/* Medium devices (tablets, 768px and down) */
-@media only screen and (max-width: 48rem) {
-  .RoundedBox {
-    width: 80%;
-    height: auto;
-    padding: 1.25rem;
-  }
+// Fungsi untuk mengaktifkan bonus
+function aktifkanBonus() {
+  if (!sudahDapatBonus) {
+    // Aktifkan bonus
+    sudahDapatBonus = true;
+    bonusAktif = true;
+    textBonus.classList.remove("hidden");
 
-  .BoxWaktu,
-  .BoxKecepatan,
-  .BoxNilai {
-    width: 80%;
-  }
-
-  .ButtonPlay,
-  .ButtonRestart {
-    width: 80%;
-  }
-
-  .clicking-counter {
-    font-size: 1.75rem;
+    // Matikan bonus setelah 2 detik
+    setTimeout(function () {
+      bonusAktif = false;
+      textBonus.classList.add("hidden");
+    }, 2000);
   }
 }
 
-@media only screen and (min-width: 62rem) {
-  .RoundedBox {
-    width: 28.125rem;
-    height: 37.5rem;
-  }
+// Fungsi untuk menangani klik
+function klikDilakukan() {
+  if (sedangBermain) {
+    // Tambah nilai (dobel jika bonus aktif)
+    if (bonusAktif) {
+      nilaiKlik = nilaiKlik + 2;
+    } else {
+      nilaiKlik = nilaiKlik + 1;
+    }
 
-  .BoxWaktu,
-  .BoxKecepatan,
-  .BoxNilai {
-    width: 23.75rem;
-  }
-
-  .ButtonPlay,
-  .ButtonRestart {
-    width: 25rem;
-  }
-
-  .clicking-counter {
-    font-size: 2rem;
+    // Cek kesempatan dapat bonus (10%)
+    let kesempatanBonus = Math.random();
+    if (!sudahDapatBonus && kesempatanBonus < 0.1) {
+      aktifkanBonus();
+    }
   }
 }
+
+// Fungsi untuk mengakhiri permainan
+function akhirPermainan() {
+  sedangBermain = false;
+  permainanSelesai = true;
+  // Tentukan peringkat pemain
+  let peringkat = "Pemula";
+  if (nilaiKlik >= 150) {
+    peringkat = "Legend";
+  } else if (nilaiKlik >= 100) {
+    peringkat = "Pro";
+  } else if (nilaiKlik >= 50) {
+    peringkat = "Amatir";
+  }
+  // Tampilkan hasil
+  tombolMain.innerHTML = "Peringkat: " + peringkat;
+  tombolUlang.style.visibility = "visible";
+}
+
+// Fungsi ini digunakan untuk mengatur permainan seperti semula (restart).
+// pada fungsi ini semua nilai akan di atur ulang ke nilai default (reset).
+function ulangPermainan() {
+  // Atur ulang semua nilai
+  textTimer.innerHTML = "Waktu: 0s";
+  textKecepatan.innerHTML = "Kecepatan: 0 klik/detik";
+  textNilai.innerHTML = "Nilai: 0";
+  tombolMain.innerHTML = "Klik disini untuk mulai 🔥";
+  nilaiKlik = 0;
+  sedangBermain = false;
+  bonusAktif = false;
+  sudahDapatBonus = false;
+  permainanSelesai = false;
+  tombolUlang.style.visibility = "hidden";
+  textBonus.classList.add("hidden");
+}
+
+// Fungsi untuk efek ripple saat tombol diklik
+function buatEfekRipple(event) {
+  let tombol = event.currentTarget;
+  let ripple = document.createElement("span");
+
+  ripple.classList.add("ripple");
+  ripple.style.width = Math.max(tombol.offsetWidth, tombol.offsetHeight) + "px";
+  ripple.style.height =
+    Math.max(tombol.offsetWidth, tombol.offsetHeight) + "px";
+  ripple.style.left = event.offsetX - ripple.offsetWidth / 2 + "px";
+  ripple.style.top = event.offsetY - ripple.offsetHeight / 2 + "px";
+
+  // menggunakan Asynchronous untuk mengatur
+  tombol.appendChild(ripple);
+  setTimeout(function () {
+    ripple.remove();
+  }, 600);
+}
+
+// Hapus atau ganti event listener DOMContentLoaded yang lama
+// Dan ganti dengan yang lebih sederhana
+document.body.addEventListener("click", function (event) {
+  if (permainanSelesai && !event.target.classList.contains("ButtonRestart")) {
+    return;
+  }
+});
+
+// Pasang semua event listener
+tombolMain.addEventListener("click", mulaiPermainan);
+tombolUlang.addEventListener("click", ulangPermainan);
+tombolMode.addEventListener("click", gantiMode);
+document.body.addEventListener("click", klikDilakukan);
+tombolMain.addEventListener("click", buatEfekRipple);
+tombolUlang.addEventListener("click", buatEfekRipple);
