@@ -72,9 +72,6 @@ function mulaiPermainan() {
 
 // Fungsi untuk mengaktifkan bonus
 function aktifkanBonus() {
-  if (!sudahDapatBonus) {
-    // Aktifkan bonus
-    sudahDapatBonus = true;
     bonusAktif = true;
     textBonus.classList.remove("hidden");
 
@@ -83,8 +80,8 @@ function aktifkanBonus() {
       bonusAktif = false;
       textBonus.classList.add("hidden");
     }, 2000);
-  }
 }
+
 
 // Fungsi untuk menangani klik
 function klikDilakukan() {
@@ -96,9 +93,8 @@ function klikDilakukan() {
       nilaiKlik = nilaiKlik + 1;
     }
 
-    // Cek kesempatan dapat bonus (10%)
-    let kesempatanBonus = Math.random();
-    if (!sudahDapatBonus && kesempatanBonus < 0.1) {
+    // Cek kesempatan dapat bonus (5%)
+    while (Math.random() < 0.05) {
       aktifkanBonus();
     }
   }
