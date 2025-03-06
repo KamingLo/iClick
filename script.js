@@ -1,4 +1,4 @@
-// Variabel sederhana untuk menyimpan nilai-nilai penting
+// Inisialisasi variabel yang nanti nya akan digunakan pada program
 let nilaiKlik = 0;
 let permainanSelesai = false;
 let sedangBermain = false;
@@ -15,7 +15,7 @@ let textKecepatan = document.querySelector(".BoxKecepatan p");
 let textNilai = document.querySelector(".BoxNilai p");
 let textBonus = document.getElementById("bonusIndicator");
 
-// Sembunyikan tombol ulang di awal permainan
+// ini akan berfungsi untuk menyembunyikan tombol ulang pada saat awal permainan
 tombolUlang.style.visibility = "hidden";
 
 // Fungsi untuk mengganti mode permainan
@@ -70,6 +70,22 @@ function mulaiPermainan() {
   }
 }
 
+// Fungsi untuk mengaktifkan bonus
+function aktifkanBonus() {
+  if (!sudahDapatBonus) {
+    // Aktifkan bonus
+    sudahDapatBonus = true;
+    bonusAktif = true;
+    textBonus.classList.remove("hidden");
+    
+    // Matikan bonus setelah 2 detik
+    setTimeout(function () {
+      bonusAktif = false;
+      textBonus.classList.add("hidden");
+    }, 2000);
+  }
+}
+
 // Fungsi untuk menangani klik
 function klikDilakukan() {
   if (sedangBermain) {
@@ -85,22 +101,6 @@ function klikDilakukan() {
     if (!sudahDapatBonus && kesempatanBonus < 0.1) {
       aktifkanBonus();
     }
-  }
-}
-
-// Fungsi untuk mengaktifkan bonus
-function aktifkanBonus() {
-  if (!sudahDapatBonus) {
-    // Aktifkan bonus
-    sudahDapatBonus = true;
-    bonusAktif = true;
-    textBonus.classList.remove("hidden");
-
-    // Matikan bonus setelah 2 detik
-    setTimeout(function () {
-      bonusAktif = false;
-      textBonus.classList.add("hidden");
-    }, 2000);
   }
 }
 
@@ -122,7 +122,8 @@ function akhirPermainan() {
   tombolUlang.style.visibility = "visible";
 }
 
-// Fungsi untuk mengulang permainan
+// Fungsi ini digunakan untuk mengatur permainan seperti semula (restart). 
+// pada fungsi ini semua nilai akan di atur ulang ke nilai default (reset).
 function ulangPermainan() {
   // Atur ulang semua nilai
   textTimer.innerHTML = "Waktu: 0s";
@@ -150,6 +151,7 @@ function buatEfekRipple(event) {
   ripple.style.left = event.offsetX - ripple.offsetWidth / 2 + "px";
   ripple.style.top = event.offsetY - ripple.offsetHeight / 2 + "px";
 
+  // menggunakan Asynchronous untuk mengatur 
   tombol.appendChild(ripple);
   setTimeout(function () {
     ripple.remove();
