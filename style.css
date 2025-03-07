@@ -217,7 +217,7 @@ nav a:hover {
 @media only screen and (max-width: 600px) {
   .bonus-text {
     font-size: 0.9rem;
-    bottom: 5rem; /* Naikkan lebih tinggi di HP agar tidak menutupi tombol */
+    bottom: 20rem; /* Naikkan lebih tinggi di HP agar tidak menutupi tombol */
     padding: 0.4rem 0.8rem;
     max-width: 90%;
   }
