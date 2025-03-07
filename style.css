@@ -145,22 +145,20 @@ nav a:hover {
 }
 
 .ButtonRestart {
-  height: 60px;
-  width: 170px;
-  min-width: 170px;
-  max-width: 170px;
+  height: 3.75rem;
+  width: 10.625rem;
+  min-width: 10.625rem;
+  max-width: 10.625rem;
   border-radius: 60px;
   background-color: #d95d39;
   cursor: pointer;
-  position: fixed;
+  position: relative;
   justify-content: center;
   align-items: center;
   text-align: center;
   display: flex;
   color: white;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 3.75rem;
   gap: 8px;
 }
 
