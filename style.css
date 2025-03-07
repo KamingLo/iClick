@@ -151,6 +151,7 @@ nav a:hover {
   max-width: 170px;
   border-radius: 60px;
   background-color: #d95d39;
+  cursor: pointer;
   position: fixed;
   justify-content: center;
   align-items: center;
