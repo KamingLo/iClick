@@ -271,9 +271,8 @@ nav a:hover {
   }
 
   #bonusIndicator {
-    margin-top: 2rem; /* Menurunkan posisi tulisan bonus mode */
+    margin-top: 2rem; 
   }
-
 
   .clicking-counter {
     font-size: 1.75rem;

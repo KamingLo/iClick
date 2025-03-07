@@ -43,31 +43,34 @@ function hitungKecepatan(klik, waktu) {
   return (klik / waktu).toFixed(2);
 }
 
-// Fungsi untuk memulai permainan
+// Fungsi untuk memulai permainan 
 function mulaiPermainan() {
-  // Cek dulu apakah sedang tidak bermain
+  // Melakukan pengecekan terlebih dulu apakah sedang tidak bermain
   if (!sedangBermain && !permainanSelesai) {
-    // Atur ulang nilai-nilai awal
+    // Mengatur ulang nilai-nilai 
     sedangBermain = true;
     nilaiKlik = 0;
     tombolMain.innerHTML = "Klik secepat mungkin!";
     tombolUlang.style.visibility = "hidden";
 
-    // Catat waktu mulai
+    // Mencatat waktu mulai. Variabel ini akan digunakan untuk menghitung berapa lama waktu telah berjalan
+    // waktu yang digunakan menggunakan satuan milidetik
     let waktuMulai = Date.now();
 
-    // Jalankan penghitung waktu
+    // Menjalankan penghitung waktu menggunakan asynchronous setInterval()
+    // pada fungsi ini set interval di atur pada 100 
     let hitungWaktu = setInterval(function () {
-      // Hitung waktu yang sudah berlalu
+      // Menghitung waktu yang sedang berjalan dengan cara menghitung selisih waktu saat ini dengan waktu mulai
+      // variabel ini akan menyimpan jumlah detik nya
       let waktuBerjalan = (Date.now() - waktuMulai) / 1000;
 
-      // Perbarui tampilan
+      // Memperbarui tampilan untuk waktu, kecepatan dan nilai
       textTimer.innerHTML = "Waktu: " + waktuBerjalan.toFixed(2) + "s";
       textKecepatan.innerHTML =
         "Kecepatan: " + hitungKecepatan(nilaiKlik, waktuBerjalan) + " klik/detik";
       textNilai.innerHTML = "Nilai: " + nilaiKlik;
 
-      // Cek apakah waktu sudah habis
+      // Melakukan pengecekan apakah waktu telah habis, menggunakan clearInterval untuk menghetikan hitung waktu
       if (waktuBerjalan >= waktuPermainan) {
         clearInterval(hitungWaktu);
         akhirPermainan();
@@ -78,17 +81,18 @@ function mulaiPermainan() {
 
 // Fungsi untuk mengaktifkan bonus
 function aktifkanBonus() {
+    // mengatur ulang nilai
     bonusAktif = true;
     textBonus.classList.remove("hidden");
 
-    // Mematikan tampilan bonus setelah 2 detik
+    // Mematikan tampilan bonus setelah 2 detik menggunakan asynchronous setTimeout()
     setTimeout(function () {
       bonusAktif = false;
       textBonus.classList.add("hidden");
     }, 2000);
 }
 
-// Fungsi untuk menangani klik
+// Fungsi ini digunakan untuk menghitung banyak klik
 function klikDilakukan() {
   if (sedangBermain) {
     // Tambah nilai (dobel jika bonus aktif)
