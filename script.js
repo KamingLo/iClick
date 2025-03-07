@@ -22,8 +22,8 @@ tombolUlang.style.visibility = "hidden";
 function gantiMode() {
   // Melakukan pengecekan terlebih dulu apakah sedang tidak bermain
   if (!sedangBermain) {
-    // Ganti waktu permainan berdasarkan nilai sebelumnya. 
-    // bergantian secara berurutan: 5 seconds -> 10 seconds -> 15 seconds lalu kembali ke awal. 
+    // Ganti waktu permainan berdasarkan nilai sebelumnya.
+    // bergantian secara berurutan: 5 seconds -> 10 seconds -> 15 seconds lalu kembali ke awal.
     if (waktuPermainan === 5) {
       waktuPermainan = 10;
     } else if (waktuPermainan === 10) {
@@ -37,17 +37,17 @@ function gantiMode() {
   }
 }
 
-// Fungsi ini digunakan untuk menghitung kecepatan klik per detik. 
+// Fungsi ini digunakan untuk menghitung kecepatan klik per detik.
 // fungsi ini akan menerima parameter lalu mengembalikan sebuah nilai
 function hitungKecepatan(klik, waktu) {
   return (klik / waktu).toFixed(2);
 }
 
-// Fungsi untuk memulai permainan 
+// Fungsi untuk memulai permainan
 function mulaiPermainan() {
   // Melakukan pengecekan terlebih dulu apakah sedang tidak bermain
   if (!sedangBermain && !permainanSelesai) {
-    // Mengatur ulang nilai-nilai 
+    // Mengatur ulang nilai-nilai
     sedangBermain = true;
     nilaiKlik = 0;
     tombolMain.innerHTML = "Klik secepat mungkin!";
@@ -58,7 +58,7 @@ function mulaiPermainan() {
     let waktuMulai = Date.now();
 
     // Menjalankan penghitung waktu menggunakan asynchronous setInterval()
-    // pada fungsi ini set interval di atur pada 100 
+    // pada fungsi ini set interval di atur pada 100
     let hitungWaktu = setInterval(function () {
       // Menghitung waktu yang sedang berjalan dengan cara menghitung selisih waktu saat ini dengan waktu mulai
       // variabel ini akan menyimpan jumlah detik nya
@@ -67,7 +67,9 @@ function mulaiPermainan() {
       // Memperbarui tampilan untuk waktu, kecepatan dan nilai
       textTimer.innerHTML = "Waktu: " + waktuBerjalan.toFixed(2) + "s";
       textKecepatan.innerHTML =
-        "Kecepatan: " + hitungKecepatan(nilaiKlik, waktuBerjalan) + " klik/detik";
+        "Kecepatan: " +
+        hitungKecepatan(nilaiKlik, waktuBerjalan) +
+        " klik/detik";
       textNilai.innerHTML = "Nilai: " + nilaiKlik;
 
       // Melakukan pengecekan apakah waktu telah habis, menggunakan clearInterval untuk menghetikan hitung waktu
@@ -81,15 +83,15 @@ function mulaiPermainan() {
 
 // Fungsi untuk mengaktifkan bonus
 function aktifkanBonus() {
-    // mengatur ulang nilai
-    bonusAktif = true;
-    textBonus.classList.remove("hidden");
+  // mengatur ulang nilai
+  bonusAktif = true;
+  textBonus.classList.remove("hidden");
 
-    // Mematikan tampilan bonus setelah 2 detik menggunakan asynchronous setTimeout()
-    setTimeout(function () {
-      bonusAktif = false;
-      textBonus.classList.add("hidden");
-    }, 2000);
+  // Mematikan tampilan bonus setelah 2 detik menggunakan asynchronous setTimeout()
+  setTimeout(function () {
+    bonusAktif = false;
+    textBonus.classList.add("hidden");
+  }, 2000);
 }
 
 // Fungsi ini digunakan untuk menghitung banyak klik
@@ -180,3 +182,46 @@ tombolMode.addEventListener("click", gantiMode);
 tombolMain.addEventListener("click", klikDilakukan);
 tombolMain.addEventListener("click", buatEfekRipple);
 tombolUlang.addEventListener("click", buatEfekRipple);
+
+//--------------------------------------------------------------------
+// Ambil elemen audio
+const clickSound = document.getElementById("clickSound");
+
+// Fungsi untuk memutar suara klik
+function playClickSound() {
+  clickSound.currentTime = 0; // Reset waktu audio ke awal
+  clickSound.play();
+}
+
+// Tambahkan event listener ke tombol .ButtonPlay
+document
+  .getElementById("startButton")
+  .addEventListener("click", playClickSound);
+
+// Kode JavaScript lainnya...
+const bgMusic = new Audio("path/to/your/music.mp3");
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) {
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
+    isPlaying = false;
+  } else {
+    bgMusic.play();
+    isPlaying = true;
+
+    while (isPlaying) {
+      bgMusic.onended = function () {
+        bgMusic.currentTime = 0;
+        bgMusic.play();
+      };
+
+      if (bgMusic.paused) {
+        isPlaying = false;
+      }
+    }
+  }
+}
+
+document.getElementById("musicButton").addEventListener("click", toggleMusic);
