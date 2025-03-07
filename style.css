@@ -222,7 +222,7 @@ nav a:hover {
 @media only screen and (max-width: 600px) {
   .bonus-text {
     font-size: 1rem;
-    bottom: 4rem; /* Sesuaikan supaya tidak keluar layar */
+    bottom: 1rem; /* Sesuaikan supaya tidak keluar layar */
   }
 }
 
