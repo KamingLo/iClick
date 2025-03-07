@@ -194,7 +194,7 @@ nav a:hover {
 
 .bonus-text {
   position: fixed; /* Pastikan tetap di layar */
-  bottom: 3rem; /* Tetap terlihat di HP dan PC */
+  bottom: 1rem; /* Tetap terlihat di HP dan PC */
   left: 50%;
   transform: translateX(-50%);
   color: white;
