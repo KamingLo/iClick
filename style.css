@@ -195,8 +195,7 @@ nav a:hover {
 
 .bonus-text {
   position: fixed; /* Pastikan tetap di layar */
-  bottom: 3rem; /* Tetap terlihat di HP dan PC */
-  width: auto;
+  bottom: 1rem; /* Tetap terlihat di HP dan PC */
   max-width: 90%;
   left: 50%;
   transform: translateX(-50%);
@@ -224,7 +223,7 @@ nav a:hover {
 /* Responsif untuk HP */
 @media only screen and (max-width: 600px) {
   .bonus-text {
-    font-size: 3rem;
+    font-size: 1.2rem;
     bottom: 4rem; /* Sesuaikan supaya tidak keluar layar */
   }
 }
