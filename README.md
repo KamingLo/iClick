@@ -40,7 +40,7 @@ Pemain dapat memainkan permainan ini melalui link yang telah disediakan. Setelah
 
 ## Credits
 
-- Kaming
-- Joe Nickson Lie
-- Charless
+- Kaming (535240175)
+- Joe Nickson Lie (535240079)
+- Charless (535240068)
 
