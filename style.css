@@ -193,37 +193,32 @@ nav a:hover {
 }
 
 .bonus-text {
-  position: fixed; /* Pastikan tetap di layar */
-  bottom: 1rem; /* Tetap terlihat di HP dan PC */
-  max-width: 90%;
+  position: fixed;
+  bottom: 2rem; /* Naikkan sedikit supaya tidak menutupi tombol */
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem; /* Ukuran lebih kecil agar pas di HP */
   font-weight: bold;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Tambahkan latar belakang agar lebih jelas */
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 0.5rem 1rem;
-  border-radius: 10px;
+  border-radius: 8px;
   text-align: center;
-  z-index: 9999; /* Pastikan di atas elemen lain */
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
   width: auto;
-  max-width: 90%;
+  max-width: 80%;
   animation: pulse 1s infinite;
 }
 
-/* Responsif untuk HP */
 @media only screen and (max-width: 600px) {
   .bonus-text {
-    font-size: 1.2rem;
-    bottom: 4rem; /* Sesuaikan supaya tidak keluar layar */
+    font-size: 0.9rem;
+    bottom: 5rem; /* Naikkan lebih tinggi di HP agar tidak menutupi tombol */
+    padding: 0.4rem 0.8rem;
+    max-width: 90%;
   }
 }
 
