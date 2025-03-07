@@ -261,10 +261,19 @@ nav a:hover {
     width: 80%;
   }
 
-  .ButtonPlay,
-  .ButtonRestart {
+  .ButtonPlay {
     width: 80%;
   }
+
+  .ButtonRestart {
+    width: 80%;
+    margin-top: 3rem;
+  }
+
+  #bonusIndicator {
+    margin-top: 2rem; /* Menurunkan posisi tulisan bonus mode */
+  }
+
 
   .clicking-counter {
     font-size: 1.75rem;

@@ -4,9 +4,8 @@ let permainanSelesai = false;
 let sedangBermain = false;
 let waktuPermainan = 5;
 let bonusAktif = false;
-let sudahDapatBonus = false;
 
-// Ambil semua elemen HTML yang kita butuhkan
+// Mengambil semua elemen HTML yang dibutuhkan pada program
 let tombolMain = document.querySelector(".ButtonPlay");
 let tombolUlang = document.querySelector(".ButtonRestart");
 let tombolMode = document.getElementById("modeButton");
@@ -15,14 +14,16 @@ let textKecepatan = document.querySelector(".BoxKecepatan p");
 let textNilai = document.querySelector(".BoxNilai p");
 let textBonus = document.getElementById("bonusIndicator");
 
-// ini akan berfungsi untuk menyembunyikan tombol ulang pada saat awal permainan
+// ini akan berfungsi untuk menyembunyikan tombol ulang (restart) pada saat awal permainan
 tombolUlang.style.visibility = "hidden";
 
-// Fungsi untuk mengganti mode permainan
+// Fungsi ini digunakan untuk mengganti mode permainan
+// Terdapat 3 jenis mode waktu yang berbeda
 function gantiMode() {
-  // Cek dulu apakah sedang tidak bermain
+  // Melakukan pengecekan terlebih dulu apakah sedang tidak bermain
   if (!sedangBermain) {
-    // Ganti waktu permainan
+    // Ganti waktu permainan berdasarkan nilai sebelumnya. 
+    // bergantian secara berurutan: 5 seconds -> 10 seconds -> 15 seconds lalu kembali ke awal. 
     if (waktuPermainan === 5) {
       waktuPermainan = 10;
     } else if (waktuPermainan === 10) {
@@ -31,9 +32,15 @@ function gantiMode() {
       waktuPermainan = 5;
     }
 
-    // Perbarui text di tombol
+    // Memperbarui text pada tombol mode waktu berdasarkan waktu permainan.
     tombolMode.innerText = "Mode: " + waktuPermainan + " Seconds";
   }
+}
+
+// Fungsi ini digunakan untuk menghitung kecepatan klik per detik. 
+// fungsi ini akan menerima parameter lalu mengembalikan sebuah nilai
+function hitungKecepatan(klik, waktu) {
+  return (klik / waktu).toFixed(2);
 }
 
 // Fungsi untuk memulai permainan
@@ -43,7 +50,6 @@ function mulaiPermainan() {
     // Atur ulang nilai-nilai awal
     sedangBermain = true;
     nilaiKlik = 0;
-    sudahDapatBonus = false;
     tombolMain.innerHTML = "Klik secepat mungkin!";
     tombolUlang.style.visibility = "hidden";
 
@@ -58,7 +64,7 @@ function mulaiPermainan() {
       // Perbarui tampilan
       textTimer.innerHTML = "Waktu: " + waktuBerjalan.toFixed(2) + "s";
       textKecepatan.innerHTML =
-        "Kecepatan: " + (nilaiKlik / waktuBerjalan).toFixed(2) + " klik/detik";
+        "Kecepatan: " + hitungKecepatan(nilaiKlik, waktuBerjalan) + " klik/detik";
       textNilai.innerHTML = "Nilai: " + nilaiKlik;
 
       // Cek apakah waktu sudah habis
@@ -75,13 +81,12 @@ function aktifkanBonus() {
     bonusAktif = true;
     textBonus.classList.remove("hidden");
 
-    // Matikan bonus setelah 2 detik
+    // Mematikan tampilan bonus setelah 2 detik
     setTimeout(function () {
       bonusAktif = false;
       textBonus.classList.add("hidden");
     }, 2000);
 }
-
 
 // Fungsi untuk menangani klik
 function klikDilakukan() {
@@ -94,17 +99,19 @@ function klikDilakukan() {
     }
 
     // Cek kesempatan dapat bonus (5%)
-    while (Math.random() < 0.05) {
+    while (Math.random() < 0.05 && !bonusAktif) {
       aktifkanBonus();
     }
   }
 }
 
-// Fungsi untuk mengakhiri permainan
+// Fungsi ini akan digunakan untuk mengakhiri permainan
 function akhirPermainan() {
+  // mengatur ulang nilai-nilai
   sedangBermain = false;
   permainanSelesai = true;
-  // Tentukan peringkat pemain
+
+  // menentukan peringkat pemain berdasarkan jumlah klik pemain
   let peringkat = "Pemula";
   if (nilaiKlik >= 150) {
     peringkat = "Legend";
@@ -113,7 +120,8 @@ function akhirPermainan() {
   } else if (nilaiKlik >= 50) {
     peringkat = "Amatir";
   }
-  // Tampilkan hasil
+
+  // Menampilkan hasil
   tombolMain.innerHTML = "Peringkat: " + peringkat;
   tombolUlang.style.visibility = "visible";
 }
@@ -121,7 +129,7 @@ function akhirPermainan() {
 // Fungsi ini digunakan untuk mengatur permainan seperti semula (restart).
 // pada fungsi ini semua nilai akan di atur ulang ke nilai default (reset).
 function ulangPermainan() {
-  // Atur ulang semua nilai
+  // Mengatur ulang semua nilai
   textTimer.innerHTML = "Waktu: 0s";
   textKecepatan.innerHTML = "Kecepatan: 0 klik/detik";
   textNilai.innerHTML = "Nilai: 0";
@@ -129,7 +137,6 @@ function ulangPermainan() {
   nilaiKlik = 0;
   sedangBermain = false;
   bonusAktif = false;
-  sudahDapatBonus = false;
   permainanSelesai = false;
   tombolUlang.style.visibility = "hidden";
   textBonus.classList.add("hidden");
@@ -166,6 +173,6 @@ document.body.addEventListener("click", function (event) {
 tombolMain.addEventListener("click", mulaiPermainan);
 tombolUlang.addEventListener("click", ulangPermainan);
 tombolMode.addEventListener("click", gantiMode);
-document.body.addEventListener("click", klikDilakukan);
+tombolMain.addEventListener("click", klikDilakukan);
 tombolMain.addEventListener("click", buatEfekRipple);
 tombolUlang.addEventListener("click", buatEfekRipple);
