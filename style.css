@@ -193,24 +193,36 @@ nav a:hover {
 }
 
 .bonus-text {
-  color: #ffffff;
-  width: auto;
-  max-width: 90%;
-  position: fixed; /* Tetap di luar RoundedBox */
-  bottom: 5rem; /* Meninggikan agar tidak keluar layar */
+  position: fixed; /* Pastikan tetap di layar */
+  bottom: 3rem; /* Tetap terlihat di HP dan PC */
   left: 50%;
   transform: translateX(-50%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Tambahkan latar belakang agar lebih jelas */
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
   text-align: center;
+  z-index: 9999; /* Pastikan di atas elemen lain */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  max-width: 90%;
   animation: pulse 1s infinite;
-  z-index: 1100; /* Pastikan di atas elemen lain */
 }
 
-/* Pastikan tetap terlihat di HP */
+/* Responsif untuk HP */
 @media only screen and (max-width: 600px) {
   .bonus-text {
     font-size: 1rem;
-    bottom: 6rem; /* Tambah jarak agar tidak tertutup */
-    display: block !important; /* Paksa tetap muncul */
+    bottom: 4rem; /* Sesuaikan supaya tidak keluar layar */
   }
 }
 
