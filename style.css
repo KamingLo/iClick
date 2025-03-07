@@ -74,7 +74,7 @@ nav a:hover {
   width: 28.125rem;
   border-radius: 0.5rem;
   padding: 0.625rem;
-  margin-top: auto;
+  margin: auto;
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
   background-color: rgba(235, 245, 238, 0.9);
   position: relative;
@@ -115,24 +115,12 @@ nav a:hover {
   justify-content: center;
   text-align: left;
   display: flex;
+  background-color: #6d82b7;
   color: white;
   justify-content: space-between;
 }
 
-.BoxWaktu {
-  background-color: #6d82b7;
-}
-
-.BoxKecepatan {
-  background-color: #6d82b7;
-}
-
-.BoxNilai {
-  background-color: #6d82b7;
-}
-
-.ButtonPlay,
-.ButtonRestart {
+.ButtonPlay {
   height: 7.5rem;
   width: 25rem;
   border-radius: 0.5rem;
@@ -157,19 +145,22 @@ nav a:hover {
 }
 
 .ButtonRestart {
-  height: 3.75rem;
-  width: 10.625rem;
-  border-radius: 3.75rem;
-  background-color: #e81616;
+  height: 60px;
+  width: 170px;
+  min-width: 170px;
+  max-width: 170px;
+  border-radius: 60px;
+  background-color: #d95d39;
+  position: fixed;
   justify-content: center;
   align-items: center;
-  margin: 0.625rem auto;
-  gap: 0.625rem;
-  transition: all 0.3s ease;
-}
-
-.ButtonRestart:hover {
-  background-color: #ff4d4d;
+  text-align: center;
+  display: flex;
+  color: white;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 8px;
 }
 
 .ButtonPlay,
@@ -271,7 +262,7 @@ nav a:hover {
   }
 
   #bonusIndicator {
-    margin-top: 2rem; 
+    margin-top: 2rem;
   }
 
   .clicking-counter {
