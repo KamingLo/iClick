@@ -196,12 +196,19 @@ nav a:hover {
   color: #ffffff;
   width: auto;
   max-width: 90%;
-  position: fixed;
-  margin-top: 1rem;
+  position: absolute; /* Mengubah dari fixed ke absolute */
+  bottom: -2rem; /* Pastikan berada di bawah RoundedBox */
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   animation: pulse 1s infinite;
+}
+
+@media only screen and (max-width: 600px) {
+  .bonus-text {
+    font-size: 0.9rem;
+    bottom: -3rem; /* Tambahkan lebih banyak ruang untuk layar kecil */
+  }
 }
 
 .hidden {
