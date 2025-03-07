@@ -97,15 +97,16 @@ function aktifkanBonus() {
 // Fungsi ini digunakan untuk menghitung banyak klik
 function klikDilakukan() {
   if (sedangBermain) {
-    // Tambah nilai (dobel jika bonus aktif)
+    // Menambah jumlah klik. Jika mendapatkan bonus maka akan mendapatkan +2 click
     if (bonusAktif) {
       nilaiKlik = nilaiKlik + 2;
     } else {
       nilaiKlik = nilaiKlik + 1;
     }
 
-    // Cek kesempatan dapat bonus (5%)
-    while (Math.random() < 0.5 && !bonusAktif) {
+    // Menggunakan while loop untuk mengatur kesempatan mendapatkan bonus
+    // While loop ini akan mengaktifkan bonus jika Math.random di bawah 0.05 (Hanya 5% kesempatan mendapatkan bonus)
+    while (Math.random() < 0.05 && !bonusAktif) {
       aktifkanBonus();
     }
   }
@@ -153,6 +154,7 @@ function buatEfekRipple(event) {
   let tombol = event.currentTarget;
   let ripple = document.createElement("span");
 
+  // mengatur ukuran dari efek ripple
   ripple.classList.add("ripple");
   ripple.style.width = Math.max(tombol.offsetWidth, tombol.offsetHeight) + "px";
   ripple.style.height =
@@ -160,22 +162,24 @@ function buatEfekRipple(event) {
   ripple.style.left = event.offsetX - ripple.offsetWidth / 2 + "px";
   ripple.style.top = event.offsetY - ripple.offsetHeight / 2 + "px";
 
-  // menggunakan Asynchronous untuk mengatur
+  // menambahkan efek ripple ke dalam tombol klik
   tombol.appendChild(ripple);
+
+  // menggunakan asynchronous setTimeout() untuk menghapus efek ripple setelah waktu yang telah ditentukan
+  // dalam fungsi ini efek ripple diatur selama 600 (0.6 detik)
   setTimeout(function () {
     ripple.remove();
   }, 600);
 }
 
-// Hapus atau ganti event listener DOMContentLoaded yang lama
-// Dan ganti dengan yang lebih sederhana
+// Mengatur permainan jika sudah selesai dan yang diklik bukan tombol restart, maka klik diabaikan
 document.body.addEventListener("click", function (event) {
   if (permainanSelesai && !event.target.classList.contains("ButtonRestart")) {
     return;
   }
 });
 
-// Pasang semua event listener
+// Menambahkan event listener pada tombol-tombol dalam permainan
 tombolMain.addEventListener("click", mulaiPermainan);
 tombolUlang.addEventListener("click", ulangPermainan);
 tombolMode.addEventListener("click", gantiMode);
@@ -186,22 +190,26 @@ tombolUlang.addEventListener("click", buatEfekRipple);
 // Mengambil elemen audio
 const clickSound = document.getElementById("clickSound");
 
-// Fungsi ini digunakan untuk memutar suara efek klik
+// Fungsi ini digunakan untuk memutar suara efek klik, ketika tombol klik ditekan
 function playClickSound() {
-  clickSound.currentTime = 0; // Reset waktu audio ke awal
+  clickSound.currentTime = 0; 
   clickSound.play();
 }
 
-// Tambahkan event listener ke tombol .ButtonPlay
+// Menambahkan event listener ke tombol klik sehingga ketika diclick efek suara akan muncul
 document
   .getElementById("startButton")
   .addEventListener("click", playClickSound);
 
-// Kode JavaScript lainnya...
+// Membuat objek baru berjenis audio 
 const bgMusic = new Audio("path/to/your/music.mp3");
+
+// Mengatur nilai awal
 let isPlaying = false;
 
+// Fungsi ini akan digunakan untuk memainkan dan menghentikan efek suara 
 function toggleMusic() {
+  // melakukan pengecekan apakah efek suara sedang dalam kondisi nyala atau tidak
   if (isPlaying) {
     bgMusic.pause();
     bgMusic.currentTime = 0;
@@ -210,17 +218,19 @@ function toggleMusic() {
     bgMusic.play();
     isPlaying = true;
 
-    while (isPlaying) {
-      bgMusic.onended = function () {
-        bgMusic.currentTime = 0;
-        bgMusic.play();
-      };
+    // Mengatur agar efek suara tetap di putar ulang ketika efek suara sudah berhenti
+    bgMusic.onended = function () {
+      // mengatur nilai awal dan memanggil fungsi play() untuk menyalakan kembali efek suara
+      bgMusic.currentTime = 0;
+      bgMusic.play();
+    };
 
-      if (bgMusic.paused) {
-        isPlaying = false;
-      }
+    if (bgMusic.paused) {
+      isPlaying = false;
     }
+    
   }
 }
 
+// menambahkan event listener yang akan menjalankan fungsi toggleMusic saat tombol diklik.
 document.getElementById("musicButton").addEventListener("click", toggleMusic);

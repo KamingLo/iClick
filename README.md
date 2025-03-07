@@ -18,6 +18,7 @@ Pada permainan ini pemain harus mengklik sebanyak mungkin dalam waktu tertentu. 
     - Amatir: 50 - 99 klik
     - Pro: 100 - 149 klik
     - Legend: 150+ klik
+- Terdapat efek animasi dan efek suara pada saat pemain melakukan click. 
 
 
 ## How to run
@@ -43,4 +44,3 @@ Pemain dapat memainkan permainan ini melalui link yang telah disediakan. Setelah
 - Kaming (535240175)
 - Joe Nickson Lie (535240079)
 - Charless (535240068)
-
