@@ -290,8 +290,11 @@ nav a:hover {
     margin-top: 3rem;
   }
 
-  #bonusIndicator {
-    margin-top: 2rem;
+  .bonus-text {
+    font-size: 1rem;
+    bottom: 6rem; 
+    padding: 0.4rem 0.8rem;
+    max-width: 90%;
   }
 
   .clicking-counter {
@@ -314,6 +317,13 @@ nav a:hover {
   .ButtonPlay,
   .ButtonRestart {
     width: 25rem;
+  }
+
+  .bonus-text {
+    font-size: 1rem;
+    bottom: 6rem; 
+    padding: 0.4rem 0.8rem;
+    max-width: 90%;
   }
 
   .clicking-counter {
