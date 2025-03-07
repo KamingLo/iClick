@@ -197,7 +197,7 @@ nav a:hover {
   width: auto;
   max-width: 90%;
   position: fixed;
-  top: 42rem auto;
+  top: auto;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
