@@ -230,7 +230,7 @@ nav a:hover {
   }
 }
 
-/* Media Queries for Responsiveness */
+/* Menyesuaikan tampilan berdasarkan ukuran layar */
 
 @media only screen and (max-width: 37.5rem) {
   body {
