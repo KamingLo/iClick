@@ -105,7 +105,7 @@ function klikDilakukan() {
     }
 
     // Cek kesempatan dapat bonus (5%)
-    while (Math.random() < 0.05 && !bonusAktif) {
+    while (Math.random() < 0.5 && !bonusAktif) {
       aktifkanBonus();
     }
   }
@@ -127,7 +127,7 @@ function akhirPermainan() {
     peringkat = "Amatir";
   }
 
-  // Menampilkan hasil
+  // Menampilkan hasil permainan
   tombolMain.innerHTML = "Peringkat: " + peringkat;
   tombolUlang.style.visibility = "visible";
 }
@@ -183,11 +183,10 @@ tombolMain.addEventListener("click", klikDilakukan);
 tombolMain.addEventListener("click", buatEfekRipple);
 tombolUlang.addEventListener("click", buatEfekRipple);
 
-//--------------------------------------------------------------------
-// Ambil elemen audio
+// Mengambil elemen audio
 const clickSound = document.getElementById("clickSound");
 
-// Fungsi untuk memutar suara klik
+// Fungsi ini digunakan untuk memutar suara efek klik
 function playClickSound() {
   clickSound.currentTime = 0; // Reset waktu audio ke awal
   clickSound.play();

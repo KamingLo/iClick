@@ -158,7 +158,8 @@ nav a:hover {
   text-align: center;
   display: flex;
   color: white;
-  bottom: 2rem;
+  margin-top: 4.5rem;
+  margin-bottom: 0.5rem;
   gap: 8px;
 }
 
@@ -194,11 +195,10 @@ nav a:hover {
 
 .bonus-text {
   position: fixed;
-  bottom: 6rem; /* Naikkan sedikit supaya tidak menutupi tombol */
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  font-size: 1rem; /* Ukuran lebih kecil agar pas di HP */
+  font-size: 1rem; 
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 0.5rem 1rem;
@@ -216,7 +216,7 @@ nav a:hover {
 @media only screen and (max-width: 600px) {
   .bonus-text {
     font-size: 0.9rem;
-    bottom: 12rem; /* Naikkan lebih tinggi di HP agar tidak menutupi tombol */
+    bottom: 6rem; 
     padding: 0.4rem 0.8rem;
     max-width: 90%;
   }
@@ -240,7 +240,6 @@ nav a:hover {
 
 /* Media Queries for Responsiveness */
 
-/* Small devices (phones, 600px and down) */
 @media only screen and (max-width: 37.5rem) {
   body {
     padding-top: 4rem;
@@ -264,12 +263,18 @@ nav a:hover {
     width: 90%;
   }
 
+  .bonus-text {
+    font-size: 1rem;
+    bottom: 6rem; 
+    padding: 0.4rem 0.8rem;
+    max-width: 90%;
+  }
+
   .clicking-counter {
     font-size: 1.5rem;
   }
 }
 
-/* Medium devices (tablets, 768px and down) */
 @media only screen and (max-width: 48rem) {
   .RoundedBox {
     width: 80%;
