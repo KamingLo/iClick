@@ -1,0 +1,64 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding-top: 80px;
+  color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  flex-wrap: wrap;
+}
+
+/* --------------------- Bagian dalam text about ----------------------*/
+
+.BoxAbout {
+  max-width: 50%;
+  border-radius: 0.5rem;
+  color: white;
+  transform: none;
+}
+
+.BoxAbout h1 {
+  font-size: 2rem;
+  margin-top: 0;
+  color: yellow;
+}
+
+.BoxAbout p {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  text-align: justify;
+}
+
+.BoxImage {
+  width: 30rem;
+  height: 30rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: #333;
+}
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}

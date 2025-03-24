@@ -1,109 +1,136 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const path = require("path");
+const session = require("express-session");
+const bcrypt = require("bcrypt");
+const User = require("./models/user");
 
-mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
+mongoose
+  .connect("mongodb://127.0.0.1:27017/mydatabase", {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
+    useUnifiedTopology: true,
+  })
+  .then(() => {
     console.log("Database terhubung!");
-}).catch((err) => {
+  })
+  .catch((err) => {
     console.log("Koneksi gagal:", err);
-});
+  });
 
 const port = 3000;
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
-app.use(express.urlencoded({ extended: true}));
-
-
-const session = require('express-session');
-
-app.use(session({
-    secret: 'rahasia', // Bisa diganti dengan string acak yang lebih aman
+app.use(
+  session({
+    secret: "rahasia", // Bisa diganti dengan string acak yang lebih aman
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Jika pakai HTTPS, ubah jadi true
-}));
+    cookie: { secure: false }, // Jika pakai HTTPS, ubah jadi true
+  })
+);
 
-app.get('/', (req, res) => { 
-    res.render('index');
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
-app.get('/register', (req, res) => {
-    res.render('register');
+app.get("/home", (req, res) => {
+  res.render("home");
 });
 
-const User = require('./models/user'); 
-const bcrypt = require('bcrypt');
+app.get("/leaderboard", (req, res) => {
+  res.render("leaderboard");
+});
 
-app.post('/register', async (req, res) => {
-    const { username, password } = req.body;
+app.get("/about", (req, res) => {
+  res.render("about");
+});
 
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
+app.get("/register", (req, res) => {
+  res.render("register");
+});
 
-        const newUser = new User({ username, password: hashedPassword });
-        await newUser.save();
+app.post("/register", async (req, res) => {
+  const { username, email, password } = req.body;
 
-        console.log("User berhasil terdaftar:", username);
-        res.send("Registrasi berhasil! Silakan <a href='/login'>Login</a>");
-    } catch (err) {
-        console.log(err);
-        res.send("Terjadi kesalahan saat registrasi.");
+  try {
+    // Cek apakah username atau email sudah digunakan
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    if (existingUser) {
+      return res.send(
+        "Username atau email sudah digunakan. <a href='/register'>Coba lagi</a>"
+      );
     }
+
+    // Buat user baru
+    const newUser = new User({ username, email, password });
+    await newUser.save();
+
+    console.log("User berhasil terdaftar:", username);
+    res.send("Registrasi berhasil! Silakan <a href='/login'>Login</a>");
+  } catch (err) {
+    console.log(err);
+    res.send("Terjadi kesalahan saat registrasi.");
+  }
 });
 
-app.get('/login', (req, res) => {
-    res.render('login');
+app.get("/login", (req, res) => {
+  res.render("login");
 });
 
-app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
 
-    try {
-        // Cari user di database
-        const user = await User.findOne({ username });
+  try {
+    // Cari user di database
+    const user = await User.findOne({ username });
 
-        if (!user) {
-            return res.send("Username tidak ditemukan. <a href='/login'>Coba lagi</a>");
-        }
-
-        // Bandingkan password yang diinput dengan password di database
-        const isMatch = await bcrypt.compare(password, user.password);
-
-        if (!isMatch) {
-            return res.send("Password salah. <a href='/login'>Coba lagi</a>");
-        }
-
-        // Simpan session login
-        req.session.user = user;
-        res.send(`Login berhasil! <a href='/dashboard'>Masuk ke Dashboard</a>`);
-    } catch (err) {
-        console.log(err);
-        res.send("Terjadi kesalahan saat login.");
+    if (!user) {
+      return res.send(
+        "Username tidak ditemukan. <a href='/login'>Coba lagi</a>"
+      );
     }
-});
 
-app.get('/dashboard', (req, res) => {
-    if (!req.session.user) {
-        return res.send("Anda harus login terlebih dahulu. <a href='/login'>Login</a>");
+    // Bandingkan password yang diinput dengan password di database
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.send("Password salah. <a href='/login'>Coba lagi</a>");
     }
-    res.send(`Selamat datang, ${req.session.user.username}! <a href='/logout'>Logout</a>`);
+
+    // Simpan session login
+    req.session.user = user;
+    res.send(`Login berhasil! <a href='/dashboard'>Masuk ke Dashboard</a>`);
+  } catch (err) {
+    console.log(err);
+    res.send("Terjadi kesalahan saat login.");
+  }
 });
 
-app.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            return res.send("Gagal logout.");
-        }
-        res.send("Logout berhasil! <a href='/login'>Login lagi</a>");
-    });
+app.get("/dashboard", (req, res) => {
+  if (!req.session.user) {
+    return res.send(
+      "Anda harus login terlebih dahulu. <a href='/login'>Login</a>"
+    );
+  }
+  res.send(
+    `Selamat datang, ${req.session.user.username}! <a href='/logout'>Logout</a>`
+  );
 });
 
-
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.send("Gagal logout.");
+    }
+    res.send("Logout berhasil! <a href='/login'>Login lagi</a>");
+  });
+});
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });

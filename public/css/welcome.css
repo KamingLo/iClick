@@ -1,0 +1,114 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  overflow-x: hidden;
+  height: 100vh;
+  text-align: center;
+  color: white;
+}
+
+/* -------------------- Yang bagian dalam ContainerAnimText ----------------- */
+
+.ContainerAnimText {
+  position: relative;
+  width: 80rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.TextAnim {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 5vw;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.TextAnim.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+p {
+  font-size: clamp(1.2rem, 2vw, 2rem);
+}
+
+/* -------------------------------------- end ---------------------------------- */
+/* -------------------- Yang bagian dalam CointainerBoxAccount ----------------- */
+
+.CointainerBoxAccount {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.BoxRegister,
+.BoxLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BoxRegister button,
+.BoxLogin button {
+  font-family: "Montserrat", sans-serif;
+  height: 3rem;
+  width: 15rem;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  background: #272727;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.BoxRegister button:hover,
+.BoxLogin button:hover {
+  background: #3f3f3f;
+}
+
+p1 {
+  transform: translateY(10rem);
+  font-size: 1rem;
+}
+
+.BoxGuest {
+  transform: translateY(11rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BoxGuest button {
+  font-family: "Montserrat", sans-serif;
+  height: 3rem;
+  width: 15rem;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  background: #272727;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.BoxGuest button:hover {
+  background: #3f3f3f;
+}
+
+/* -------------------------------------- end ---------------------------------- */
