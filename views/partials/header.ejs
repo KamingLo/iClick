@@ -18,14 +18,5 @@
     <link rel="stylesheet" href="/css/about.css"/>
   </head>
   <body>
-    <div class="gradient"></div>
-    <header>
-      <nav class="navbar">
-        <div class="logo"><a href="/">iClick</a></div>
-        <div class="navbtn">
-          <a href="/leaderboard">Leaderboard</a>
-          <a href="/about">About</a>
-          <a class="sign-btn" href="/"><span>Sign in</span></a>
-        </div>
-      </nav>
-    </header>
+    <%- session.user ? include('navbarLogin') : include('navbar') %>
+  <!-- Sisa konten header... -->
