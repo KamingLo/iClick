@@ -14,6 +14,7 @@ body {
   display: flex;
   align-items: center;
   gap: 2rem;
+  margin-top: -5rem;
 }
 
 .hidden {
@@ -36,7 +37,6 @@ body {
   height: 35rem;
   width: 35rem;
   border-radius: 0.5rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,7 +142,7 @@ body {
 .BoxTextMode {
   height: 3rem;
   width: 15rem;
-  border-radius: 0.5rem;
+ border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,10 +157,11 @@ body {
   align-items: center;
   justify-content: center;
   margin: auto 2rem;
-  transform: translateY(-50px);
+  transform: translateY(5px);
 }
 
 #rankImage {
+  transform: translateY(-60px);
   width: 300px;
   height: 300px;
   object-fit: contain;
@@ -212,4 +213,5 @@ body {
 .BoxLeaderBoard p {
   font-size: 24px;
   color: rgb(255, 255, 255);
+transform: translateY(1rem);
 }

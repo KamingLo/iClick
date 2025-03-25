@@ -23,6 +23,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  margin-top: -8rem;
 }
 
 .TextAnim {
@@ -33,7 +34,7 @@ body {
   font-weight: bold;
   opacity: 0;
   transform: translateY(100%);
-  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .TextAnim.active {
@@ -41,8 +42,15 @@ body {
   transform: translateY(0);
 }
 
+.error-message {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 p {
-  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-size: 2rem;
+  transform: translateY(-4rem);
 }
 
 /* -------------------------------------- end ---------------------------------- */
@@ -75,6 +83,8 @@ p {
   cursor: pointer;
   transition: all 0.3s ease;
   color: white;
+  transform: translateY(-3rem);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
 .BoxRegister button:hover,
@@ -82,13 +92,14 @@ p {
   background: #3f3f3f;
 }
 
-p1 {
-  transform: translateY(10rem);
+.TextGuest {
+  transform: translateY(7rem);
   font-size: 1rem;
 }
 
 .BoxGuest {
-  transform: translateY(11rem);
+  transform: translateY(7rem);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;

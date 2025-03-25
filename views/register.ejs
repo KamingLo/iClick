@@ -1,27 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-    <link rel="stylesheet" href="/css/animBG.css" />
-    <link id="navbarStyleSheet" rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/register.css" />
-  </head>
-  <div class="gradient"></div>
-  <body>
-    <header>
-      <nav class="navbar">
-        <div class="logo"><a href="/">iClick</a></div>
-        <div class="navbtn">
-          <a href="/leaderboard">Leaderboard</a>
-          <a href="/about">About</a>
-          <a class="sign-btn" href="/register"><span>Sign in</span></a>
-        </div>
-      </nav>
-    </header>
+<%- include('partials/header')%> 
+    
+<div class="BoxContainerIndexReg">
+  
+  <div class="BoxDisplayTextReg">
+    <div class="ContainerAnimTextReg">
+      <% if (typeof errorMessage !== 'undefined') { %>
+        <h1 class="TextAnimReg error-messageReg"><%= errorMessage %></h1>
+      <% } %>      
+      <h1 class="TextAnimReg active">Modern Clicking Counter</h1>
+      <h1 class="TextAnimReg">Challenge Yourself</h1>
+      <h1 class="TextAnimReg">look! who's coming 👀</h1>
+    </div>
+    <div class="ContainerTextDescReg"></div>
+    <p class="deskripsi1Reg">Know your limit at clicking</p>
+    <p class="deskripsi2Reg">with saving point features</p>
+    <p class="deskripsi3Reg">Generally, calculating mouse clicks is referred to as ‘click speed test’’. Our website offers many variations by which a user can test his mouse clicking ability. The click speed test is more like a pass time game where players try to score the highest score.</p>
+    <p class="deskripsi4Reg">it's up to you how fast you can click, Now what are you waiting for? Register right away to unlock your rank and compare your speed with other players around the world!</p>
+  </div>
 
     <div class="register-container">
+      <button onclick="location.href='/'" class="backbuttonReg">
+        Back
+      </button>
       <h2>Register</h2>
 
       <form action="/register" method="POST">
@@ -60,5 +60,4 @@
       </p>
     </div>
     <script src="/js/navbar.js"></script>
-  </body>
-</html>
+    <script src="/js/index.js"></script>

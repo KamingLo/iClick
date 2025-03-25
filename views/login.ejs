@@ -1,26 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/animBG.css" />
-    <link id="navbarStyleSheet" rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/login.css" />
-  </head>
-  <div class="gradient"></div>
-  <body>
-    <header>
-      <nav class="navbar">
-        <div class="logo"><a href="/">iClick</a></div>
-        <div class="navbtn">
-          <a href="/leaderboard">Leaderboard</a>
-          <a href="/about">About</a>
-          <a class="sign-btn" href="/register"><span>Sign in</span></a>
-        </div>
-      </nav>
-    </header>
-
+<%- include('partials/header')%> 
+    
+<div class="BoxContainerIndex">
+  
+  <div class="BoxDisplayText">
+    <div class="ContainerAnimText">
+        <% if (typeof errorMessage !== 'undefined') { %>
+          <h1 class="TextAnim error-message"><%= errorMessage %></h1>
+        <% } %>
+        <% if (typeof successMessage !== 'undefined') { %>
+          <h1 class="TextAnim success-message"><%= successMessage %></h1>
+          <h1 class="TextAnim success-message">Please Login</h1>
+        <% } %>        
+      <h1 class="TextAnim active">Hi! Welcome Back :D</h1>
+      <h1 class="TextAnim">Do You Ready</h1>
+      <h1 class="TextAnim">To Beat Your Score 🔥</h1>
+      <h1 class="TextAnim">Modern Clicking Counter</h1>
+      <h1 class="TextAnim">Challenge Yourself</h1>
+    </div>
+    <div class="ContainerTextDesc"></div>
+    <p class="deskripsi1">Know your limit at clicking</p>
+    <p class="deskripsi2">with saving point features</p>
+    <p class="deskripsi3">Generally, calculating mouse clicks is referred to as ‘click speed test’’. Our website offers many variations by which a user can test his mouse clicking ability. The click speed test is more like a pass time game where players try to score the highest score.</p>
+    <p class="deskripsi4">it's up to you how fast you can click, Now what are you waiting for? Register right away to unlock your rank and compare your speed with other players around the world!</p>
+  </div>
+  
+  <div class="BoxDisplayAccount">
+    <button onclick="location.href='/'" class="backbuttonlogin">
+      Back
+    </button>
     <div class="login-container">
       <h2>Login</h2>
       <form action="/login" method="POST">
@@ -49,6 +56,8 @@
         Dont have an account? <a href="/register">Register here</a>
       </p>
     </div>
-    <script src="/js/navbar.js"></script>
-  </body>
-</html>
+
+
+
+<script src="/js/navbar.js"></script>
+<script src="/js/index.js"></script>

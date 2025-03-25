@@ -27,10 +27,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
-    secret: "rahasia", // Bisa diganti dengan string acak yang lebih aman
+    secret: "rahasia",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }, // Jika pakai HTTPS, ubah jadi true
+    cookie: { secure: false },
   })
 );
 
@@ -61,9 +61,9 @@ app.post("/register", async (req, res) => {
     // Cek apakah username atau email sudah digunakan
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
-      return res.send(
-        "Username atau email sudah digunakan. <a href='/register'>Coba lagi</a>"
-      );
+      return res.render("register", {
+        errorMessage: "Username or email have been used!",
+      });
     }
 
     // Buat user baru
@@ -71,10 +71,12 @@ app.post("/register", async (req, res) => {
     await newUser.save();
 
     console.log("User berhasil terdaftar:", username);
-    res.send("Registrasi berhasil! Silakan <a href='/login'>Login</a>");
+    res.render("login", { successMessage: "Registration successful!"});
   } catch (err) {
     console.log(err);
-    res.send("Terjadi kesalahan saat registrasi.");
+    res.render("register", {
+      errorMessage: "Terjadi kesalahan saat registrasi.",
+    });
   }
 });
 
@@ -91,7 +93,7 @@ app.post("/login", async (req, res) => {
 
     if (!user) {
       return res.send(
-        "Username tidak ditemukan. <a href='/login'>Coba lagi</a>"
+        res.render('login', { errorMessage: "Invalid username or password!" })
       );
     }
 
@@ -99,15 +101,15 @@ app.post("/login", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.send("Password salah. <a href='/login'>Coba lagi</a>");
+      return res.render('login', { errorMessage: "Invalid username or password!" })
     }
 
     // Simpan session login
     req.session.user = user;
-    res.send(`Login berhasil! <a href='/dashboard'>Masuk ke Dashboard</a>`);
+    return res.render('home')
   } catch (err) {
     console.log(err);
-    res.send("Terjadi kesalahan saat login.");
+    return res.render('login', { errorMessage: "Invalid username or password!" })
   }
 });
 
