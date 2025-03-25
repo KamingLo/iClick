@@ -1,0 +1,307 @@
+body {
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+/* -------------------- Container2Kotak --------------------*/
+.BoxContainerIndex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+/* ------------------- bagian dalam text -------------------*/
+.BoxDisplayText {
+  height: 35rem;
+  width: 50rem;
+  border-radius: 0.5rem;
+  border: 0px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.ContainerAnimText {
+  position: relative;
+  max-width: 90%;
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.TextAnim {
+  position: absolute;
+  width: 100%;
+  max-width: 90%;
+  text-align: center;
+  font-size: 3rem !important;
+  font-weight: bold;
+  top: 1rem;
+  opacity: 0;
+  transform: translateY(80%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.TextAnim.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ContainerTextDesc {
+  position: relative;
+  max-width: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.deskripsi1 {
+  transform: translateY(-2rem);
+  font-size: 2rem;
+}
+
+.deskripsi2 {
+  transform: translateY(-5.8rem);
+  font-size: 1.7rem;
+}
+
+.deskripsi3 {
+  max-width: 90%;
+  width: 100%;
+  transform: translateY(-5rem);
+  font-size: 20px;
+  text-align: justify;
+  font-style: italic;
+}
+
+.deskripsi4 {
+  max-width: 90%;
+  width: 100%;
+  transform: translateY(-5rem);
+  font-size: 20px;
+  text-align: justify;
+  font-style: italic;
+}
+
+.TextAnim.error-message {
+  color: rgb(255, 0, 0);
+  font-size: 2.5rem !important;
+  font-weight: bold;
+}
+
+.TextAnim.success-message {
+  color: green;
+  font-size: 3rem !important;
+  font-weight: bold;
+}
+
+/* -------------------------- End --------------------------*/
+/* ------------------ bagian dalam login -------------------*/
+
+.BoxDisplayAccount {
+  height: 35rem;
+  width: 40rem;
+  border-radius: 0.5rem;
+  border: 0px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.backbuttonlogin {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  height: 3rem;
+  width: 5rem;
+  font-size: 16px;
+  cursor: pointer;
+  transform: translateY(5rem);
+  margin: -10rem 0 0 -17rem;
+  border-radius: 0px;
+}
+
+.backbuttonlogin:hover {
+  background-color: #0056b3;
+}
+
+.login-container {
+  background-color: #1b1b1b;
+  height: 370px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  width: 350px;
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+input::placeholder {
+  color: #888;
+}
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+  color: #000;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+.register-link {
+  margin-top: 80px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------- End --------------------------*/
+
+@media (max-width: 768px) {  
+
+  
+  .BoxContainerIndex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .BoxDisplayAccount {
+    height: 35rem;
+    width: 40rem;
+    border-radius: 0.5rem;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(15rem);
+  }
+  
+  .BoxDisplayText {
+    height: 35rem;
+    width: 50rem;
+    border-radius: 0.5rem;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .TextAnim {
+    font-size: 0rem !important;
+  }
+  
+  
+  .TextAnim.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .ContainerTextDesc {
+    position: relative;
+    max-width: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+  
+  .deskripsi1 {
+    font-size: 0rem;
+  }
+  
+  .deskripsi2 {
+    font-size: 0rem;
+  }
+  
+  .deskripsi3 {
+    font-size: 0px;
+  }
+  
+  .deskripsi4 {
+    font-size: 0px;
+  }
+
+  .BoxDisplayAccount {
+    order: 1;
+  }
+
+  .BoxDisplayText {
+    order: 2;
+  }
+
+}
