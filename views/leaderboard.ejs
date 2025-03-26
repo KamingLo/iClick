@@ -1,25 +1,27 @@
 <%- include('partials/header.ejs') %>
 
-    <main class="leaderboard-container">
-      <div class="leaderboard-box">
-        <h2>Alltime</h2>
-        <ul class="rank-list">
-          <li>#1 - Kaming</li>
-          <li>#2 - Joe</li>
-          <li>#3 - Charless</li>
-        </ul>
-      </div>
-
-      <div class="leaderboard-box">
-        <h2>Daily</h2>
-        <ul class="rank-list">
-          <li>#1 - Joe</li>
-          <li>#2 - Charless</li>
-          <li>#3 - Kaming</li>
-        </ul>
-      </div>
-    </main>
+    <h1>Leaderboard</h1>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Score</th>
+        </tr>
+        <% if (typeof scores !== 'undefined' && scores.length > 0) { %>
+            <% scores.forEach((score, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= score.namaUser %></td>
+                    <td><%= score.score %></td>
+                </tr>
+            <% }); %>
+        <% } else { %>
+            <tr>
+                <td colspan="3">No scores available</td>
+            </tr>
+        <% } %>
+    </table>
 
     <script src="/js/navbar.js"></script>
-  </body>
+</body>
 </html>
