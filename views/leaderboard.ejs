@@ -8,7 +8,7 @@
             <th>Score</th>
         </tr>
         <% if (typeof scores !== 'undefined' && scores.length > 0) { %>
-            <% scores.forEach((score, index) => { %>
+            <% scores.slice(0, 10).forEach((score, index) => { %>
                 <tr>
                     <td><%= index + 1 %></td>
                     <td><%= score.namaUser %></td>
