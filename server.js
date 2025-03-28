@@ -27,6 +27,11 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+});
+
 // Import Routes
 const authRoutes = require("./routes/auth");
 const homeRoutes = require("./routes/home");
