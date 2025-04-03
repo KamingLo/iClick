@@ -1,0 +1,52 @@
+<%- include('partials/header.ejs') %>
+
+<div class="KotakUtamaProfile">
+    <div class="KotakProfilePicture" onclick="triggerFileInput()">
+      <img
+        id="profileImg"
+        src="<%= user && user.profilePicture ? user.profilePicture : '/image/profile.png' %>"
+        alt="Profile Picture"
+      />
+
+      <div id="changeText" class="TeksGantiFoto">Change Picture</div>
+      <input
+        type="file"
+        id="fileInput"
+        accept="image/*"
+        style="display: none"
+        onchange="uploadImage(event)"
+      />
+    </div>
+
+    <div class="KotakGridInfoProfile">
+      <div class="TeksKolom">
+        <p class="Username">UserName:</p>
+        <div class="IsiTeksKolom">
+          <div class="KotakProfileName"><%= user.username %></div>
+          <a href="/ChangeUsername" class="EditText">Edit</a>
+        </div>
+      </div>
+
+      <div class="TeksKolom">
+        <p class="emaill">Email:</p>
+        <div class="IsiTeksKolom">
+          <div class="KotakProfileEmail"><%= user.email %></div>
+          <a href="/ChangeEmail" class="EditText">Edit</a>
+        </div>
+      </div>
+
+      <div class="TeksKolom">
+        <p class="password">Password:</p>
+        <div class="IsiTeksKolom">
+          <div class="KotakProfilePassword">********</div>
+          <a href="/ChangePassword" class="EditText">Edit</a>
+        </div>
+      </div>
+
+      <button class="TombolLogout" onclick="location.href='/logout'">
+        Logout
+      </button>
+    </div>
+
+  <script src="/js/profile.js"></script>
+</div>
