@@ -42,23 +42,71 @@ router.post('/saveScore', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const scores = await Score.find()
-            .populate('user', 'username')
-            .sort({ score: -1 })
-            .limit(10)
-            .lean();
-        
-        const mappedScores = scores.map(score => ({
+        // Get scores for each timeMode
+        const scores5s = await Score.aggregate([
+            { $match: { timemode: 5 } },
+            {
+                $group: {
+                    _id: '$user',
+                    score: { $max: '$score' },
+                    userId: { $first: '$user' }
+                }
+            },
+            { $sort: { score: -1 } },
+            { $limit: 10 }
+        ]);
+
+        const scores10s = await Score.aggregate([
+            { $match: { timemode: 10 } },
+            {
+                $group: {
+                    _id: '$user',
+                    score: { $max: '$score' },
+                    userId: { $first: '$user' }
+                }
+            },
+            { $sort: { score: -1 } },
+            { $limit: 10 }
+        ]);
+
+        const scores15s = await Score.aggregate([
+            { $match: { timemode: 15 } },
+            {
+                $group: {
+                    _id: '$user',
+                    score: { $max: '$score' },
+                    userId: { $first: '$user' }
+                }
+            },
+            { $sort: { score: -1 } },
+            { $limit: 10 }
+        ]);
+
+        // Populate user information for all scores
+        await Score.populate(scores5s.concat(scores10s, scores15s), {
+            path: '_id',
+            select: 'username',
+            model: 'User'
+        });
+
+        // Map scores with usernames
+        const mapScores = scores => scores.map(score => ({
             score: score.score,
-            namaUser: score.user ? score.user.username : 'Unknown User',
-            createdAt: score.createdAt
+            namaUser: score._id ? score._id.username : 'Unknown User'
         }));
-        
-        res.render('leaderboard', { scores: mappedScores });
+
+        res.render('leaderboard', {
+            scores5s: mapScores(scores5s),
+            scores10s: mapScores(scores10s),
+            scores15s: mapScores(scores15s)
+        });
     } catch (error) {
         console.error('Leaderboard error:', error);
-        res.render('leaderboard', { scores: [] });
+        res.render('leaderboard', { 
+            scores5s: [], 
+            scores10s: [], 
+            scores15s: [] 
+        });
     }
 });
-
 module.exports = router;

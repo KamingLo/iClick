@@ -1,22 +1,81 @@
 <%- include('partials/header.ejs') %>
 
 <h1>Leaderboard</h1>
+
+<h2>5 Seconds Mode</h2>
 <table>
-  <tr>
-    <th>Rank</th>
-    <th>Player</th>
-    <th>Score</th>
-  </tr>
-  <% if (typeof scores !== 'undefined' && scores.length > 0) { %> <%
-  scores.slice(0, 10).forEach((score, index) => { %>
-  <tr>
-    <td><%= index + 1 %></td>
-    <td><%= score.namaUser %></td>
-    <td><%= score.score %></td>
-  </tr>
-  <% }); %> <% } else { %>
-  <tr>
-    <td colspan="3">No scores available</td>
-  </tr>
-  <% } %>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Highest Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (typeof scores5s !== 'undefined' && scores5s.length > 0) { %>
+            <% scores5s.forEach((score, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= score.namaUser %></td>
+                    <td><%= score.score %></td>
+                </tr>
+            <% }); %>
+        <% } else { %>
+            <tr>
+                <td colspan="3">No scores available for 5s mode</td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<h2>10 Seconds Mode</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Highest Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (typeof scores10s !== 'undefined' && scores10s.length > 0) { %>
+            <% scores10s.forEach((score, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= score.namaUser %></td>
+                    <td><%= score.score %></td>
+                </tr>
+            <% }); %>
+        <% } else { %>
+            <tr>
+                <td colspan="3">No scores available for 10s mode</td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<h2>15 Seconds Mode</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Highest Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (typeof scores15s !== 'undefined' && scores15s.length > 0) { %>
+            <% scores15s.forEach((score, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= score.namaUser %></td>
+                    <td><%= score.score %></td>
+                </tr>
+            <% }); %>
+        <% } else { %>
+            <tr>
+                <td colspan="3">No scores available for 15s mode</td>
+            </tr>
+        <% } %>
+    </tbody>
 </table>
