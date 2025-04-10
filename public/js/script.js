@@ -152,6 +152,7 @@ function akhirPermainan() {
   tombolMode.disabled = false;
   tombolModeGame.disabled = false;
 
+  console.log(waktuPermainan);
   let gambarPeringkat = "/image/ygbenerlu.jpg";
   let teksPeringkat = "Tetap semangat dan coba lagi!";
 
@@ -202,7 +203,37 @@ function akhirPermainan() {
   textRank.innerText = teksPeringkat;
   textRank.classList.remove("hidden");
   textRank.classList.add("fade-in");
-  tampilkanHasil();
+
+  const scoreData = {
+    score: nilaiKlik,
+    timemode: waktuPermainan
+};
+
+console.log('Sending score data:', scoreData); // Debug log
+
+fetch('/leaderboard/saveScore', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(scoreData)
+})
+.then(response => {
+    if (!response.ok) {
+        return response.json().then(err => {
+            throw new Error(JSON.stringify(err));
+        });
+    }
+    return response.json();
+})
+.then(data => {
+    console.log('Score saved successfully:', data);
+    tampilkanHasil();
+})
+.catch(error => {
+    console.error('Error saving score:', error);
+    tampilkanHasil();
+});
 }
 
 // Fungsi untuk menampilkan hasil permainan dan beralih ke result.css

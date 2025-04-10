@@ -10,6 +10,8 @@ const scoreSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    timemode:
+    {   type: Number},
     createdAt: {
         type: Date,
         default: Date.now

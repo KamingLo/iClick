@@ -16,6 +16,7 @@ mongoose
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
@@ -35,10 +36,12 @@ app.use((req, res, next) => {
 // Import Routes
 const authRoutes = require("./routes/auth");
 const homeRoutes = require("./routes/home");
+const changeRoutes = require("./routes/change");
 const leaderboardRouter = require("./routes/leaderboard");
 
 app.use("/", homeRoutes);
 app.use("/", authRoutes);
+app.use("/", changeRoutes);
 app.use("/leaderboard", leaderboardRouter);
 
 // Menangani halaman yang tidak ditemukan (404)

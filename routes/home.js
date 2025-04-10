@@ -38,10 +38,6 @@ router.get("/ChangeUsername", (req, res) => {
   res.render("ChangeUsername");
 });
 
-router.get("/ChangeEmail", (req, res) => {
-  res.render("ChangeEmail");
-});
-
 router.get("/ChangePassword", (req, res) => {
   res.render("ChangePassword");
 });
