@@ -1,0 +1,202 @@
+<%- include('partials/header.ejs') %>
+
+<div class="leaderboard-container">
+    
+    <div class="leaderboard-layout">
+        <!-- Tabs moved to left side -->
+        <div class="leaderboard-controls">
+            <div class="time-mode-tabs">
+                <h3>Time Mode</h3>
+                <button class="time-tab active" data-timemode="5s">5 Seconds</button>
+                <button class="time-tab" data-timemode="10s">10 Seconds</button>
+                <button class="time-tab" data-timemode="15s">15 Seconds</button>
+            </div>
+            
+            <div class="click-mode-tabs">
+                <h3>Game Mode</h3>
+                <button class="click-tab active" data-clickmode="mouse">Mouse</button>
+                <button class="click-tab" data-clickmode="keyboard">Keyboard</button>
+            </div>
+        </div>
+        
+        <!-- Leaderboard on right side -->
+        <div class="BoxLeaderBoard">
+            <p>LeaderBoard</p>
+            
+            <!-- 5s Mouse (default view) -->
+            <div class="leaderboard-section active" id="leaderboard-5s-mouse">
+                <div class="leaderboard-table">
+                    <div class="leaderboard-header">
+                        <span class="rank-header">Rank</span>
+                        <span class="player-header">Player</span>
+                        <span class="score-header">Score</span>
+                    </div>
+                    
+                    <% if (typeof scores5sMouse !== 'undefined' && scores5sMouse.length > 0) { %>
+                        <% scores5sMouse.forEach((score, index) => { %>
+                            <div class="leaderboard-row">
+                                <span class="rank-cell"><%= index + 1 %></span>
+                                <span class="player-cell"><%= score.namaUser %></span>
+                                <span class="score-cell"><%= score.score %></span>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="leaderboard-empty">No scores available for 5s mouse mode</div>
+                    <% } %>
+                </div>
+            </div>
+            
+            <!-- 5s Keyboard -->
+            <div class="leaderboard-section" id="leaderboard-5s-keyboard">
+                <div class="leaderboard-table">
+                    <div class="leaderboard-header">
+                        <span class="rank-header">Rank</span>
+                        <span class="player-header">Player</span>
+                        <span class="score-header">Score</span>
+                    </div>
+                    
+                    <% if (typeof scores5sKeyboard !== 'undefined' && scores5sKeyboard.length > 0) { %>
+                        <% scores5sKeyboard.forEach((score, index) => { %>
+                            <div class="leaderboard-row">
+                                <span class="rank-cell"><%= index + 1 %></span>
+                                <span class="player-cell"><%= score.namaUser %></span>
+                                <span class="score-cell"><%= score.score %></span>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="leaderboard-empty">No scores available for 5s keyboard mode</div>
+                    <% } %>
+                </div>
+            </div>
+            
+            <!-- 10s Mouse -->
+            <div class="leaderboard-section" id="leaderboard-10s-mouse">
+                <div class="leaderboard-table">
+                    <div class="leaderboard-header">
+                        <span class="rank-header">Rank</span>
+                        <span class="player-header">Player</span>
+                        <span class="score-header">Score</span>
+                    </div>
+                    
+                    <% if (typeof scores10sMouse !== 'undefined' && scores10sMouse.length > 0) { %>
+                        <% scores10sMouse.forEach((score, index) => { %>
+                            <div class="leaderboard-row">
+                                <span class="rank-cell"><%= index + 1 %></span>
+                                <span class="player-cell"><%= score.namaUser %></span>
+                                <span class="score-cell"><%= score.score %></span>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="leaderboard-empty">No scores available for 10s mouse mode</div>
+                    <% } %>
+                </div>
+            </div>
+            
+            <!-- 10s Keyboard -->
+            <div class="leaderboard-section" id="leaderboard-10s-keyboard">
+                <div class="leaderboard-table">
+                    <div class="leaderboard-header">
+                        <span class="rank-header">Rank</span>
+                        <span class="player-header">Player</span>
+                        <span class="score-header">Score</span>
+                    </div>
+                    
+                    <% if (typeof scores10sKeyboard !== 'undefined' && scores10sKeyboard.length > 0) { %>
+                        <% scores10sKeyboard.forEach((score, index) => { %>
+                            <div class="leaderboard-row">
+                                <span class="rank-cell"><%= index + 1 %></span>
+                                <span class="player-cell"><%= score.namaUser %></span>
+                                <span class="score-cell"><%= score.score %></span>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="leaderboard-empty">No scores available for 10s keyboard mode</div>
+                    <% } %>
+                </div>
+            </div>
+            
+            <!-- 15s Mouse -->
+            <div class="leaderboard-section" id="leaderboard-15s-mouse">
+                <div class="leaderboard-table">
+                    <div class="leaderboard-header">
+                        <span class="rank-header">Rank</span>
+                        <span class="player-header">Player</span>
+                        <span class="score-header">Score</span>
+                    </div>
+                    
+                    <% if (typeof scores15sMouse !== 'undefined' && scores15sMouse.length > 0) { %>
+                        <% scores15sMouse.forEach((score, index) => { %>
+                            <div class="leaderboard-row">
+                                <span class="rank-cell"><%= index + 1 %></span>
+                                <span class="player-cell"><%= score.namaUser %></span>
+                                <span class="score-cell"><%= score.score %></span>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="leaderboard-empty">No scores available for 15s mouse mode</div>
+                    <% } %>
+                </div>
+            </div>
+            
+            <!-- 15s Keyboard -->
+            <div class="leaderboard-section" id="leaderboard-15s-keyboard">
+                <div class="leaderboard-table">
+                    <div class="leaderboard-header">
+                        <span class="rank-header">Rank</span>
+                        <span class="player-header">Player</span>
+                        <span class="score-header">Score</span>
+                    </div>
+                    
+                    <% if (typeof scores15sKeyboard !== 'undefined' && scores15sKeyboard.length > 0) { %>
+                        <% scores15sKeyboard.forEach((score, index) => { %>
+                            <div class="leaderboard-row">
+                                <span class="rank-cell"><%= index + 1 %></span>
+                                <span class="player-cell"><%= score.namaUser %></span>
+                                <span class="score-cell"><%= score.score %></span>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="leaderboard-empty">No scores available for 15s keyboard mode</div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tab switching functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const timeTabs = document.querySelectorAll('.time-tab');
+        const clickTabs = document.querySelectorAll('.click-tab');
+        
+        function updateLeaderboard() {
+            const activeTimeMode = document.querySelector('.time-tab.active').dataset.timemode;
+            const activeClickMode = document.querySelector('.click-tab.active').dataset.clickmode;
+            
+            // Hide all leaderboard sections
+            document.querySelectorAll('.leaderboard-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            document.getElementById(`leaderboard-${activeTimeMode}-${activeClickMode}`).classList.add('active');
+        }
+        
+        timeTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                timeTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                updateLeaderboard();
+            });
+        });
+        
+        clickTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                clickTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                updateLeaderboard();
+            });
+        });
+    });
+</script>

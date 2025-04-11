@@ -1,0 +1,1177 @@
+/* -------------------------------------------------------- */
+/* ------------------ CSS LandingPage.ejs ----------------- */
+/* -------------------------------------------------------- */
+/* ----------------- Yang bagian dalam Teks --------------- */
+
+.KotakTeksLP {
+  position: relative;
+  width: 80rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: -3rem;
+}
+
+.TeksAnimLP {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.TeksAnimLP.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+p {
+  font-size: 2rem;
+  transform: translateY(-4rem);
+}
+
+/* -------------------------- End ------------------------- */
+/* ------------ Yang bagian dalam KotakOpsiLogin ---------- */
+
+.KotakOpsiLogin {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.KotakRegister,
+.KotakLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.RegisterButton,
+.LoginButton {
+  transform: translateY(-3rem);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  height: 3rem;
+  width: 15rem;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  background: #272727;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.KotakRegister button:hover,
+.KotakLogin button:hover {
+  background: #3f3f3f;
+}
+
+.TeksGuest {
+  transform: translateY(7rem);
+  font-size: 1rem;
+}
+
+.KotakGuest {
+  transform: translateY(7rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.GuestButton {
+  transform: translateY(-2rem);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  height: 3rem;
+  width: 15rem;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  background: #272727;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.GuestButton:hover {
+  background: #3f3f3f;
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+
+/* -------------------------------------------------------- */
+/* -------------------- CSS Register.ejs ------------------ */
+/* -------------------------------------------------------- */
+/* --------------------- KotakUtamaReg ---------------------*/
+
+.KotakUtamaReg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 3rem;
+}
+
+/* ------------------- bagian dalam text -------------------*/
+.KotakTeksReg {
+  height: 35rem;
+  width: 50rem;
+  border-radius: 0.5rem;
+  transform: translateX(-6.5rem);
+  border: 0px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.KotakAnimReg {
+  position: relative;
+  transform: translateY(2rem);
+  max-width: 90%;
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.TeksAnimReg {
+  position: absolute;
+  width: 100%;
+  max-width: 90%;
+  text-align: center;
+  font-size: 3rem !important;
+  font-weight: bold;
+  top: 1rem;
+  opacity: 0;
+  transform: translateY(80%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.TeksAnimReg.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.KotakDesReg {
+  position: relative;
+  max-width: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.deskripsi1Reg {
+  transform: translateY(1rem);
+  font-size: 2rem;
+}
+
+.deskripsi2Reg {
+  transform: translateY(-2.8rem);
+  font-size: 1.7rem;
+}
+
+.deskripsi3Reg {
+  max-width: 90%;
+  width: 100%;
+  transform: translateY(-3rem);
+  font-size: 20px;
+  text-align: justify;
+  font-style: italic;
+}
+
+.deskripsi4Reg {
+  max-width: 90%;
+  width: 100%;
+  transform: translateY(-2.8rem);
+  font-size: 20px;
+  text-align: justify;
+  font-style: italic;
+}
+
+/* -------------------------- End --------------------------*/
+/* ----------------- bagian dalam register -----------------*/
+
+.KotakReg {
+  background-color: #1b1b1b;
+  height: 450px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  width: 350px;
+  margin-top: 3rem;
+  transform: translateY(-1rem);
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.KotakReg h2 {
+  margin-bottom: -5px;
+  transform: translateY(-2rem);
+  margin-top: 2.2rem;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+.PsnErrorReg {
+  transform: translateY(-1rem);
+  color: red;
+  font-size: 1rem;
+}
+
+.SubmitReg {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  padding: 15px;
+  transform: translateY(-3rem);
+  background-color: #fff;
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.SubmitReg:hover {
+  background-color: #ddd;
+}
+
+.LinkLogin {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 14px;
+}
+
+.LinkLogin a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.LinkLogin a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------- End ------------------------- */
+/* ----------------- Tampilan Saat Mengecil --------------- */
+
+@media (max-width: 768px) {
+  .KotakUtamaReg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 45rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .KotakTeksReg {
+    height: 35rem;
+    width: 40rem;
+    border-radius: 0.5rem;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .KotakAnimReg {
+    height: 35rem;
+    width: 50rem;
+    border-radius: 0.5rem;
+    transform: translateX(-20rem) !important;
+    margin: -20.5rem;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .TeksAnimReg {
+    font-size: 0rem !important;
+  }
+
+  .TeksAnimReg.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .KotakDesReg {
+    position: relative;
+    max-width: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .deskripsi1Reg {
+    font-size: 0rem;
+  }
+
+  .deskripsi2Reg {
+    font-size: 0rem;
+  }
+
+  .deskripsi3Reg {
+    font-size: 0px;
+  }
+
+  .deskripsi4Reg {
+    font-size: 0px;
+  }
+
+  .KotakTeksReg {
+    order: 1;
+  }
+
+  .KotakAnimReg {
+    order: 2;
+  }
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+
+/* -------------------------------------------------------- */
+/* --------------------- CSS Login.ejs -------------------- */
+/* -------------------------------------------------------- */
+/* ------------------ Bagian Kotak Utama ------------------ */
+
+.KotakUtamaLog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 3rem;
+}
+
+/* ------------------- bagian dalam text ------------------ */
+.KotakTeksLog {
+  height: 35rem;
+  width: 50rem;
+  border-radius: 0.5rem;
+  border: 0px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.KotakAnimLog {
+  transform: translateY(2rem);
+  position: relative;
+  max-width: 90%;
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.TeksAnimLog {
+  position: absolute;
+  width: 100%;
+  max-width: 90%;
+  text-align: center;
+  font-size: 3rem !important;
+  font-weight: bold;
+  top: -2rem;
+  opacity: 0;
+  transform: translateY(80%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.TeksAnimLog.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.KotakDesLog {
+  position: relative;
+  max-width: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.deskripsi1Log {
+  transform: translateY(-1rem);
+  font-size: 2rem;
+}
+
+.deskripsi2Log {
+  transform: translateY(-4.8rem);
+  font-size: 1.7rem;
+}
+
+.deskripsi3Log {
+  max-width: 90%;
+  width: 100%;
+  transform: translateY(-5rem);
+  font-size: 20px;
+  text-align: justify;
+  font-style: italic;
+}
+
+.deskripsi4Log {
+  max-width: 90%;
+  width: 100%;
+  transform: translateY(-5rem);
+  font-size: 20px;
+  text-align: justify;
+  font-style: italic;
+}
+
+/* -------------------------- End ------------------------- */
+/* ------------------ bagian dalam login ------------------ */
+
+.KotakGridLog {
+  height: 35rem;
+  width: 40rem;
+  border-radius: 0.5rem;
+  transform: translateY(2.8rem);
+  margin-top: -2.5rem;
+  border: 0px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.KotakLoginLog {
+  background-color: #1b1b1b;
+  height: 370px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  width: 350px;
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.KotakLogin h2 {
+  margin-bottom: -5px;
+  transform: translateY(-2rem);
+  margin-top: 2.5rem;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+.PsnErrorLog {
+  transform: translateY(-1rem);
+  color: red;
+  font-size: 1rem;
+}
+
+.PsnSuccessLog {
+  transform: translateY(-3rem);
+  color: rgb(0, 255, 98);
+  font-size: 1rem;
+}
+
+.SubmitLog {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  padding: 15px;
+  transform: translateY(-4.5rem);
+  background-color: #fff;
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.SubmitLog:hover {
+  background-color: #ddd;
+}
+
+.LinkRegis {
+  margin-top: 0.5rem;
+  font-size: 14px;
+}
+
+.LinkRegis a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.LinkRegis a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------- End ------------------------- */
+/* ----------------- Tampilan Saat Mengecil --------------- */
+
+@media (max-width: 768px) {
+  .KotakUtamaLog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 20rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .KotakGridLog {
+    height: 35rem;
+    width: 40rem;
+    border-radius: 0.5rem;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(15rem);
+  }
+
+  .KotakTeksLog {
+    height: 35rem;
+    width: 50rem;
+    border-radius: 0.5rem;
+    border: 0px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .TeksAnimLog {
+    font-size: 0rem !important;
+  }
+
+  .TeksAnimLog.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .KotakDesLog {
+    position: relative;
+    max-width: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .deskripsi1Log {
+    font-size: 0rem;
+  }
+
+  .deskripsi2Log {
+    font-size: 0rem;
+  }
+
+  .deskripsi3Log {
+    font-size: 0px;
+  }
+
+  .deskripsi4Log {
+    font-size: 0px;
+  }
+
+  .KotakGridLog {
+    order: 1;
+  }
+
+  .KotakTeksLog {
+    order: 2;
+  }
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+
+/* -------------------------------------------------------- */
+/* --------------------- CSS About.ejs -------------------- */
+/* -------------------------------------------------------- */
+/* -------------------- KotakUtamaAbout ------------------- */
+
+.KotakUtamaAbout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+  gap: 5rem;
+}
+
+/* ---------------- Bagian dalam text about ---------------- */
+
+.KotakGridTeksAbout {
+  border-radius: 0.5rem;
+  color: white;
+  transform: none;
+  transform: translateY(3rem);
+}
+
+.KotakGridTeksAbout h1 {
+  font-size: 2rem;
+  margin-top: 0;
+  color: yellow;
+}
+
+.KotakGridTeksAbout p {
+  font-size: 1.6rem;
+  margin-top: 5rem;
+  text-align: justify;
+}
+
+/* -------------------------- End ------------------------- */
+/* ------------------ Bagian GambarAbout ------------------ */
+
+.KotakGridGambarAbout {
+  border-radius: 0.5rem;
+  color: white;
+  transform: none;
+}
+
+.KotakGambar {
+  width: 40rem;
+  height: 25rem;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  position: relative;
+}
+
+.KotakGambar .GambarAbout {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.KotakGambar:hover .GambarAbout {
+  filter: blur(1px);
+  opacity: 0.7;
+}
+
+.KotakGambar::after {
+  content: "Visit Github";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.KotakGambar:hover::after {
+  opacity: 1;
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------- End ------------------------- */
+/* -------------------------------------------------------- */
+
+/* -------------------------------------------------------- */
+/* ----------------- CSS ChangeUsername.ejs --------------- */
+/* -------------------------------------------------------- */
+/* ------------------- KotakUtamaUsername ----------------- */
+
+.KotakUtamaUsername {
+  background-color: #1b1b1b;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 350px;
+  height: 22rem;
+  text-align: center;
+  margin: 0 auto;
+  border: 1px solid #333;
+}
+
+.KotakUtamaUsername h2 {
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+input[type="text_username"],
+input[type="password_username"] {
+  width: 20.5rem;
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 2rem;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+
+/* -------------------------------------------------------- */
+/* -------------------- CSS profile.ejs ------------------- */
+/* -------------------------------------------------------- */
+/* ------------------- KotakUtamaProfile ------------------ */
+
+.KotakUtamaProfile {
+  height: 41rem;
+  width: 35rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  background-color: rgba(27, 27, 27, 0.9);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 25px;
+  overflow: hidden;
+}
+
+/* ------------- Bagian KotakDisplayScore -------------- */
+.KotakDisplayScore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.ModeSelectorButtons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.ModeButton {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  color: white;
+  background-color: rgba(50, 50, 50, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.ModeButton:hover {
+  background-color: rgba(70, 70, 70, 0.9);
+}
+
+.ModeButton.active {
+  background-color: #7c7c7c;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.KotakGridScore {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.ScoreItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  height: 4rem;
+  padding: 1rem;
+  background-color: rgba(40, 40, 40, 0.8);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ScoreLabel {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.ScoreValue {
+  font-size: 1.8rem;
+  color: gold;
+  font-weight: bold;
+}
+
+/* ------------- Bagian KotakGridInfoProfile -------------- */
+
+.KotakGridInfoProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  margin-top: -3rem;
+}
+
+.TeksKolom {
+  display: flex;
+  flex-direction: column;
+}
+
+.IsiTeksKolom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.emaill {
+  color: white;
+  transform: translateY(-7rem);
+  transform: translateX(-13.8rem);
+  font-size: 1rem;
+}
+
+.Username {
+  color: white;
+  transform: translateY(7rem);
+  transform: translateX(-12.6rem);
+  font-size: 1rem;
+}
+
+.password {
+  color: white;
+  transform: translateY(7rem);
+  transform: translateX(-12.8rem);
+  font-size: 1rem;
+}
+
+.KotakProfileName,
+.KotakProfileEmail,
+.KotakProfilePassword {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 27rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+.EditText {
+  font-size: 0.9rem;
+  color: rgb(255, 165, 0);
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.EditText:hover {
+  text-decoration: underline;
+  color: rgb(220, 140, 0);
+}
+
+/* -------------------------- End ------------------------- */
+
+.TombolLogout {
+  width: 8rem;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.TombolLogout:hover {
+  background: #3f3f3f;
+  color: rgb(255, 0, 0);
+  border: 2px solid rgb(158, 0, 0);
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+
+/* -------------------------------------------------------- */
+/* ------------------ CSS ChangePassword.ejs -------------- */
+/* -------------------------------------------------------- */
+/* -------------------- KotakUtamaPassword ---------------- */
+
+.KotakUtamaPassword {
+  background-color: #1b1b1b;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 350px;
+  height: 25rem;
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.KotakUtamaPassword h2 {
+  margin-bottom: 30px;
+  font-size: 32px;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.LabelCurrentPassword {
+  margin-bottom: 5px;
+  font-size: 14px;
+  transform: translateX(-0.7rem);
+}
+
+.LabelNewPassword {
+  margin-bottom: 5px;
+  font-size: 14px;
+  transform: translateX(-0.7rem);
+}
+
+.LabelConfirmPassword {
+  margin-bottom: 5px;
+  font-size: 14px;
+  transform: translateX(-0.7rem);
+}
+
+input[type="current_password"],
+input[type="new_password"],
+input[type="confirm_password"] {
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  transform: translateX(-0.7rem);
+  border: 1px solid #333;
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+.MsgErrorPass {
+  transform: translateY(-1rem);
+  color: red;
+  font-size: 1rem;
+}
+
+.TombolPassword {
+  width: 23.2rem;
+  margin-top: -3rem;
+  font-size: 20px;
+  border-radius: 8px;
+  transform: translateX(-0.7rem);
+  position: relative;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.TombolPassword:hover {
+  background-color: #ddd;
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+
+/* -------------------------------------------------------- */
+/* --------------------- CSS AnimateBg -------------------- */
+/* -------------------------------------------------------- */
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gradient {
+  --size: 750px;
+  --speed: 50s;
+  --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+
+  width: var(--size);
+  height: var(--size);
+  filter: blur(calc(var(--size) / 5));
+  background-image: linear-gradient(hsl(0, 0%, 100%), hsl(46, 49%, 74%));
+  animation: rotate var(--speed) var(--easing) alternate infinite;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+@media (min-width: 720px) {
+  .gradient {
+    --size: 500px;
+  }
+}
+
+body {
+  background-color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------------------------------------- */

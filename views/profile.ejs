@@ -1,0 +1,49 @@
+<%- include('partials/header.ejs') %>
+
+<div class="KotakUtamaProfile">
+<div class="KotakDisplayScore">
+  <div class="ModeSelectorButtons">
+    <button class="ModeButton active" data-mode="mouse">Mouse Click</button>
+    <button class="ModeButton" data-mode="keyboard">Space Click</button>
+  </div>
+  
+  <div class="KotakGridScore">
+    <div class="ScoreItem">
+      <div class="ScoreLabel">5 Detik</div>
+      <div class="ScoreValue" id="score-5s">-</div>
+    </div>
+    <div class="ScoreItem">
+      <div class="ScoreLabel">10 Detik</div>
+      <div class="ScoreValue" id="score-10s">-</div>
+    </div>
+    <div class="ScoreItem">
+      <div class="ScoreLabel">15 Detik</div>
+      <div class="ScoreValue" id="score-15s">-</div>
+    </div>
+  </div>
+</div>
+
+    <div class="KotakGridInfoProfile">
+      <div class="TeksKolom">
+        <p class="Username">UserName:</p>
+        <div class="IsiTeksKolom">
+          <div class="KotakProfileName"><%= user.username %></div>
+          <a href="/ChangeUsername" class="EditText">Edit</a>
+        </div>
+      </div>
+
+      <div class="TeksKolom">
+        <p class="password">Password:</p>
+        <div class="IsiTeksKolom">
+          <div class="KotakProfilePassword">********</div>
+          <a href="/ChangePassword" class="EditText">Edit</a>
+        </div>
+      </div>
+
+      <button class="TombolLogout" onclick="location.href='/logout'">
+        Logout
+      </button>
+    </div>
+
+  <script src="/js/profile.js"></script>
+</div>

@@ -1,0 +1,265 @@
+/* Main container styles */
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  max-width: 80rem;
+}
+
+.leaderboard-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-align: center;
+}
+
+/* New side-by-side layout */
+.leaderboard-layout {
+  display: flex;
+  justify-content: space-evenly; /* Equal spacing between elements */
+  align-items: flex-start;
+  width: 100%;
+  gap: 2rem;
+}
+
+/* Left side controls */
+.leaderboard-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 12rem;
+}
+
+.time-mode-tabs{
+  display: flex;
+  flex-direction: column;
+  height: 17rem;
+  gap: 1rem;
+  background-color: rgba(27, 27, 27, 0.8);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.click-mode-tabs {
+  display: flex;
+  flex-direction: column;
+  height: 13.8rem;
+  gap: 1rem;
+  background-color: rgba(27, 27, 27, 0.8);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.time-mode-tabs h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: -1rem;
+  text-align: center;
+}
+
+.click-mode-tabs h3 {
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: -1rem;
+
+}
+
+.time-tab {
+  background-color: rgba(50, 50, 50, 0.8);
+  color: white;
+  border: none;
+  margin-bottom: -2rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.click-tab {
+  background-color: rgba(50, 50, 50, 0.8);
+  color: white;
+  border: none;
+  margin-bottom: -2rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.time-tab:hover, .click-tab:hover {
+  background-color: rgba(70, 70, 70, 0.9);
+}
+
+.time-tab.active, .click-tab.active {
+  background-color: #7c7c7c;
+  font-weight: bold;
+}
+
+/* Box leaderboard styles - now on right side */
+.BoxLeaderBoard {
+  height: 35rem;
+  width: 35rem;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  background-color: rgba(27, 27, 27, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.BoxLeaderBoard p {
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  transform: translateY(0.1em);
+  margin-bottom: 1.5rem;
+}
+
+/* Leaderboard sections */
+.leaderboard-section {
+  display: none;
+  width: 100%;
+}
+
+.leaderboard-section.active {
+  display: block;
+}
+
+/* Table styles from original CSS */
+.leaderboard-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.leaderboard-header,
+.leaderboard-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.leaderboard-header {
+  font-weight: bold;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 5px;
+  transform: translateY(0.5rem);
+}
+
+.leaderboard-row {
+  border-bottom: 1px solid rgba(245, 245, 245, 0.2);
+}
+
+.rank-header,
+.rank-cell {
+  flex: 0 0 15%;
+  text-align: center;
+}
+
+.player-header,
+.player-cell {
+  flex: 1;
+  text-align: left;
+}
+
+.score-header,
+.score-cell {
+  flex: 0 0 25%;
+  text-align: right;
+  font-weight: bold;
+  padding-right: 1.5rem;
+}
+
+.leaderboard-loading,
+.leaderboard-error {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+  padding: 10px 0;
+}
+
+.leaderboard-error {
+  color: #e74c3c;
+}
+
+.leaderboard-empty {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+  padding: 15px 0;
+}
+
+/* Medal colors for top 3 players */
+.leaderboard-row:nth-child(2) .rank-cell {
+  color: gold;
+  font-weight: bold;
+}
+
+.leaderboard-row:nth-child(3) .rank-cell {
+  color: silver;
+  font-weight: bold;
+}
+
+.leaderboard-row:nth-child(4) .rank-cell {
+  color: #cd7f32; /* bronze */
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .leaderboard-layout {
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .leaderboard-controls {
+      flex-direction: row;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 2rem;
+  }
+  
+  .time-mode-tabs, .click-mode-tabs {
+      width: 45%;
+  }
+  
+  .BoxLeaderBoard {
+      width: 100%;
+      height: auto;
+      min-height: 30rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .leaderboard-controls {
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .time-mode-tabs, .click-mode-tabs {
+      width: 100%;
+  }
+  
+  .rank-header, .rank-cell {
+      flex: 0 0 20%;
+  }
+  
+  .score-header, .score-cell {
+      flex: 0 0 30%;
+  }
+}

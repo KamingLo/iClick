@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs') %>
+
+<div class="KotakUtamaUsername">
+  <h2>Change Username</h2>
+  <form action="/ChangeUsername" method="POST">
+    <label for="username">Username:</label>
+    <input
+      type="text_username"
+      id="username"
+      name="username"
+      placeholder="Enter your New Username"
+      required
+    />
+    <label for="password">Password:</label>
+    <input
+      type="password_username"
+      id="password"
+      name="password"
+      placeholder="Enter your Password"
+      required
+    />
+
+    <button type="submit">Save!</button>
+  </form>
+</div>
