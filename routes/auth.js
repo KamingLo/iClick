@@ -26,8 +26,7 @@ router.post("/register", async (req, res) => {
 
     const initialScore = new Score({ score: 0, user: savedUser._id });
     await initialScore.save();
-
-    console.log("User berhasil terdaftar:", username);
+    
     res.render("login", { successMessage: "Registration successful!" });
   } catch (err) {
     console.log(err);
