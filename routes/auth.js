@@ -12,6 +12,12 @@ router.get("/register", (req, res) => {
 router.post("/register", async (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
 
+  if (password.length < 8) {
+    return res.render("register", {
+      errorMessage: "Password must be at least 8 characters!",
+    });
+  }
+
   if (password !== confirmPassword) {
     return res.render("register", {
       errorMessage: "Password doesnt match!",
@@ -48,6 +54,12 @@ router.get("/login", (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
+
+  if (password.length < 8 & password !== "Admin") {
+    return res.render("login", {
+      errorMessage: "Password must be at least 8 characters!",
+    });
+  }
 
   try {
     const user = await User.findOne({ username });
