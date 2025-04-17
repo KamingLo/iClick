@@ -39,8 +39,6 @@ tombolMain.addEventListener("click", function (event) {
   }
 });
 
-// ----------------------------------------------------------------
-// untuk mencegah tejadinya perulangan saat menekaan tombol spasi
 document.addEventListener("keydown", function (event) {
   if (modeKlik === "keyboard" && event.code === "Space" && !spaceKeyPressed) {
     spaceKeyPressed = true;
@@ -58,9 +56,7 @@ document.addEventListener("keyup", function (event) {
     spaceKeyPressed = false;
   }
 });
-// ----------------------------------------------------------------
 
-// Sembunyikan tombol restart saat awal permainan
 tombolUlang.style.display = "none";
 
 // Fungsi untuk mengganti mode waktu permainan

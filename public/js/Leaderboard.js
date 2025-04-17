@@ -9,26 +9,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const userRankLoading = document.querySelector('.userRankLoading');
     const userRankData = document.querySelector('.userRankData');
     
-    // Current active modes
     let currentTimeMode = document.querySelector('.tmblModeT.active').dataset.timemode;
     let currentClickMode = document.querySelector('.tmblModeG.active').dataset.clickmode;
     
-    // Hide delete confirmation popup initially
     if (confirmDeletePopup) {
         confirmDeletePopup.style.display = 'none';
     }
     
-    // Function to update the leaderboard display
     function updateLeaderboard() {
         currentTimeMode = document.querySelector('.tmblModeT.active').dataset.timemode;
         currentClickMode = document.querySelector('.tmblModeG.active').dataset.clickmode;
         
-        // Hide all leaderboards
         document.querySelectorAll('.dislpayLeaderboard').forEach(section => {
             section.classList.remove('active');
         });
         
-        // Show the current leaderboard
         const targetLeaderboard = document.getElementById(`leaderboard-${currentTimeMode}-${currentClickMode}`);
         if (targetLeaderboard) {
             targetLeaderboard.classList.add('active');
@@ -37,11 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error(`Leaderboard not found: leaderboard-${currentTimeMode}-${currentClickMode}`);
         }
         
-        // Update user rank information
         fetchUserRank();
     }
     
-    // Function to fetch user's rank
     function fetchUserRank() {
         userRankLoading.style.display = 'block';
         userRankData.style.display = 'none';
@@ -81,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // Function to delete user's score
     function deleteUserScore() {
         fetch('/leaderboard/api/user/scores', {
             method: 'DELETE',
@@ -101,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log('Score deleted:', data);
-            // Refresh the leaderboard
             location.reload();
         })
         .catch(error => {
@@ -113,20 +104,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Function to show delete confirmation
     function showDeleteConfirmation() {
         if (confirmDeletePopup) {
             confirmDeletePopup.style.display = 'flex';
-            // Reset and apply animation
             if (confirmDeleteDialog) {
                 confirmDeleteDialog.style.animation = 'none';
-                void confirmDeleteDialog.offsetWidth; // Trigger reflow
+                void confirmDeleteDialog.offsetWidth;
                 confirmDeleteDialog.style.animation = 'fadeInScale 0.3s ease forwards';
             }
         }
     }
     
-    // Function to hide delete confirmation
     function hideDeleteConfirmation() {
         if (confirmDeleteDialog && confirmDeletePopup) {
             confirmDeleteDialog.style.animation = 'fadeOutScale 0.3s ease';
@@ -137,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Event listeners for time tabs
     timeTabs.forEach(tab => {
         tab.addEventListener('click', function() {
             timeTabs.forEach(t => t.classList.remove('active'));
@@ -146,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Event listeners for click tabs
     clickTabs.forEach(tab => {
         tab.addEventListener('click', function() {
             clickTabs.forEach(t => t.classList.remove('active'));
@@ -155,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Event listener for delete button
     if (deleteScoreBtn) {
         deleteScoreBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -163,20 +148,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Event listener for confirm delete button
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', function() {
             deleteUserScore();
         });
     }
     
-    // Event listener for cancel delete button
     if (cancelDeleteBtn) {
         cancelDeleteBtn.addEventListener('click', function() {
             hideDeleteConfirmation();
         });
     }
     
-    // Initialize the leaderboard
     updateLeaderboard();
 });
