@@ -1,1 +1,202 @@
-<%- include('partials/header')%>
+<%- include('partials/header') %>
+
+<div class="ThreeBoxWrapper">
+    <div class="SeparatedBox">
+        <div class="box-content">
+            <h2>Friend Requests</h2>
+            <div class="scrollable-list">
+                <% if (requests && requests.length === 0) { %>
+                    <p>No pending friend requests</p>
+                <% } else { %>
+                    <% requests.forEach(request => { %>
+                        <div class="user-card">
+                            <span><%= request.username %></span>
+                            <div class="button-group">
+                                <form action="/friend/accept" method="POST" style="display: inline;">
+                                    <input type="hidden" name="friendId" value="<%= request._id %>">
+                                    <button type="submit" class="accept-btn">Accept</button>
+                                </form>
+                                <form action="/friend/reject" method="POST" style="display: inline;">
+                                    <input type="hidden" name="friendId" value="<%= request._id %>">
+                                    <button type="submit" class="reject-btn">Reject</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    
+    <div class="SeparatedBox">
+        <div class="box-content">
+            <h2>My Friends</h2>
+            <div class="scrollable-list">
+                <% if (friends && friends.length === 0) { %>
+                    <p>No friends yet</p>
+                <% } else { %>
+                    <% friends.forEach(friend => { %>
+                        <div class="user-card">
+                            <span><%= friend.username %></span>
+                            <form action="/friend/remove" method="POST">
+                                <input type="hidden" name="friendId" value="<%= friend._id %>">
+                                <button type="submit" class="remove-btn">Remove</button>
+                            </form>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    
+    <div class="SeparatedBox">
+        <div class="box-content">
+            <h2>Add Friends</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search username...">
+            </div>
+            <div class="scrollable-list">
+                <% if (otherUsers && otherUsers.length === 0) { %>
+                    <p>No users available</p>
+                <% } else { %>
+                    <% otherUsers.forEach(user => { %>
+                        <div class="user-card" data-username="<%= user.username.toLowerCase() %>">
+                            <span><%= user.username %></span>
+                            <form action="/friend/request" method="POST">
+                                <input type="hidden" name="friendId" value="<%= user._id %>">
+                                <button type="submit" class="add-btn">Add</button>
+                            </form>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<style>
+.SeparatedBox {
+    height: 30rem;
+    width: 30rem;
+    border-radius: 0.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    background-color: rgba(27, 27, 27, 0.9);
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ThreeBoxWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 2rem;
+}
+
+.box-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.scrollable-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.scrollable-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollable-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.scrollable-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.user-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container {
+    width: 100%;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.3rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+#searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.accept-btn, .reject-btn, .remove-btn, .add-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.accept-btn { background: #4CAF50; color: white; }
+.reject-btn { background: #f44336; color: white; }
+.remove-btn { background: #f44336; color: white; }
+.add-btn { background: #2196F3; color: white; }
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+h2 {
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const userCards = document.querySelectorAll('.user-card');
+
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase().trim();
+
+        userCards.forEach(card => {
+            const username = card.dataset.username;
+            if (searchTerm === '') {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = username === searchTerm ? 'flex' : 'none';
+            }
+        });
+    });
+});
+</script>
