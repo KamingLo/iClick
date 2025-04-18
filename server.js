@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 });
 
 // Import Routes
+const friendRoutes = require("./routes/friend");
 const authRoutes = require("./routes/auth");
 const homeRoutes = require("./routes/home");
 const changeRoutes = require("./routes/change");
@@ -45,6 +46,7 @@ const leaderboardRouter = require("./routes/leaderboard");
 app.use("/", homeRoutes);
 app.use("/", authRoutes);
 app.use("/", changeRoutes);
+app.use("/", friendRoutes);
 app.use("/leaderboard", leaderboardRouter);
 app.use(leaderboardRoutes);
 app.use('/', deleteAccountRoutes);
