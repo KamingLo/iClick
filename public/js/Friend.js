@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let isPanelOpen = false;
     let isChatOpen = false;
     
-    infoPanel.classList.add('hidden');
-    
     friendToggle.addEventListener('click', () => {
         slider.style.transform = 'translateX(0%)';
         friendToggle.classList.add('active');
