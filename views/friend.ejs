@@ -1,5 +1,7 @@
 <%- include('partials/header')%>
 
+<%- include('partials/header')%>
+
 <div class="KotakUtamaFriend">
     <div class="KotakGridFriend">
         <div class="KotakDisplayPlayer">
@@ -9,12 +11,14 @@
                 <div class="ToggleCap" id="searchToggle">Search</div>
             </div>
 
-            <div class="SearchBar">
+            <div class="SearchBar" style="display: none;">
                 <input type="text" id="searchInput" placeholder="Search Username">
                 <button class="SearchPlayerBttn">🔍</button>
             </div>
             
-            <div class="UsersList" id="usersList"></div>
+            <div class="UsersList" id="usersList">
+                <div class="UserItem loading">Loading...</div>
+            </div>
         </div>
 
         <div class="KotakDisplayInfoChat" id="infoPanel">
@@ -60,13 +64,15 @@
                 
                 <div class="ActionButtons">
                     <button class="FollowButton" id="followButton">Follow</button>
-                    <button class="ChatButton" id="chatButton">Chat</button>
+                    <button class="ChatButton" id="chatButton" data-userid="<%= userIdFromServer %>">Chat</button>
                 </div>
             </div>
             
             <div class="DisplayChat" id="chatMessages">
+                 <div id="chatContent"></div>
+
                 <div class="ChatInput">
-                    <input type="text" id="messageInput" placeholder="Type a message" >
+                    <input type="text" id="messageInput" placeholder="Type a message">
                     <button id="sendMessageBtn">Send</button>
                 </div>
             </div>

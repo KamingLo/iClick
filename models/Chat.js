@@ -6,23 +6,26 @@ const chatSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    receiver: {
+    recipient: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
     message: {
         type: String,
-        required: true
+        required: true,
+        trim: true
+    },
+    timestamp: {
+        type: Date,
+        default: Date.now
     },
     read: {
         type: Boolean,
         default: false
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
 });
+
+chatSchema.index({ sender: 1, recipient: 1, timestamp: -1 });
 
 module.exports = mongoose.model('Chat', chatSchema);

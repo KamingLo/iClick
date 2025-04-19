@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const session = require("express-session");
-const leaderboardRoutes = require('./routes/leaderboard');
 const deleteAccountRoutes = require('./routes/DeleteAcc');
 
 const app = express();
@@ -33,11 +32,11 @@ app.use((req, res, next) => {
   next();
 });
 
-const friendRoutes = require("./routes/friend");
 const authRoutes = require("./routes/auth");
 const homeRoutes = require("./routes/home");
 const changeRoutes = require("./routes/change");
 const leaderboardRouter = require("./routes/leaderboard");
+const friendRoutes = require('./routes/friend');
 
 const isAuthenticated = (req, res, next) => {
   if (req.session.user) {
@@ -47,11 +46,12 @@ const isAuthenticated = (req, res, next) => {
 };
 
 app.use("/", authRoutes);
-app.use("/",  homeRoutes);
+app.use("/", homeRoutes);
 app.use("/", changeRoutes);
-app.use("/", friendRoutes);
 app.use("/leaderboard", leaderboardRouter);
 app.use("/", deleteAccountRoutes);
+
+app.use('/api', friendRoutes);
 
 app.get("/", (req, res) => {
   if (req.session.user) {

@@ -21,6 +21,10 @@ router.get("/about", (req, res) => {
   res.render("about");
 });
 
+router.get("/friend", (req, res) => {
+  res.render('friend', { userIdFromServer: req.session.userId });
+});
+
 router.get("/profile", requireLogin, async (req, res) => {
   try {
     const user = await User.findById(req.session.user._id);

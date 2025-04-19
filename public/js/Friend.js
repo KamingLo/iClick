@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const friendToggle = document.getElementById('friendToggle');
     const searchToggle = document.getElementById('searchToggle');
     const slider = document.querySelector('.ToggleSlide');
+    const searchBar = document.querySelector('.SearchBar');
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.querySelector('.SearchPlayerBttn');
     const usersList = document.getElementById('usersList');
@@ -22,12 +23,55 @@ document.addEventListener('DOMContentLoaded', function() {
     let isChatOpen = false;
     
     infoPanel.classList.add('hidden');
+
+    function openInfoPanel() {
+        infoPanel.classList.remove('hidden');
+        infoPanel.classList.add('slide-in');
+        userInfoData.style.display = 'block';
+        userInfoData.classList.remove('hidden');
+        chatMessages.style.display = 'none';
+        chatMessages.classList.add('hidden');
+        isPanelOpen = true;
+        isChatOpen = false;
+    }
+    
+    function closeInfoPanel() {
+        infoPanel.classList.remove('slide-in');
+        infoPanel.classList.add('slide-out');
+        
+        setTimeout(() => {
+            infoPanel.classList.add('hidden');
+            infoPanel.classList.remove('slide-out');
+            isPanelOpen = false;
+            isChatOpen = false;
+        }, 300);
+    }
+    
+    function openChatPanel() {
+        userInfoData.style.display = 'none';
+        userInfoData.classList.add('hidden');
+        chatMessages.style.display = 'block';
+        chatMessages.classList.remove('hidden');
+        isChatOpen = true;
+        isPanelOpen = true;
+        
+        loadChatMessages();
+    }
+    
+    function closeChatPanel() {
+        chatMessages.style.display = 'none';
+        chatMessages.classList.add('hidden');
+        userInfoData.style.display = 'block';
+        userInfoData.classList.remove('hidden');
+        isChatOpen = false;
+    }
     
     friendToggle.addEventListener('click', () => {
         slider.style.transform = 'translateX(0%)';
         friendToggle.classList.add('active');
         searchToggle.classList.remove('active');
         currentMode = 'friend';
+        searchBar.style.display = 'none';
         loadUsers();
         
         if (isPanelOpen) {
@@ -40,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         searchToggle.classList.add('active');
         friendToggle.classList.remove('active');
         currentMode = 'search';
+        searchBar.style.display = 'flex';
         loadUsers();
         
         if (isPanelOpen) {
@@ -60,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     backButtonInfo.addEventListener('click', () => {
         if (isChatOpen) {
             closeChatPanel();
-        } else {
+        } else if (isPanelOpen) {
             closeInfoPanel();
         }
     });
@@ -69,24 +114,20 @@ document.addEventListener('DOMContentLoaded', function() {
         openChatPanel();
     });
     
-    sendMessageBtn.addEventListener('click', sendMessage);
-    messageInput.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
-    
     followButton.addEventListener('click', toggleFollow);
     
     loadUsers();
     
     function loadUsers(search = '') {
+        usersList.innerHTML = '<div class="UserItem loading">Loading...</div>';
+        
         let url;
-    
         if (currentMode === 'friend') {
             url = '/api/friends';
+        } else if (search && search.trim() !== '') {
+            url = `/api/users/search?username=${encodeURIComponent(search)}`;
         } else {
-            url = search ? `/api/users/search?username=${encodeURIComponent(search)}` : '/api/users/random';
+            url = '/api/users/random';
         }
         
         fetch(url)
@@ -104,16 +145,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                     return;
                 }
-    
+                
                 users.forEach(user => {
                     const userElement = document.createElement('div');
                     userElement.className = 'UserItem';
                     userElement.dataset.userId = user._id;
                     
+                    const unreadBadge = user.unreadCount && user.unreadCount > 0 
+                        ? `<span class="UnreadBadge">${user.unreadCount}</span>` 
+                        : '';
+                    
                     userElement.innerHTML = `
                         <div class="UserItem-content">
                             <div class="UserInfo">
                                 <span class="Username">${user.username || 'Unknown User'}</span>
+                                ${unreadBadge}
                             </div>
                             <div class="UserActions">
                                 <button class="FollowIcon">${user.isFollowing ? '❤️' : '➕'}</button>
@@ -123,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                     
                     usersList.appendChild(userElement);
-    
+                    
                     userElement.querySelector('.InfoIcon').addEventListener('click', () => {
                         loadUserInfo(user._id, user.username, user.isFollowing);
                     });
@@ -144,11 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
         isFollowing = following;
         
         userInfoName.textContent = username;
-        if (isFollowing) {
-            followButton.textContent = 'Unfollow';
-        } else {
-            followButton.textContent = 'Follow';
-        }
+        followButton.textContent = isFollowing ? 'Unfollow' : 'Follow';
           
         fetch(`/api/users/${userId}`)
             .then(response => response.json())
@@ -172,89 +214,54 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    function openInfoPanel() {
-        infoPanel.classList.remove('hidden');
-        infoPanel.classList.add('slide-in');
-        userInfoData.classList.remove('hidden');
-        chatMessages.classList.add('hidden');
-        isPanelOpen = true;
-        isChatOpen = false;
-    }
-    
-    function closeInfoPanel() {
-        infoPanel.classList.remove('slide-in');
-        infoPanel.classList.add('slide-out');
-        
-        setTimeout(() => {
-            infoPanel.classList.add('hidden');
-            infoPanel.classList.remove('slide-out');
-            isPanelOpen = false;
-        }, 300);
-    }
-    
-    function openChatPanel() {
-        userInfoData.classList.add('hidden');
-        chatMessages.classList.remove('hidden');
-        isChatOpen = true;
-        
-        loadChatMessages();
-    }
-    
-    function closeChatPanel() {
-        chatMessages.classList.add('hidden');
-        userInfoData.classList.remove('hidden');
-        isChatOpen = false;
-    }
-    
     function loadChatMessages() {
         if (!selectedUserId) return;
+        
+        chatMessages.innerHTML = '<div class="LoadingChat">Loading messages...</div>';
         
         fetch(`/api/chats/${selectedUserId}`)
             .then(response => response.json())
             .then(data => {
-                if (data.success) {
-                    chatMessages.innerHTML = '';
-                    
-                    if (data.messages.length === 0) {
-                        chatMessages.innerHTML = '<div class="EmptyChat">Say hello! 😊</div>';
-                        
-                        chatMessages.innerHTML += `
-                            <div class="ChatInput">
-                                <input type="text" id="messageInput" placeholder="Type a message...">
-                                <button id="sendMessageBtn">Send</button>
-                            </div>
-                        `;
-                        
-                        document.getElementById('messageInput').addEventListener('keyup', (e) => {
-                            if (e.key === 'Enter') sendMessage();
-                        });
-                        document.getElementById('sendMessageBtn').addEventListener('click', sendMessage);
-                        
-                        return;
-                    }
-                    
+                chatMessages.innerHTML = '';
+                
+                if (!data.success) {
+                    chatMessages.innerHTML = '<div class="ErrorMessage">Failed to load messages.</div>';
+                    return;
+                }
+                
+                if (data.messages.length === 0) {
+                    chatMessages.innerHTML = '<div class="EmptyChat">Say hello! 😊</div>';
+                } else {
                     data.messages.forEach(msg => {
                         const messageElement = document.createElement('div');
                         messageElement.className = `ChatMessage ${msg.sender === selectedUserId ? 'received' : 'sent'}`;
                         messageElement.textContent = msg.message;
                         chatMessages.appendChild(messageElement);
                     });
-                    
-                    const chatInputDiv = document.createElement('div');
-                    chatInputDiv.className = 'ChatInput';
-                    chatInputDiv.innerHTML = `
-                        <input type="text" id="messageInput" placeholder="Type a message...">
-                        <button id="sendMessageBtn">Send</button>
-                    `;
-                    chatMessages.appendChild(chatInputDiv);
-                    
-                    document.getElementById('messageInput').addEventListener('keyup', (e) => {
-                        if (e.key === 'Enter') sendMessage();
-                    });
-                    document.getElementById('sendMessageBtn').addEventListener('click', sendMessage);
-                    
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
+                
+                const chatInputDiv = document.createElement('div');
+                chatInputDiv.className = 'ChatInput';
+                chatInputDiv.innerHTML = `
+                    <input type="text" id="messageInput" placeholder="Type a message...">
+                    <button id="sendMessageBtn">Send</button>
+                `;
+                chatMessages.appendChild(chatInputDiv);
+                
+                const newMessageInput = document.getElementById('messageInput');
+                const newSendMessageBtn = document.getElementById('sendMessageBtn');
+                
+                newMessageInput.addEventListener('keyup', (e) => {
+                    if (e.key === 'Enter') {
+                        sendMessage(newMessageInput);
+                    }
+                });
+                
+                newSendMessageBtn.addEventListener('click', () => {
+                    sendMessage(newMessageInput);
+                });
+                
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             })
             .catch(error => {
                 console.error('Error loading messages:', error);
@@ -262,9 +269,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    function sendMessage() {
-        const msgInput = document.getElementById('messageInput');
-        const message = msgInput.value.trim();
+    function sendMessage(inputElement) {
+        const message = inputElement ? inputElement.value.trim() : '';
         if (!message || !selectedUserId) return;
         
         fetch(`/api/chats/${selectedUserId}`, {
@@ -277,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    msgInput.value = '';
+                    inputElement.value = '';
                     
                     const messageElement = document.createElement('div');
                     messageElement.className = 'ChatMessage sent';
@@ -299,17 +305,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         fetch(`/api/users/${selectedUserId}/follow`, {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     isFollowing = data.action === 'followed';
-                    if (isFollowing) {
-                        followButton.textContent = 'Unfollow';
-                    } else {
-                        followButton.textContent = 'Follow';
-                    }
-                    
+                    followButton.textContent = isFollowing ? 'Unfollow' : 'Follow';
                     loadUsers(searchInput.value);
                 }
             })
@@ -321,23 +325,18 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleFollowFromList(userId, button) {
         fetch(`/api/users/${userId}/follow`, {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    if (data.action === 'followed') {
-                        button.textContent = '➕';
-                      } else {
-                        button.textContent = '❤️';
-                      }
+                    button.textContent = data.action === 'followed' ? '❤️' : '➕';
                     
                     if (userId === selectedUserId) {
                         isFollowing = data.action === 'followed';
-                        if (isFollowing) {
-                            followButton.textContent = 'Unfollow';
-                        } else {
-                            followButton.textContent = 'Follow';
-                        }
+                        followButton.textContent = isFollowing ? 'Unfollow' : 'Follow';
                     }
                     
                     if (currentMode === 'friend' && data.action === 'unfollowed') {
