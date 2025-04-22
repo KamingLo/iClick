@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     editAliasPopup.className = 'EditAliasPopup hidden';
     editAliasPopup.innerHTML = `
         <div class="EditAliasContent">
-            <h3>Edit Alias</h3>
+            <h3>Add alias to this usename</h3>
             <p id="originalUsername"></p>
             <input type="text" id="aliasInput" placeholder="Enter alias name">
             <div class="EditAliasButtons">
