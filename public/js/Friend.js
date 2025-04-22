@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isChatOpen = false;
     let pendingRequests = [];
     let currentRequestIndex = 0;
+    let userAliases = JSON.parse(localStorage.getItem('userAliases')) || {};
     
     infoPanel.classList.add('hidden');
     
@@ -33,6 +34,187 @@ document.addEventListener('DOMContentLoaded', function() {
     if (followRequestContainer) {
         followRequestContainer.style.display = 'none';
     }
+    
+    // Create edit alias popup and append to body
+    const editAliasPopup = document.createElement('div');
+    editAliasPopup.className = 'EditAliasPopup hidden';
+    editAliasPopup.innerHTML = `
+        <div class="EditAliasContent">
+            <h3>Edit Alias</h3>
+            <p id="originalUsername"></p>
+            <input type="text" id="aliasInput" placeholder="Enter alias name">
+            <div class="EditAliasButtons">
+                <button id="saveAliasBtn">Save</button>
+                <button id="cancelAliasBtn">Cancel</button>
+                <button id="removeAliasBtn">Remove Alias</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(editAliasPopup);
+    
+    // Add styles for the popup
+    const style = document.createElement('style');
+style.textContent = `
+    .EditAliasPopup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+    }
+    .EditAliasPopup.hidden {
+        display: none;
+    }
+    .EditAliasContent {
+        background: rgba(27, 27, 27, 0.9);
+        padding: 20px;
+        border-radius: 0.5rem;
+        width: 30rem;
+        height: 20rem;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        animation: fadeInScale 0.3s ease forwards;
+        color: white;
+    }
+    .EditAliasButtons {
+        display: flex;
+        gap: 2rem;
+        width: 100%;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    .EditAliasButtons button {
+        width: 12rem;
+        height: 4rem;
+        border-radius: 0.5rem;
+        font-family: "Montserrat", sans-serif;
+        cursor: pointer;
+        font-size: 1rem;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0);
+    }
+    #saveAliasBtn {
+        color: rgb(0, 255, 0);
+        border: 2px solid rgba(0, 255, 0, 0.5);
+    }
+    #saveAliasBtn:hover {
+        background: #3ea23e;
+        color: rgb(255, 255, 255);
+        border: 2px solid rgb(0, 158, 0);
+    }
+    #cancelAliasBtn {
+        color: rgb(255, 0, 0);
+        border: 2px solid rgba(255, 0, 0, 0.5);
+    }
+    #cancelAliasBtn:hover {
+        background: #a23e3e;
+        color: rgb(255, 255, 255);
+        border: 2px solid rgb(158, 0, 0);
+    }
+    #removeAliasBtn {
+        color: white;
+    }
+    #removeAliasBtn:hover {
+        background: #6f6f6f;
+        color: rgb(255, 255, 255);
+        border: 2px solid rgb(255, 255, 255);
+    }
+    .EditIcon {
+        cursor: pointer;
+        margin-left: 5px;
+        font-size: 14px;
+    }
+    #aliasInput {
+        width: 80%;
+        padding: 10px;
+        border-radius: 0.5rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(50, 50, 50, 0.5);
+        color: white;
+        font-family: "Montserrat", sans-serif;
+        margin-top: 1rem;
+    }
+    #originalUsername {
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: #ccc;
+    }
+    `;
+    document.head.appendChild(style);
+    
+    // Edit alias popup handlers
+    const originalUsernameEl = document.getElementById('originalUsername');
+    const aliasInput = document.getElementById('aliasInput');
+    const saveAliasBtn = document.getElementById('saveAliasBtn');
+    const cancelAliasBtn = document.getElementById('cancelAliasBtn');
+    const removeAliasBtn = document.getElementById('removeAliasBtn');
+    
+    let currentEditingUserId = null;
+    
+    function openEditAliasPopup(userId, username) {
+        currentEditingUserId = userId;
+        originalUsernameEl.textContent = `Original name: ${username}`;
+        aliasInput.value = userAliases[userId] || '';
+        editAliasPopup.classList.remove('hidden');
+    }
+    
+    function closeEditAliasPopup() {
+        editAliasPopup.classList.add('hidden');
+        currentEditingUserId = null;
+    }
+    
+    saveAliasBtn.addEventListener('click', () => {
+        const alias = aliasInput.value.trim();
+        if (alias && currentEditingUserId) {
+            userAliases[currentEditingUserId] = alias;
+            localStorage.setItem('userAliases', JSON.stringify(userAliases));
+            
+            // Update UI to show the alias
+            const usernameSpan = document.querySelector(`.UserItem[data-user-id="${currentEditingUserId}"] .Username`);
+            if (usernameSpan) {
+                const originalName = usernameSpan.getAttribute('data-original-name');
+                usernameSpan.textContent = `${alias} (${originalName})`;
+            }
+            
+            // Update info panel if this user is selected
+            if (currentEditingUserId === selectedUserId) {
+                const originalName = userInfoName.getAttribute('data-original-name');
+                userInfoName.textContent = `${alias} (${originalName})`;
+            }
+        }
+        closeEditAliasPopup();
+    });
+    
+    cancelAliasBtn.addEventListener('click', closeEditAliasPopup);
+    
+    removeAliasBtn.addEventListener('click', () => {
+        if (currentEditingUserId) {
+            delete userAliases[currentEditingUserId];
+            localStorage.setItem('userAliases', JSON.stringify(userAliases));
+            
+            // Update UI to remove the alias
+            const usernameSpan = document.querySelector(`.UserItem[data-user-id="${currentEditingUserId}"] .Username`);
+            if (usernameSpan) {
+                const originalName = usernameSpan.getAttribute('data-original-name');
+                usernameSpan.textContent = originalName;
+            }
+            
+            // Update info panel if this user is selected
+            if (currentEditingUserId === selectedUserId) {
+                const originalName = userInfoName.getAttribute('data-original-name');
+                userInfoName.textContent = originalName;
+            }
+        }
+        closeEditAliasPopup();
+    });
     
     friendToggle.addEventListener('click', () => {
         slider.style.transform = 'translateX(0%)';
@@ -43,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateChatButton();
         
         if (isPanelOpen && selectedUserId) {
-            loadUserInfo(selectedUserId, userInfoName.textContent, isFollowing);
+            loadUserInfo(selectedUserId, userInfoName.getAttribute('data-original-name'), isFollowing);
         } else {
             closeInfoPanel();
         }
@@ -143,19 +325,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     const isPending = user.isPendingRequest || false;
                     const showChatIcon = user.isFollowing;
+                    const displayName = userAliases[user._id] ? 
+                        `${userAliases[user._id]} (${user.username || 'Unknown User'})` : 
+                        (user.username || 'Unknown User');
 
                     userElement.innerHTML = `
                     <div class="UserItem-content" ${isPending ? 'style="border-color: yellow;"' : ''}>
                          <div class="UserInfo">
-                            <span class="Username">${user.username || 'Unknown User'}</span>
-                            </div>
-                            <div class="ForChatIcon">
-                                ${showChatIcon ? '<button class="ChatIcon">💬</button>' : ''}
-                            </div>
-                            <div class="UserActions">
-                                <button class="FollowIcon">${user.isFollowing ? '❤️' : (isPending ? '🕒' : '➕')}</button>
-                                <button class="InfoIcon">ℹ️</button>
-                            </div>
+                            <span class="Username" data-original-name="${user.username || 'Unknown User'}">${displayName}</span>
+                            <span class="EditIcon" title="Edit Alias">✏️</span>
+                         </div>
+                         <div class="ForChatIcon">
+                            ${showChatIcon ? '<button class="ChatIcon">💬</button>' : ''}
+                         </div>
+                         <div class="UserActions">
+                            <button class="FollowIcon">${user.isFollowing ? '❤️' : (isPending ? '🕒' : '➕')}</button>
+                            <button class="InfoIcon">ℹ️</button>
+                         </div>
                      </div>
                     `;
                     
@@ -178,6 +364,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             }, 300);
                         });
                     }
+                    
+                    // Add click handler for edit alias icon
+                    userElement.querySelector('.EditIcon').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        openEditAliasPopup(user._id, user.username);
+                    });
                 });
             })
             .catch(error => {
@@ -189,7 +381,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadUserInfo(userId, username, following) {
         selectedUserId = userId;
         isFollowing = following;
-        userInfoName.textContent = username;
+        const displayName = userAliases[userId] ? 
+            `${userAliases[userId]} (${username})` : username;
+        
+        userInfoName.textContent = displayName;
+        userInfoName.setAttribute('data-original-name', username);
 
         updateChatButton();
         
@@ -335,40 +531,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Make sure accept button has an event listener
-// Current code (in Friend.js)
-if (acceptBtn) {
-    acceptBtn.addEventListener('click', () => {
-        if (pendingRequests.length === 0) return;
-        
-        const userId = pendingRequests[currentRequestIndex]._id;
-        
-        fetch(`/api/follow-requests/${userId}/accept`, {
-            method: 'POST'
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    pendingRequests.splice(currentRequestIndex, 1);
-                    if (currentRequestIndex >= pendingRequests.length) {
-                        currentRequestIndex = 0;
-                    }
-                    
-                    if (pendingRequests.length === 0) {
-                        if (followRequestContainer) {
-                            followRequestContainer.style.display = 'none';
-                        }
-                    } else {
-                        displayCurrentRequest();
-                    }
-                    
-                    loadUsers(); // Refresh user list after accepting request
-                }
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => {
+            if (pendingRequests.length === 0) return;
+            
+            const userId = pendingRequests[currentRequestIndex]._id;
+            
+            fetch(`/api/follow-requests/${userId}/accept`, {
+                method: 'POST'
             })
-            .catch(error => {
-                console.error('Error accepting follow request:', error);
-            });
-    });
-}
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        pendingRequests.splice(currentRequestIndex, 1);
+                        if (currentRequestIndex >= pendingRequests.length) {
+                            currentRequestIndex = 0;
+                        }
+                        
+                        if (pendingRequests.length === 0) {
+                            if (followRequestContainer) {
+                                followRequestContainer.style.display = 'none';
+                            }
+                        } else {
+                            displayCurrentRequest();
+                        }
+                        
+                        loadUsers(); // Refresh user list after accepting request
+                    }
+                })
+                .catch(error => {
+                    console.error('Error accepting follow request:', error);
+                });
+        });
+    }
     
     // Make sure decline button has an event listener
     if (declineBtn) {
@@ -464,7 +659,8 @@ if (acceptBtn) {
                             forChatIcon.appendChild(chatButton);
                             
                             chatButton.addEventListener('click', () => {
-                                loadUserInfo(userId, userItem.querySelector('.Username').textContent, true);
+                                const username = userItem.querySelector('.Username').getAttribute('data-original-name');
+                                loadUserInfo(userId, username, true);
                                 setTimeout(() => {
                                     openChatPanel();
                                 }, 300);
@@ -609,7 +805,7 @@ if (acceptBtn) {
                             forChatIcon.appendChild(chatButton);
                             
                             chatButton.addEventListener('click', () => {
-                                loadUserInfo(selectedUserId, userInfoName.textContent, true);
+                                loadUserInfo(selectedUserId, userInfoName.getAttribute('data-original-name'), true);
                                 setTimeout(() => {
                                     openChatPanel();
                                 }, 300);
