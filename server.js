@@ -2,11 +2,32 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const session = require("express-session");
-const leaderboardRoutes = require('./routes/leaderboard');
-const deleteAccountRoutes = require('./routes/DeleteAcc');
-
+const port = process.env.port || 3000;
 const app = express();
-const port = 3000;
+
+// Create server and Socket.IO instance
+const server = app.listen(port, () => console.log(`💬 server on port http://localhost:${port}`));
+const io = require('socket.io')(server);
+
+// Socket.IO connection handling
+const socketsConnected = new Set();
+
+io.on('connection', (socket) => {
+    socketsConnected.add(socket.id);
+    console.log('User connected:', socket.id);
+    
+    io.emit('clients-total', socketsConnected.size);
+
+    socket.on('chat message', (data) => {
+        io.emit('chat message', data);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('User disconnected:', socket.id);
+        socketsConnected.delete(socket.id);
+        io.emit('clients-total', socketsConnected.size);
+    });
+});
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/mydatabase")
@@ -37,6 +58,7 @@ const friendRoutes = require("./routes/friend");
 const authRoutes = require("./routes/auth");
 const homeRoutes = require("./routes/home");
 const changeRoutes = require("./routes/change");
+const globalRoutes = require("./routes/global");
 const leaderboardRouter = require("./routes/leaderboard");
 
 const isAuthenticated = (req, res, next) => {
@@ -46,12 +68,12 @@ const isAuthenticated = (req, res, next) => {
   res.redirect("/login");
 };
 
+app.use("/global", globalRoutes);
 app.use("/", authRoutes);
 app.use("/",  homeRoutes);
 app.use("/", changeRoutes);
 app.use("/", friendRoutes);
 app.use("/leaderboard", leaderboardRouter);
-app.use("/", deleteAccountRoutes);
 
 app.get("/", (req, res) => {
   if (req.session.user) {
@@ -62,8 +84,4 @@ app.get("/", (req, res) => {
 
 app.use((req, res) => {
   res.status(404).send("Halaman tidak ditemukan!");
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
 });

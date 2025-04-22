@@ -13,6 +13,9 @@ router.get("/", (req, res) => {
   res.render("LandingPage");
 });
 
+router.get("/global", (req, res) => {
+  res.render("global");
+})
 router.get("/home", (req, res) => {
   res.render("home");
 });
