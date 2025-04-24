@@ -2,13 +2,14 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const Score = require("../models/Score");
-
 const router = express.Router();
 
+//Fungsi untuk menampilkan page
 router.get("/ChangeUsername", (req, res) => {
     res.render("ChangeUsername");
 });
 
+//Router untuk mengubah username baru ke database
 router.post("/ChangeUsername", async(req, res) => {
     try {
         const { 'New-username': newUsername, password } = req.body;
@@ -38,10 +39,12 @@ router.post("/ChangeUsername", async(req, res) => {
     }
 });
 
+//Fungsi untuk menampilkan page
 router.get("/ChangePassword", (req, res) => {
     res.render("ChangePassword");
 });
 
+//Fungsi untuk merubah password baru ke database
 router.post("/ChangePassword", async(req, res) => {
     try {
         const { currentPassword, newPassword, confirmPassword } = req.body;

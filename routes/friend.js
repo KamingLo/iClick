@@ -5,6 +5,7 @@ const Chat = require("../models/Chat");
 
 const router = express.Router();
 
+//Fungsi untuk cek apakah user sudah login? atau belum?
 const isAuthenticated = (req, res, next) => {
     if (req.session.user) {
         return next();
@@ -12,10 +13,12 @@ const isAuthenticated = (req, res, next) => {
     res.redirect("/login");
 };
 
+//Fungsi untuk menampilkan page
 router.get("/friend", isAuthenticated, (req, res) => {
     res.render("friend", { user: req.session.user });
 });
 
+//Fungsi untuk menampilkan daftar teman
 router.get("/api/friends", isAuthenticated, async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
@@ -37,6 +40,7 @@ router.get("/api/friends", isAuthenticated, async (req, res) => {
     }
 });
 
+//Fungsi untuk mencari user secara spesifik
 router.get("/api/users/search", isAuthenticated, async (req, res) => {
     try {
         const searchTerm = req.query.username || "";
@@ -68,7 +72,7 @@ router.get("/api/users/search", isAuthenticated, async (req, res) => {
         res.status(500).json({ success: false, message: "Server error" });
     }
 });
-
+//Fungsi untuk menampilakn user secara random di find
 router.get("/api/users/random", isAuthenticated, async (req, res) => {
     try {
         const allUsers = await User.find({ _id: { $ne: req.session.user._id } }).lean();
@@ -95,7 +99,7 @@ router.get("/api/users/random", isAuthenticated, async (req, res) => {
     }
 });
 
-
+//Fungsi untuk menampilkan detail user lain
 router.get("/api/users/:userId", isAuthenticated, async (req, res) => {
     try {
         const userId = req.params.userId;
@@ -134,6 +138,7 @@ router.get("/api/users/:userId", isAuthenticated, async (req, res) => {
     }
 });
 
+// Fungsi untuk follow/unfollow user
 router.post("/api/users/:userId/follow", isAuthenticated, async (req, res) => {
     try {
         const userToFollowId = req.params.userId;
@@ -175,6 +180,7 @@ router.post("/api/users/:userId/follow", isAuthenticated, async (req, res) => {
     }
 });
 
+// FUngsi untuk menampilkan permintaan follow
 router.get("/api/follow-requests", isAuthenticated, async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id)
@@ -190,7 +196,7 @@ router.get("/api/follow-requests", isAuthenticated, async (req, res) => {
     }
 });
 
-// In friend.js (server-side routing file)
+// Fungsi untuk menerima atau menolak permintaan follow
 router.post("/api/follow-requests/:userId/:action", isAuthenticated, async (req, res) => {
     try {
         const requesterId = req.params.userId;
@@ -228,7 +234,7 @@ router.post("/api/follow-requests/:userId/:action", isAuthenticated, async (req,
     }
 });
 
-// In friend.js routes file, modify the GET /api/chats/:userId endpoint
+//menerima chat teman di friend.ejs
 router.get("/api/chats/:userId", isAuthenticated, async (req, res) => {
     try {
         const otherUserId = req.params.userId;
@@ -258,6 +264,7 @@ router.get("/api/chats/:userId", isAuthenticated, async (req, res) => {
     }
 });
 
+//Mengirim pesan ke teman di friend.ejs
 router.post("/api/chats/:userId", isAuthenticated, async (req, res) => {
     try {
         const receiverId = req.params.userId;
@@ -283,14 +290,14 @@ router.post("/api/chats/:userId", isAuthenticated, async (req, res) => {
     }
 });
 
-// In friend.js (routes file)
+// delete chat dari user dengan friendnya
 router.delete("/api/chats/:userId", isAuthenticated, async (req, res) => {
     try {
         const otherUserId = req.params.userId;
         const currentUserId = req.session.user._id;
         
         // Update all messages between these users to mark as deleted for current user
-        await Chat.updateMany(
+        await Chat.deleteMany(
             {
                 $or: [
                     { sender: currentUserId, receiver: otherUserId },

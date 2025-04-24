@@ -5,10 +5,12 @@ const Score = require("../models/Score");
 
 const router = express.Router();
 
+//Fungsi untuk menampilkan page
 router.get("/register", (req, res) => {
   res.render("register");
 });
 
+//Fungsi untuk menerima data user baru, dan menyimpannya ke database
 router.post("/register", async (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
 
@@ -48,10 +50,12 @@ router.post("/register", async (req, res) => {
   }
 });
 
+//Fungsi untuk menampilkan page
 router.get("/login", (req, res) => {
   res.render("login");
 });
 
+//Fungsi untuk menerima data user yang sudah terdaftar, dan mencocokannya dengan data dari database
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
@@ -110,6 +114,7 @@ router.delete('/api/user/delete', async (req, res) => {
   }
 });
 
+//Fungsi untuk menampilkan page
 router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Skema untuk menyimpan skor permainan
 const scoreSchema = new mongoose.Schema({
     score: {
         type: Number,
