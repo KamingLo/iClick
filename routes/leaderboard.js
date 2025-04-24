@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Score = require('../models/Score');
 
+//Fungsi untuk menyimpan score terbaru setelah bermain
 router.post('/saveScore', async (req, res) => {
     try {
         if (!req.session.user) {
@@ -36,6 +37,7 @@ router.post('/saveScore', async (req, res) => {
         });
     }
 });
+
 
 router.get('/', async (req, res) => {
     try {
@@ -155,6 +157,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+
 router.get('/api/scores', async (req, res) => {
     try {
         const { timemode, clickmode } = req.query;
@@ -200,6 +203,7 @@ router.get('/api/scores', async (req, res) => {
     }
 });
 
+//Router untuk menampilkan score user yang sedang login dengan beberapa pilihan mode
 router.get('/api/user/scores', async (req, res) => {
     try {
       if (!req.session.user) {
@@ -228,6 +232,7 @@ router.get('/api/user/scores', async (req, res) => {
     }
   });
 
+  //Router untuk menampilkan rank user pada leaderboard dengan beberapa pilihan mode
   router.get('/api/user/rank', async (req, res) => {
     try {
       if (!req.session.user) {
@@ -287,6 +292,7 @@ router.get('/api/user/scores', async (req, res) => {
     }
   });
 
+  //Router untuk menghapus score user 
   router.delete('/api/user/scores', async (req, res) => {
     try {
       if (!req.session.user) {
@@ -325,6 +331,7 @@ router.get('/api/user/scores', async (req, res) => {
     }
   });
 
+  //
   router.get('/api/users/:userId/super-rank', async (req, res) => {
     try {
         const userId = req.params.userId;

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Mendefinisikan skema model untuk chat
 const chatSchema = new mongoose.Schema({
     sender: {
         type: mongoose.Schema.Types.ObjectId,
