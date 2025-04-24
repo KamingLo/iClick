@@ -1,32 +1,5 @@
 <%- include('partials/header.ejs') %>
 
-<<<<<<< HEAD
-    <h1>Leaderboard</h1>
-    <table>
-        <tr>
-            <th>Rank</th>
-            <th>Player</th>
-            <th>Score</th>
-        </tr>
-        <% if (typeof scores !== 'undefined' && scores.length > 0) { %>
-            <% scores.slice(0, 10).forEach((score, index) => { %>
-                <tr>
-                    <td><%= index + 1 %></td>
-                    <td><%= score.namaUser %></td>
-                    <td><%= score.score %></td>
-                </tr>
-            <% }); %>
-        <% } else { %>
-            <tr>
-                <td colspan="3">No scores available</td>
-            </tr>
-        <% } %>
-    </table>
-
-    <script src="/js/navbar.js"></script>
-</body>
-</html>
-=======
 <div class="KotakUtamaLeaderboard">
     <div class="KotakGridLeaderboard">
         <div class="KotakOpsiLeaderboard">
@@ -213,4 +186,3 @@
 
 
 <script src="/js/leaderboard.js"></script>
->>>>>>> ver.2.1.28

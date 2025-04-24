@@ -4,11 +4,8 @@ let permainanSelesai = false;
 let sedangBermain = false;
 let waktuPermainan = 5;
 let modeKlik = "mouse";
-<<<<<<< HEAD
-=======
 let isPlaying = false;
 let spaceKeyPressed = false;
->>>>>>> ver.2.1.28
 
 // Mengambil elemen HTML yang dibutuhkan
 let tombolMain = document.querySelector(".ButtonPlay");
@@ -26,11 +23,6 @@ const keyboardClickSound = new Audio("/sfx/spacebar.mp3");
 const countdownSound = new Audio("/sfx/countdown.mp3");
 const bgMusic = new Audio("/sfx/Lofi.mp3");
 
-<<<<<<< HEAD
-let isPlaying = false;
-
-=======
->>>>>>> ver.2.1.28
 function playMouseClickSound() {
   mouseClickSound.currentTime = 0;
   mouseClickSound.play();
@@ -48,15 +40,6 @@ tombolMain.addEventListener("click", function (event) {
 });
 
 document.addEventListener("keydown", function (event) {
-<<<<<<< HEAD
-  if (modeKlik === "keyboard" && event.code === "Space") {
-    playKeyboardClickSound();
-    buatEfekRippleKeyboard();
-  }
-});
-
-// Sembunyikan tombol restart saat awal permainan
-=======
   if (modeKlik === "keyboard" && event.code === "Space" && !spaceKeyPressed) {
     spaceKeyPressed = true;
     playKeyboardClickSound();
@@ -74,7 +57,6 @@ document.addEventListener("keyup", function (event) {
   }
 });
 
->>>>>>> ver.2.1.28
 tombolUlang.style.display = "none";
 
 // Fungsi untuk mengganti mode waktu permainan
@@ -157,25 +139,10 @@ function mulaiGameAsli() {
   }, 100);
 }
 
-<<<<<<< HEAD
-// Fungsi untuk menghitung jumlah klik
-function klikDilakukan(event) {
-  if (sedangBermain) {
-    if (modeKlik === "mouse" && event.type === "click") {
-      nilaiKlik++;
-    } else if (
-      modeKlik === "keyboard" &&
-      event.type === "keydown" &&
-      event.code === "Space"
-    ) {
-      nilaiKlik++;
-    }
-=======
 // Fungsi untuk menangani klik pada tombol
 function klikDilakukan(event) {
   if (sedangBermain && modeKlik === "mouse" && event.type === "click") {
     nilaiKlik++;
->>>>>>> ver.2.1.28
   }
 }
 
@@ -187,25 +154,12 @@ function akhirPermainan() {
   tombolMode.disabled = false;
   tombolModeGame.disabled = false;
 
-<<<<<<< HEAD
-  let gambarPeringkat = "/image/ygbenerlu.jpg";
-=======
   console.log(waktuPermainan);
   let gambarPeringkat = "/image/jangkrik.png";
->>>>>>> ver.2.1.28
   let teksPeringkat = "Tetap semangat dan coba lagi!";
 
   if (waktuPermainan === 5) {
     if (nilaiKlik >= 50) {
-<<<<<<< HEAD
-      gambarPeringkat = "/image/cheetah.webp";
-      teksPeringkat = "Peringkat = Legend\n Kecepatan Yang Sangat Luar Biasa!";
-    } else if (nilaiKlik >= 30) {
-      gambarPeringkat = "/image/rabbit.webp";
-      teksPeringkat = "Peringkat = Pro\n Lumayan 😁 Tidak Buruk Juga!";
-    } else if (nilaiKlik >= 10) {
-      gambarPeringkat = "/image/turtle.webp";
-=======
       gambarPeringkat = "/image/cheetah.png";
       teksPeringkat = "Peringkat = Legend\n Kecepatan Yang Sangat Luar Biasa!";
     } else if (nilaiKlik >= 30) {
@@ -213,20 +167,10 @@ function akhirPermainan() {
       teksPeringkat = "Peringkat = Pro\n Lumayan 😁 Tidak Buruk Juga!";
     } else if (nilaiKlik >= 10) {
       gambarPeringkat = "/image/kura2.png";
->>>>>>> ver.2.1.28
       teksPeringkat = "Peringkat = Amatir\n Tetap semangat dan coba lagi!";
     }
   } else if (waktuPermainan === 10) {
     if (nilaiKlik >= 100) {
-<<<<<<< HEAD
-      gambarPeringkat = "/image/cheetah.webp";
-      teksPeringkat = "Peringkat = Legend\n Kecepatan Yang Sangat Luar Biasa!";
-    } else if (nilaiKlik >= 60) {
-      gambarPeringkat = "/image/rabbit.webp";
-      teksPeringkat = "Peringkat = Pro\n Lumayan 😁 Tidak Buruk Juga!";
-    } else if (nilaiKlik >= 30) {
-      gambarPeringkat = "/image/turtle.webp";
-=======
       gambarPeringkat = "/image/cheetah.png";
       teksPeringkat = "Peringkat = Legend\n Kecepatan Yang Sangat Luar Biasa!";
     } else if (nilaiKlik >= 60) {
@@ -234,20 +178,10 @@ function akhirPermainan() {
       teksPeringkat = "Peringkat = Pro\n Lumayan 😁 Tidak Buruk Juga!";
     } else if (nilaiKlik >= 30) {
       gambarPeringkat = "/image/kura2.png";
->>>>>>> ver.2.1.28
       teksPeringkat = "Peringkat = Amatir\n Tetap semangat dan coba lagi!";
     }
   } else if (waktuPermainan === 15) {
     if (nilaiKlik >= 150) {
-<<<<<<< HEAD
-      gambarPeringkat = "/image/cheetah.webp";
-      teksPeringkat = "Peringkat = Legend\n Kecepatan Yang Sangat Luar Biasa!";
-    } else if (nilaiKlik >= 100) {
-      gambarPeringkat = "/image/rabbit.webp";
-      teksPeringkat = "Peringkat = Pro\n Lumayan 😁 Tidak Buruk Juga!";
-    } else if (nilaiKlik >= 50) {
-      gambarPeringkat = "/image/turtle.webp";
-=======
       gambarPeringkat = "/image/cheetah.png";
       teksPeringkat = "Peringkat = Legend\n Kecepatan Yang Sangat Luar Biasa!";
     } else if (nilaiKlik >= 100) {
@@ -255,7 +189,6 @@ function akhirPermainan() {
       teksPeringkat = "Peringkat = Pro\n Lumayan 😁 Tidak Buruk Juga!";
     } else if (nilaiKlik >= 50) {
       gambarPeringkat = "/image/kura2.png";
->>>>>>> ver.2.1.28
       teksPeringkat = "Peringkat = Amatir\n Tetap semangat dan coba lagi!";
     }
   }
@@ -272,9 +205,6 @@ function akhirPermainan() {
   textRank.innerText = teksPeringkat;
   textRank.classList.remove("hidden");
   textRank.classList.add("fade-in");
-<<<<<<< HEAD
-  tampilkanHasil();
-=======
 
   const scoreData = {
     score: nilaiKlik,
@@ -307,7 +237,6 @@ function akhirPermainan() {
       console.error('Error saving score:', error);
       tampilkanHasil();
     });
->>>>>>> ver.2.1.28
 }
 
 // Fungsi untuk menampilkan hasil permainan dan beralih ke result.css
@@ -335,11 +264,8 @@ function tampilkanHasil() {
     }
 
     document.getElementById("restartButton").style.display = "flex";
-<<<<<<< HEAD
-=======
 
     loadLeaderboard(waktuPermainan, modeKlik);
->>>>>>> ver.2.1.28
   }, 500);
 }
 
@@ -361,11 +287,7 @@ function ulangPermainan() {
     nilaiKlik = 0;
     sedangBermain = false;
     permainanSelesai = false;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> ver.2.1.28
     document.getElementById("restartButton").style.display = "none";
     let imgRank = document.getElementById("rankImage");
     let textRank = document.getElementById("rankText");
@@ -425,10 +347,6 @@ tombolUlang.addEventListener("click", ulangPermainan);
 tombolMode.addEventListener("click", gantiMode);
 tombolModeGame.addEventListener("click", gantiModeGame);
 tombolMain.addEventListener("click", klikDilakukan);
-<<<<<<< HEAD
-document.addEventListener("keydown", klikDilakukan);
-=======
->>>>>>> ver.2.1.28
 tombolMain.addEventListener("click", buatEfekRipple);
 tombolUlang.addEventListener("click", buatEfekRipple);
 
@@ -458,8 +376,6 @@ document.getElementById("musicButton").addEventListener("click", toggleMusic);
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".content").classList.add("fade-in");
 });
-<<<<<<< HEAD
-=======
 
 // Fungsi untuk menampilkan leaderboard
 function loadLeaderboard(timeMode, clickMode) {
@@ -510,4 +426,3 @@ function loadLeaderboard(timeMode, clickMode) {
           leaderboardContainer.innerHTML = '<p>LeaderBoard</p><div class="leaderboard-error">Failed to load leaderboard data</div>';
       });
 }
->>>>>>> ver.2.1.28

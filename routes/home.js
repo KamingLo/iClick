@@ -1,12 +1,5 @@
 const express = require("express");
 const router = express.Router();
-<<<<<<< HEAD
-
-router.get("/", (req, res) => {
-  res.render("index");
-});
-
-=======
 const User = require("../models/user");
 
 const requireLogin = (req, res, next) => {
@@ -23,7 +16,6 @@ router.get("/", (req, res) => {
 router.get("/global", (req, res) => {
   res.render("global");
 })
->>>>>>> ver.2.1.28
 router.get("/home", (req, res) => {
   res.render("home");
 });
@@ -32,8 +24,6 @@ router.get("/about", (req, res) => {
   res.render("about");
 });
 
-<<<<<<< HEAD
-=======
 router.get("/profile", requireLogin, async (req, res) => {
   try {
     const user = await User.findById(req.session.user._id);
@@ -55,5 +45,4 @@ router.get("/ChangePassword", (req, res) => {
   res.render("ChangePassword");
 });
 
->>>>>>> ver.2.1.28
 module.exports = router;

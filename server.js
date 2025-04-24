@@ -1,31 +1,9 @@
-<<<<<<< HEAD
-=======
-require('dotenv').config();  // Ini HARUS di awal
-
->>>>>>> ver.2.1.28
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const session = require("express-session");
-<<<<<<< HEAD
-
-const app = express();
-const port = 3000;
-
-// Koneksi ke MongoDB
-mongoose
-  .connect("mongodb://127.0.0.1:27017/mydatabase")
-  .then(() => console.log("Database terhubung!"))
-  .catch((err) => console.log("Koneksi gagal:", err));
-
-// Middleware
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public")));
-=======
-require('dotenv').config();  // <-- Pastikan ini ada sebelum penggunaan `process.env`
-
-const port = process.env.port;
+const port = process.env.port || 3000;
 const app = express();
 
 // Create server and Socket.IO instance
@@ -83,17 +61,14 @@ io.on('connection', (socket) => {
 });
 
 mongoose
-.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(() => console.log("🟢 Terhubung ke MongoDB Atlas"))
-.catch((err) => console.log("🔴 Gagal konek MongoDB Atlas:", err));
-
-
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("Database terhubung!"))
+  .catch((err) => console.log("Koneksi gagal:", err));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
->>>>>>> ver.2.1.28
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
@@ -110,27 +85,6 @@ app.use((req, res, next) => {
   next();
 });
 
-<<<<<<< HEAD
-// Import Routes
-const authRoutes = require("./routes/auth");
-const homeRoutes = require("./routes/home");
-const leaderboardRouter = require("./routes/leaderboard");
-
-// Gunakan rute
-app.use("/", homeRoutes);
-app.use("/", authRoutes);  // Memastikan /login bisa diakses langsung tanpa /auth
-app.use("/leaderboard", leaderboardRouter);
-
-// Menangani halaman yang tidak ditemukan (404)
-app.use((req, res) => {
-  res.status(404).send("Halaman tidak ditemukan!");
-});
-
-// Jalankan server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
-=======
 const friendRoutes = require("./routes/friend");
 const authRoutes = require("./routes/auth");
 const homeRoutes = require("./routes/home");
@@ -162,4 +116,3 @@ app.get("/", (req, res) => {
 app.use((req, res) => {
   res.status(404).send("Halaman tidak ditemukan!");
 });
->>>>>>> ver.2.1.28
