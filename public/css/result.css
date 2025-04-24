@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #000000;
@@ -9,12 +10,23 @@ body {
   margin: 0;
   padding-top: 35px;
 }
+=======
+/* -------------------------------------------------------- */
+/* ----------------- CSS Home.ejs | Result  --------------- */
+/* -------------------------------------------------------- */
+/* ------------------ Bagian Kotak Utama ------------------ */
+>>>>>>> ver.2.1.28
 
 .ContainerLuar {
   display: flex;
   align-items: center;
   gap: 2rem;
+<<<<<<< HEAD
   margin-top: -5rem;
+=======
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+>>>>>>> ver.2.1.28
 }
 
 .hidden {
@@ -31,7 +43,11 @@ body {
   transition: opacity 0.5s ease-in-out;
 }
 
+<<<<<<< HEAD
 /* --------------------- Bagian dalam box result ----------------------*/
+=======
+/* ----------------- Bagian dalam box result ------------- */
+>>>>>>> ver.2.1.28
 
 .BoxResult {
   height: 35rem;
@@ -53,7 +69,11 @@ body {
   gap: 2rem;
 }
 
+<<<<<<< HEAD
 /* ------------------ T,S,C ------------------- */
+=======
+/* ------------------------ T,S,C ------------------------- */
+>>>>>>> ver.2.1.28
 
 .ContainerBoxKiri {
   display: flex;
@@ -129,7 +149,11 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+<<<<<<< HEAD
 /* -------------------- End --------------------- */
+=======
+/* -------------------------- End ------------------------- */
+>>>>>>> ver.2.1.28
 
 .ContainerBoxKanan {
   display: flex;
@@ -142,7 +166,11 @@ body {
 .BoxTextMode {
   height: 3rem;
   width: 15rem;
+<<<<<<< HEAD
  border-radius: 0.5rem;
+=======
+  border-radius: 0.5rem;
+>>>>>>> ver.2.1.28
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,6 +206,10 @@ body {
   width: 10.625rem;
   border-radius: 3.75rem;
   background-color: #272727;
+<<<<<<< HEAD
+=======
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+>>>>>>> ver.2.1.28
   cursor: pointer;
   color: white;
   display: flex;
@@ -194,15 +226,36 @@ body {
   background-color: #3f3f3f;
 }
 
+<<<<<<< HEAD
 /* --------------------- End ---------------------- */
 /* ------------------------------------------------ */
 /* ----------- Bagian dalma leaderboard ----------- */
+=======
+.infoGuest {
+  font-size: 1rem;
+  color: rgb(206, 206, 206);
+  transform: translateY(6rem);
+}
+
+/* -------------------------- End ------------------------- */
+/* -------------------------- End ------------------------- */
+/* -------------------------- End ------------------------- */
+/* -------------------------------------------------------- */
+/* --------------- Bagian dalma leaderboard --------------- */
+>>>>>>> ver.2.1.28
 
 .BoxLeaderBoard {
   height: 35rem;
   width: 35rem;
   border-radius: 0.5rem;
+<<<<<<< HEAD
   border: 1px solid rgb(255, 255, 255);
+=======
+  padding: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  background-color: rgba(27, 27, 27, 0.9);
+>>>>>>> ver.2.1.28
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -213,5 +266,92 @@ body {
 .BoxLeaderBoard p {
   font-size: 24px;
   color: rgb(255, 255, 255);
+<<<<<<< HEAD
 transform: translateY(1rem);
 }
+=======
+  font-weight: bold;
+  transform: translateY(0.1em);
+}
+
+
+.leaderboard-loading,
+.leaderboard-error {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    padding: 10px 0;
+}
+
+.leaderboard-error {
+    color: #e74c3c;
+}
+
+.leaderboard-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.leaderboard-header,
+.leaderboard-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.leaderboard-header {
+    font-weight: bold;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 5px;
+    transform: translateY(0.5rem);
+}
+
+.leaderboard-row {
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.rank-header,
+.rank-cell {
+    flex: 0 0 15%;
+    text-align: center;
+}
+
+.player-header,
+.player-cell {
+    flex: 1;
+    text-align: left;
+}
+
+.score-header,
+.score-cell {
+    flex: 0 0 25%;
+    text-align: right;
+    font-weight: bold;
+    padding-right: 1.5rem;
+}
+
+.leaderboard-empty {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    padding: 15px 0;
+}
+
+.leaderboard-row:nth-child(2) .rank-cell {
+    color: gold;
+    font-weight: bold;
+}
+
+.leaderboard-row:nth-child(3) .rank-cell {
+    color: silver;
+    font-weight: bold;
+}
+
+.leaderboard-row:nth-child(4) .rank-cell {
+    color: #cd7f32;
+    font-weight: bold;
+}
+
+/* -------------------------- End ------------------------- */
+>>>>>>> ver.2.1.28

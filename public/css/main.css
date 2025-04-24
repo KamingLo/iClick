@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(to bottom, #111, #1a1a1a);
@@ -10,6 +11,12 @@ body {
 }
 
 /* -------------------- Yang bagian dalam rounden box ----------------- */
+=======
+/* -------------------------------------------------------- */
+/* ----------------- CSS Home.ejs | Main  ----------------- */
+/* -------------------------------------------------------- */
+/* ------------------ Bagian Kotak Utama ------------------ */
+>>>>>>> ver.2.1.28
 
 .RoundedBox {
   height: 35rem;
@@ -27,7 +34,11 @@ body {
   overflow: hidden;
 }
 
+<<<<<<< HEAD
 /* ------------- Yang bagian dalam ContainerBoxModeText --------------- */
+=======
+/* -------- Yang bagian dalam ContainerBoxModeText -------- */
+>>>>>>> ver.2.1.28
 
 .ContainerBoxModeText {
   display: flex;
@@ -60,8 +71,13 @@ body {
   justify-content: center;
 }
 
+<<<<<<< HEAD
 /* -------------------------------- End --------------------------------- */
 /* ------------- Yang bagian dalam ContainerBoxModeButton --------------- */
+=======
+/* -------------------------- End ------------------------- */
+/* ------ Yang bagian dalam ContainerBoxModeButton -------- */
+>>>>>>> ver.2.1.28
 
 .ContainerBoxModeButton {
   display: flex;
@@ -86,9 +102,16 @@ body {
   margin-bottom: 1rem;
   background: #272727;
   border: none;
+<<<<<<< HEAD
   cursor: pointer;
   transition: all 0.3s ease;
   color: white;
+=======
+  font-weight: normal;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: rgb(255, 255, 255);
+>>>>>>> ver.2.1.28
 }
 
 #modeButton:hover {
@@ -98,6 +121,10 @@ body {
 .BoxModeGame {
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ver.2.1.28
 }
 
 #ModeGameButton {
@@ -110,6 +137,10 @@ body {
   margin-bottom: 1rem;
   background: #272727;
   border: none;
+<<<<<<< HEAD
+=======
+  font-weight: normal;
+>>>>>>> ver.2.1.28
   cursor: pointer;
   transition: all 0.3s ease;
   color: white;
@@ -119,8 +150,13 @@ body {
   background: #3f3f3f;
 }
 
+<<<<<<< HEAD
 /* -------------------------------- End --------------------------------- */
 /* --------------- Yang bagian dalam ContainerDisplayWKN ---------------- */
+=======
+/* -------------------------- End ------------------------- */
+/* ---------- Yang bagian dalam ContainerDisplayWKN ------- */
+>>>>>>> ver.2.1.28
 
 .ContainerDisplayWKN {
   display: flex;
@@ -187,8 +223,14 @@ body {
   background-color: #3f3f3f;
 }
 
+<<<<<<< HEAD
 /* -------------------------------- End --------------------------------- */
 /* ---------------------------------------------------------------------- */
+=======
+/* -------------------------- End ------------------------- */
+/* -------------------------- End ------------------------- */
+/* ----------------- Anim tombol ditekan ------------------ */
+>>>>>>> ver.2.1.28
 
 .ripple {
   position: absolute;

@@ -10,10 +10,25 @@ const scoreSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+<<<<<<< HEAD
+=======
+    timemode: {
+        type: Number
+    },
+    clickmode: {
+        type: String,
+        enum: ['mouse', 'keyboard'],
+        default: 'mouse'
+    },
+>>>>>>> ver.2.1.28
     createdAt: {
         type: Date,
         default: Date.now
     }
 });
 
+<<<<<<< HEAD
 module.exports = mongoose.model('Score', scoreSchema);
+=======
+module.exports = mongoose.model('Score', scoreSchema);
+>>>>>>> ver.2.1.28

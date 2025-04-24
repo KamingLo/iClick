@@ -17,6 +17,7 @@ const seedDB = async () => {
         await Score.deleteMany({});
         console.log('Cleared existing scores');
 
+<<<<<<< HEAD
         const dummyScores = [];
         for (const user of users) {
             const score = {
@@ -25,6 +26,25 @@ const seedDB = async () => {
             };
             dummyScores.push(score);
             console.log(`Created score for user: ${user.username}`);
+=======
+        const clickModes = ['mouse', 'keyboard'];
+        const timeModes = [5, 10, 15];
+        
+        const dummyScores = [];
+        for (const user of users) {
+            for (const clickMode of clickModes) {
+                for (const timeMode of timeModes) {
+                    const score = {
+                        score: Math.floor(Math.random() * 1000) + 100,
+                        user: user._id,
+                        clickmode: clickMode,
+                        timemode: timeMode
+                    };
+                    dummyScores.push(score);
+                }
+            }
+            console.log(`Created scores for user: ${user.username}`);
+>>>>>>> ver.2.1.28
         }
         
         const result = await Score.insertMany(dummyScores);
@@ -36,4 +56,8 @@ const seedDB = async () => {
     }
 };
 
+<<<<<<< HEAD
 seedDB();
+=======
+seedDB();
+>>>>>>> ver.2.1.28
