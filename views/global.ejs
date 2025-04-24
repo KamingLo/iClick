@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+<div class="KotakUtamaGlobal">
+    <div class="JudulTextGlobal">
+        <h1 class="TextGlobalIchat">Public Chat</h1>
+    </div>
+
+    <div class="main">
+        <div class="name hidden">
+            <span><i class="far fa-user"></i></span>
+            <input
+                type="text"
+                id="name-input"
+                class="name-input"
+                value="<%= session.user.username %>"
+                readonly
+            />
+        </div>
+
+        <ul class="message-container" id="message-container"></ul>
+
+        <form class="KotakMessageGlobal" id="message-form">
+            <input
+                type="text"
+                name="message"
+                id="message-input"
+                class="InputChatGlobal"
+                placeholder="Type a message"
+            />
+            <div class="v-divider"></div>
+            <button type="submit" class="send-button">
+                <i class="fa-solid fa-paper-plane" style="color: #292929;"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/main.js"></script>
