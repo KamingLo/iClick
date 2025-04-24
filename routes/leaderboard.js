@@ -38,7 +38,7 @@ router.post('/saveScore', async (req, res) => {
     }
 });
 
-
+//Menampilkan score sesuai mode pada leaderboard
 router.get('/', async (req, res) => {
     try {
         const scores5sMouse = await Score.aggregate([
@@ -157,7 +157,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-
+//Score user ke leaderboard
 router.get('/api/scores', async (req, res) => {
     try {
         const { timemode, clickmode } = req.query;
@@ -232,7 +232,7 @@ router.get('/api/user/scores', async (req, res) => {
     }
   });
 
-  //Router untuk menampilkan rank user pada leaderboard dengan beberapa pilihan mode
+  //Router untuk menampilkan ranking user di leaderboard
   router.get('/api/user/rank', async (req, res) => {
     try {
       if (!req.session.user) {
@@ -330,85 +330,5 @@ router.get('/api/user/scores', async (req, res) => {
       res.status(500).json({ error: 'Failed to delete scores' });
     }
   });
-
-  //
-  router.get('/api/users/:userId/super-rank', async (req, res) => {
-    try {
-        const userId = req.params.userId;
-
-        const bestScores = await Score.aggregate([
-            {
-                $group: {
-                    _id: { user: '$user', clickmode: '$clickmode', timemode: '$timemode' },
-                    bestScore: { $max: '$score' }
-                }
-            },
-            {
-                $group: {
-                    _id: '$_id.user',
-                    totalScore: { $sum: '$bestScore' }
-                }
-            },
-            { $sort: { totalScore: -1 } }
-        ]);
-
-        const userRank = bestScores.findIndex(score =>
-          score._id.toString() === userId.toString()
-        );      
-
-        const userScore = bestScores.find(score =>
-          score._id.toString() === userId.toString()
-        );
-      
-      
-
-        res.json({
-            rank: userRank !== -1 ? userRank + 1 : null,
-            totalScore: userScore ? userScore.totalScore : null
-        });
-    } catch (err) {
-        console.error('Error fetching super rank:', err);
-        res.status(500).json({ error: 'Failed to fetch super rank' });
-    }
-});
-
-router.get('/api/users/:userId/ultimate-rank', async (req, res) => {
-  try {
-      const userId = req.params.userId;
-
-      const bestScores = await Score.aggregate([
-          {
-              $group: {
-                  _id: { user: '$user', clickmode: '$clickmode', timemode: '$timemode' },
-                  bestScore: { $max: '$score' }
-              }
-          },
-          {
-              $group: {
-                  _id: '$_id.user',
-                  totalScore: { $sum: '$bestScore' }
-              }
-          },
-          { $sort: { totalScore: -1 } }
-      ]);
-
-      const userRank = bestScores.findIndex(score =>
-          score._id.toString() === userId.toString()
-      );
-
-      const userScore = bestScores.find(score =>
-          score._id.toString() === userId.toString()
-      );
-
-      res.json({
-          rank: userRank !== -1 ? userRank + 1 : null,
-          totalScore: userScore ? userScore.totalScore : null
-      });
-  } catch (err) {
-      console.error('Error fetching ultimate rank:', err);
-      res.status(500).json({ error: 'Failed to fetch ultimate rank' });
-  }
-});
-
 
 module.exports = router;
