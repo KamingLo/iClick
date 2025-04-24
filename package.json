@@ -1,6 +1,6 @@
 {
-  "name": "iclick",
-  "version": "2.1.28",
+  "name": "project",
+  "version": "1.0.0",
   "description": "EDIT USERNAME SUDAH BISA",
   "main": "server.js",
   "dependencies": {
@@ -119,7 +119,7 @@
     "mkdirp": "^1.0.4",
     "mongodb": "^6.16.0",
     "mongodb-connection-string-url": "^3.0.2",
-    "mongoose": "^8.12.2",
+    "mongoose": "^8.13.2",
     "mpath": "^0.9.0",
     "mquery": "^5.0.0",
     "ms": "^2.0.0",
@@ -127,7 +127,7 @@
     "negotiator": "^0.6.3",
     "node-addon-api": "^5.1.0",
     "node-fetch": "^2.7.0",
-    "nodemon": "^3.1.9",
+    "nodemon": "^3.1.10",
     "nopt": "^5.0.0",
     "normalize-path": "^3.0.0",
     "npmlog": "^5.0.1",
@@ -173,8 +173,8 @@
     "sparse-bitfield": "^3.0.3",
     "statuses": "^2.0.1",
     "streamsearch": "^1.1.0",
-    "string-width": "^4.2.3",
     "string_decoder": "^1.3.0",
+    "string-width": "^4.2.3",
     "strip-ansi": "^6.0.1",
     "supports-color": "^7.2.0",
     "tar": "^6.2.1",
@@ -200,7 +200,6 @@
     "xtend": "^4.0.2",
     "yallist": "^4.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -209,7 +208,8 @@
     "type": "git",
     "url": "git+https://github.com/KamingLo/iClick.git"
   },
-  "author": "Kaming",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/KamingLo/iClick/issues"
