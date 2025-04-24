@@ -1,4 +1,3 @@
-/* -------------------------------------------------------- */
 /* ------------------ CSS LandingPage.ejs ----------------- */
 /* -------------------------------------------------------- */
 /* ----------------- Yang bagian dalam Teks --------------- */
@@ -912,7 +911,8 @@ input::placeholder {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
   background-color: rgba(27, 27, 27, 0.9);
   border-radius: 0.5rem;
-  position: fixed;
+  position: absolute;
+  transform: translateY(6rem);
   gap: 10rem;
   bottom: 8rem;
 }
@@ -1776,6 +1776,7 @@ input::placeholder {
   gap: 1rem;
   background-color: rgba(27, 27, 27, 0.8);
   padding: 1.5rem;
+  transform: translateX(0rem);
   border-radius: 0.5rem;
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -1872,22 +1873,48 @@ input::placeholder {
   display: none;
 }
 
-.KotakDisplayInfoChat.slide-in {
-  animation: slideIn 0.5s forwards;
+.KotakDisplayInfoChat.grow-in {
+  animation: growIn 0.5s forwards;
 }
 
-.KotakDisplayInfoChat.slide-out {
-  animation: slideOut 0.5s forwards;
+.KotakDisplayInfoChat.grow-out {
+  animation: growOut 0.5s forwards;
 }
 
-@keyframes slideIn {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+.KotakDisplayPlayer.slide-left {
+  animation: slideLeft 0.5s forwards;
 }
 
-@keyframes slideOut {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
+.KotakDisplayPlayer.slide-right {
+  animation: slideRight 0.5s forwards;
+}
+
+@keyframes growIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes growOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0); opacity: 0; }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(20rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0rem);
+  }
+  100% {
+    transform: translateX(20rem);
+  }
 }
 
 .DisOpsiPlayer {
@@ -1921,11 +1948,11 @@ input::placeholder {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
-.SearchBar input[type="text"] {
+.SearchBar input {
   position: relative;
   display: flex;
   align-items: center;
-  width: 25rem;
+  max-width: 25rem;
   height: 3rem;
   top: 0.65rem;
   transform: translateX(-0.55rem);
@@ -2264,6 +2291,101 @@ input::placeholder {
   background-color: #2980b9;
 }
 
+.DeleteChatButton {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  width: 20%;
+  cursor: pointer;
+}
+
+.DeleteChatButton:hover {
+  background-color: #d32f2f;
+}
+
+.BackGroundBlurDisplayDeleteChat{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.KotakUtamaDisplayDelChat {
+  height: 15rem;
+  width: 30rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  background-color: rgba(27, 27, 27, 0.9);
+  text-align: center;
+  position: absolute;
+  top: 35%;
+  left: 37.5%;
+  transform: translate(-50%, -50%);
+}
+
+.InfoConfirmDeleteChat {
+ font-size: 1rem;
+ margin-top: 7.5rem;
+}
+
+.ContBttnDeleteConfrimChat {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  transform: translateY(-3rem);
+  justify-content: center;
+}
+
+.tmblAcceptC {
+  width: 12rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  border: 2px solid rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  font-family: "Montserrat", sans-serif;
+  color: rgb(255, 0, 0);
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.tmblAcceptC:hover {
+  background: #a23e3e;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(158, 0, 0);
+}
+
+.tmblUnAcceptC {
+  width: 12rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.tmblUnAcceptC:hover {
+  background: #6f6f6f;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
+}
+
 .UsersList::-webkit-scrollbar,
 .DisplayChat::-webkit-scrollbar {
   width: 6px;
@@ -2357,3 +2479,233 @@ body {
 
 /* -------------------------- End ------------------------- */
 /* -------------------------------------------------------- */
+
+/* Add to your CSS */
+.MessageNotif {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.EditIcon {
+  cursor: pointer;
+}
+
+.EditAliasPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+.EditAliasPopup.hidden {
+    display: none;
+}
+.EditAliasContent {
+    background: rgba(27, 27, 27, 0.9);
+    padding: 20px;
+    border-radius: 0.5rem;
+    width: 30rem;
+    height: 20rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    animation: fadeInScale 0.3s ease forwards;
+    color: white;
+}
+.EditAliasButtons {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.EditAliasButtons button {
+    width: 12rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    font-size: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0);
+}
+#saveAliasBtn {
+    color: rgb(0, 255, 0);
+    border: 2px solid rgba(0, 255, 0, 0.5);
+    transform: translateY(-1rem);
+}
+#saveAliasBtn:hover {
+    background: #3ea23e;
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 158, 0);
+}
+#cancelAliasBtn {
+    color: rgb(255, 0, 0);
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    transform: translateY(-1rem);
+}
+#cancelAliasBtn:hover {
+    background: #a23e3e;
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(158, 0, 0);
+}
+#removeAliasBtn {
+    color: white;
+    transform: translateY(-1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#removeAliasBtn:hover {
+    background: #6f6f6f;
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+}
+#aliasInput {
+    width: 80%;
+    padding: 10px;
+    border-radius: 0.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(50, 50, 50, 0.5);
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 1rem;
+}
+#originalUsername {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.AliasText {
+    font-size: 1rem;
+    color: #ccc;
+    margin-top: 3rem;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.message-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  margin-bottom: 5rem;
+}
+
+.KotakUtamaGlobal {
+  height: 35rem;
+  width: 28rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  background-color: rgba(27, 27, 27, 0.9);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.JudulTextGlobal {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transform: translateY(1rem);
+}
+
+.TextGlobalIchat {
+  font-size: 1.2rem;
+}
+
+.KotakMessageGlobal {
+  max-height: 2.5rem;
+  max-width: 26rem;
+  padding: 1rem;
+  position: fixed;
+  transform: translateY(27.5rem) translateX(0.1rem);
+  background-color: rgba(87, 87, 87, 0.1);
+  align-content: center;
+}
+
+.message {
+  font-size: 1rem;
+  transform: translateY(-0.8rem) translateX(0rem);
+}
+
+.message-left,
+.message-right {
+  list-style: none;
+  padding: 8px 12px;
+  margin: 12px;
+  max-height: 3rem;
+  max-width: 10rem;
+  word-wrap: break-word;
+}
+
+.message-left {
+  border-radius: 20px 20px 20px 0px;
+  align-self: flex-start;
+  background-color: #2d2d2d;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+
+.message-right {
+  border-radius: 20px 20px 0px 20px;
+  transform: translateX(0.5rem);
+  align-self: flex-end;
+  background-color: #4d4d4d;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  color: #f6f6f6;
+  text-align: right;
+}
+
+.message-left > p > span,
+.message-right > p > span {
+  display: block;
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.InputChatGlobal {
+  flex: 1;
+  height: 2.5rem;
+  background: rgb(255, 12, 12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50rem !important;
+  transform: translateX(0.5rem);
+  max-width: 20rem;
+  color: rgb(255, 20, 20);
+  font-size: 1rem;
+}
+
+.send-button {
+  max-width: 2.5rem;
+  border-radius: 50rem;
+  height: 2.5rem;
+  transform: translateX(22.5rem) translateY(-5.7rem);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}

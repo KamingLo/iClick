@@ -9,7 +9,7 @@ body {
   box-sizing: border-box;
   user-select: none;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   padding: 35px 0 0 0;
 }
@@ -104,4 +104,23 @@ body {
 .SFXSettings:hover {
   background-color: rgba(60, 60, 60, 0.9);
   transform: scale(1.05);
+}
+
+/* Untuk semua elemen scrollable */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }

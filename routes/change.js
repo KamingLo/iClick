@@ -15,7 +15,6 @@ router.post("/ChangeUsername", async(req, res) => {
         const userId = req.session.user;
         
         const user = await User.findById(userId);
-        console.log("userId", userId);
         
         if (!user) {
             return res.status(404).send("User not found");

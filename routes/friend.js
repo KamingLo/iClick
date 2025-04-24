@@ -56,10 +56,11 @@ router.get("/api/users/search", isAuthenticated, async (req, res) => {
             return {
                 _id: user._id,
                 username: user.username,
-                isFollowing: currentUser.following.includes(user._id),
-                isPendingRequest: user.followRequests.includes(currentUser._id) // <--- Tambah ini
+                isFollowing: (currentUser.following || []).includes(user._id),
+                isPendingRequest: (user.followRequests || []).includes(currentUser._id)
             };
-        });        
+        });
+          
         
         res.json({ success: true, users: usersWithFollowStatus });
     } catch (err) {
@@ -149,11 +150,12 @@ router.post("/api/users/:userId/follow", isAuthenticated, async (req, res) => {
         const isPending = userToFollow.followRequests && userToFollow.followRequests.includes(currentUserId);
         
         if (isFollowing) {
+            // Sudah follow, maka unfollow satu sama lain
             await User.findByIdAndUpdate(currentUserId, {
-                $pull: { following: userToFollowId }
+                $pull: { following: userToFollowId, followers: userToFollowId }
             });
             await User.findByIdAndUpdate(userToFollowId, {
-                $pull: { followers: currentUserId }
+                $pull: { followers: currentUserId, following: currentUserId }
             });
             res.json({ success: true, action: "unfollowed" });
         } else if (isPending) {
@@ -226,6 +228,7 @@ router.post("/api/follow-requests/:userId/:action", isAuthenticated, async (req,
     }
 });
 
+// In friend.js routes file, modify the GET /api/chats/:userId endpoint
 router.get("/api/chats/:userId", isAuthenticated, async (req, res) => {
     try {
         const otherUserId = req.params.userId;
@@ -239,11 +242,13 @@ router.get("/api/chats/:userId", isAuthenticated, async (req, res) => {
             });
         }
 
+        // Added condition to exclude messages deleted by current user
         const messages = await Chat.find({
             $or: [
                 { sender: currentUserId, receiver: otherUserId },
                 { sender: otherUserId, receiver: currentUserId }
-            ]
+            ],
+            deletedFor: { $ne: currentUserId } // Don't show messages deleted by current user
         }).sort({ createdAt: 1 });
         
         res.json({ success: true, messages });
@@ -272,6 +277,30 @@ router.post("/api/chats/:userId", isAuthenticated, async (req, res) => {
         
         await newMessage.save();
         res.json({ success: true, message: newMessage });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Server error" });
+    }
+});
+
+// In friend.js (routes file)
+router.delete("/api/chats/:userId", isAuthenticated, async (req, res) => {
+    try {
+        const otherUserId = req.params.userId;
+        const currentUserId = req.session.user._id;
+        
+        // Update all messages between these users to mark as deleted for current user
+        await Chat.updateMany(
+            {
+                $or: [
+                    { sender: currentUserId, receiver: otherUserId },
+                    { sender: otherUserId, receiver: currentUserId }
+                ]
+            },
+            { $addToSet: { deletedFor: currentUserId } }
+        );
+        
+        res.json({ success: true, message: "Chat history deleted" });
     } catch (err) {
         console.error(err);
         res.status(500).json({ success: false, message: "Server error" });

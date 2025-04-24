@@ -1,8 +1,12 @@
+require('dotenv').config();  // Ini HARUS di awal
+
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const session = require("express-session");
-const port = process.env.port || 3000;
+require('dotenv').config();  // <-- Pastikan ini ada sebelum penggunaan `process.env`
+
+const port = process.env.port;
 const app = express();
 
 // Create server and Socket.IO instance
@@ -11,6 +15,8 @@ const io = require('socket.io')(server);
 
 // Socket.IO connection handling
 const socketsConnected = new Set();
+// Add this near the top of server.js where you set up Socket.IO
+const userSocketMap = {};
 
 io.on('connection', (socket) => {
     socketsConnected.add(socket.id);
@@ -27,12 +33,42 @@ io.on('connection', (socket) => {
         socketsConnected.delete(socket.id);
         io.emit('clients-total', socketsConnected.size);
     });
+
+    socket.on('private message', (data) => {
+      const { senderId, receiverId, message } = data;
+      const receiverSocketId = userSocketMap[receiverId];
+      
+      if (receiverSocketId) {
+          io.to(receiverSocketId).emit('private message', { 
+              senderId, 
+              message 
+          });
+      }
+  
+      // Untuk tampilkan juga di pengirim
+      socket.emit('private message', { 
+          senderId, 
+          message 
+      });
+  });
+  
+
+    // Add socket authentication to track which socket belongs to which user
+    socket.on('authenticate', (userId) => {
+      console.log('User authenticated:', userId);
+      // Store the user's socket ID for private messaging
+      socket.userId = userId;
+      // You might want to keep a map of userIds to socketIds
+      userSocketMap[userId] = socket.id;
+    });
 });
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/mydatabase")
-  .then(() => console.log("Database terhubung!"))
-  .catch((err) => console.log("Koneksi gagal:", err));
+.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => console.log("🟢 Terhubung ke MongoDB Atlas"))
+.catch((err) => console.log("🔴 Gagal konek MongoDB Atlas:", err));
+
+
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

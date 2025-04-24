@@ -4,10 +4,6 @@ const Score = require('../models/Score');
 
 router.post('/saveScore', async (req, res) => {
     try {
-        console.log('Headers:', req.headers);
-        console.log('Raw body:', req.body);
-        console.log('User session:', req.session);
-
         if (!req.session.user) {
             return res.status(401).json({ error: 'User not authenticated' });
         }
