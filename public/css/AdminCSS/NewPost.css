@@ -1,0 +1,354 @@
+
+
+.ContainerNewPost {
+    margin-bottom: 30px;
+}
+
+.ContainerDalam {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.FormKiri, .FormKanan {
+    display: flex;
+    flex-direction: column;
+    margin-top: -1rem;
+}
+
+.IsiData {
+    margin-bottom: 20px;
+}
+
+.NamaLabelBar {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark-color);
+    font-size: 14px;
+}
+
+.TampilanIsiData {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+.TampilanIsiData:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+}
+
+input.TampilanIsiData {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    color: black;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+input.TampilanIsiData:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+input[type="radio"] + label {
+    margin-right: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Upload Photo Styles */
+.UploadFoto {
+    position: relative;
+    width: 100%;
+}
+
+.UploadFoto input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.TombolUploadFoto {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: white;
+    color: #666;
+    transition: var(--transition);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.BrowseFoto {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.BrowseFoto:hover {
+    background-color: #3959d9;
+}
+
+/* Preview Photo Styles */
+.PreviewContainer {
+    margin-top: 15px;
+    border: 2px dashed #ddd;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    transition: var(--transition);
+}
+
+.PreviewContainer.has-image {
+    border-style: solid;
+    border-color: var(--primary-color);
+    background-color: white;
+}
+
+.PreviewImage {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    object-fit: contain;
+    display: none;
+}
+
+.PreviewText {
+    color: #666;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.RemoveImage {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: none;
+}
+
+.RemoveImage:hover {
+    background-color: #c82333;
+}
+
+trix-editor {
+    min-height: 200px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+trix-editor:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+}
+
+/* Button Styles */
+.TombolOJT {
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 12px 24px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 6px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.TombolPosting {
+    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.TombolPosting:hover {
+    background-color: #3959d9;
+    border-color: #3959d9;
+}
+
+.InfoSubmit {
+    transform: translateY(31.5rem);
+    position: fixed;
+}
+
+.alert {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.UiPsnDis {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+}
+
+.PsnBerhasil {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.PsnError {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.switch-container {
+    margin-bottom: 20px;
+}
+
+.switch-container input[type="radio"] {
+    display: none;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 244px;
+    height: 55px;
+    background-color: #f1f3f4;
+    border: 1px solid #e0e0e0;
+    border-radius: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.switch-left, .switch-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+    width: 122px;
+    text-align: center;
+}
+
+.switch-left {
+    left: 0;
+    color: #4a6cf7;
+    font-weight: 600;
+}
+
+.switch-right {
+    right: 0;
+    color: #9aa0a6;
+    font-weight: normal;
+}
+
+.switch-button {
+    position: absolute;
+    width: 130px;
+    transform: translateX(-0.5rem);
+    height: 55px;
+    background: #ffffff;
+    border-radius: 25px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+#event:checked ~ .switch .switch-left {
+    color: #9aa0a6;
+    font-weight: normal;
+}
+
+#event:checked ~ .switch .switch-right {
+    color: #4a6cf7;
+    font-weight: 600;
+}
+
+#event:checked ~ .switch .switch-button {
+    left: 125px;
+}
+
+#announcement:checked ~ .switch .switch-button {
+    left: 2px;
+}
+
+.switch:hover {
+    background-color: #e8eaed;
+    border-color: #dadce0;
+}
+
+.switch:hover .switch-button {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Change #event:checked to #blog:checked */
+#blog:checked ~ .switch .switch-left {
+    color: #9aa0a6;
+    font-weight: normal;
+}
+
+#blog:checked ~ .switch .switch-right {
+    color: #4a6cf7;
+    font-weight: 600;
+}
+
+#blog:checked ~ .switch .switch-button {
+    left: 125px; /* This value needs to be adjusted based on the actual width of the switch and button to center it correctly */
+}
+
+/* Ensure the 'announcement' (pengumuman) radio button positions the switch-button correctly */
+#pengumuman:checked ~ .switch .switch-button {
+    left: 2px; /* Keep this as is if it correctly positions for 'pengumuman' */
+}

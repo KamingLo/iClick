@@ -1,0 +1,25 @@
+  [31morigin/HEAD[m -> origin/main
+  [31morigin/main[m
+  [31morigin/testingversion[m
+  [31morigin/trash[m
+  [31morigin/ver.1.0.0[m
+  [31morigin/ver.1.0.1[m
+  [31morigin/ver.1.0.10[m
+  [31morigin/ver.1.0.11[m
+  [31morigin/ver.1.0.12[m
+  [31morigin/ver.1.0.13[m
+  [31morigin/ver.1.0.15[m
+  [31morigin/ver.1.0.16[m
+  [31morigin/ver.1.0.17[m
+  [31morigin/ver.1.0.18[m
+  [31morigin/ver.1.0.19[m
+  [31morigin/ver.1.0.20[m
+  [31morigin/ver.1.0.21[m
+  [31morigin/ver.1.0.22[m
+  [31morigin/ver.1.0.3[m
+  [31morigin/ver.1.0.4[m
+  [31morigin/ver.1.0.5[m
+  [31morigin/ver.1.0.6[m
+  [31morigin/ver.1.0.7[m
+  [31morigin/ver.1.0.8[m
+  [31morigin/ver.1.0.9[m

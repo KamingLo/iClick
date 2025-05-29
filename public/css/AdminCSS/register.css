@@ -1,0 +1,349 @@
+/* ----------------------------------------------- */
+/* ----------------- register.css ------------------ */
+/* ----------------------------------------------- */
+
+:root {
+    --primary-color: #4a6cf7;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --border-radius: 10px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ----------------------------------------------- */
+/* ----------------- Bagian Header --------------- */
+/* ----------------------------------------------- */
+
+.ContainerRegister {
+    margin-left: 280px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+h1 {
+    width: 100%;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    font-size: 26px;
+    position: relative;
+    padding-bottom: 10px;
+    transform: translateY(-10rem);
+}
+
+h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+/* ----------------------------------------------- */
+/* ----------------- Bagian Form ----------------- */
+/* ----------------------------------------------- */
+
+.LayoutRegisterForm {
+    background-color: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transform: translateY(-10.5rem);
+    min-width: 600px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.LayoutRegisterForm h2 {
+    color: var(--dark-color);
+    margin-top: 0;
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.LayoutRegisterForm h2:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 40px;
+    background-color: var(--primary-color);
+}
+
+.IsiData {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--dark-color);
+    font-size: 14px;
+}
+
+.TampilanIsiData {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+.TampilanIsiData:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+}
+
+input.TampilanIsiData {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    color: black;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+input.TampilanIsiData:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+}
+
+select.TampilanIsiData {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M8 9.5a.5.5 0 01-.354-.146l-4-4a.5.5 0 01.708-.708L8 8.293l3.646-3.647a.5.5 0 01.708.708l-4 4A.5.5 0 018 9.5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 35px;
+}
+
+.LayoutRegisterForm form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.FormUntukOrtu {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+/* ----------------------------------------------------- */
+/* --------------- Extend Form For Role ---------------- */
+/* ----------------------------------------------------- */
+
+.DisplayDataTable {
+    grid-column: 1 / -1;
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.DisplayDataTable h2 {
+    grid-column: 1 / -1;
+    color: var(--dark-color);
+    margin-top: 10px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.DisplayDataTable h2:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 40px;
+    background-color: var(--primary-color);
+}
+
+.DisplayDataTable h5 {
+    grid-column: 1 / -1;
+    color: var(--dark-color);
+    margin-top: 50px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.DisplayDataTable h5:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 40px;
+    background-color: var(--primary-color);
+}
+
+.DisplayDataTable::-webkit-scrollbar {
+    width: 8px;
+}
+
+.DisplayDataTable::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.DisplayDataTable::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.DisplayDataTable::-webkit-scrollbar-thumb:hover {
+    background: #3959d9;
+}
+
+/* ----------------------------------------------- */
+/* ---------------- Bagian Tombol ---------------- */
+/* ----------------------------------------------- */
+
+.TombolOJT {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 8px 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 6px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.TambahRegister {
+    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    grid-column: 1 / -1;
+    justify-self: center;
+    padding: 12px 20px;
+    font-size: 14px;
+    width: 200px;
+    margin-top: 20px;
+    transform: translateY(-15px);
+    transition: var(--transition);
+}
+
+.TambahRegister:hover {
+    background-color: #3959d9;
+    border-color: #3959d9;
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+}
+
+/* ----------------------------------------------- */
+/* ----------------- Pesan Error ----------------- */
+/* ----------------------------------------------- */
+
+.UiPsnDis {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    grid-column: 1 / -1;
+}
+
+.PsnBerhasil {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* ----------------------------------------------- */
+/* ---------------- Bagian View ------------------ */
+/* ----------------------------------------------- */
+
+@media (max-width: 1200px) {
+    body {
+        overflow: visible;
+    }
+
+    .LayoutRegisterForm {
+        width: 100%;
+        max-width: 100%;
+        min-width: auto;
+    }
+    
+    .LayoutRegisterForm form {
+        grid-template-columns: 1fr;
+    }
+    
+    .DisplayDataTable {
+        grid-template-columns: 1fr;
+    }
+    
+    .parent-data-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow: visible;
+    }
+    
+    .ContainerRegister {
+        margin-left: 0;
+        padding: 15px;
+    }
+    
+    h1 {
+        transform: none;
+    }
+    
+    .LayoutRegisterForm {
+        transform: none;
+    }
+}
+
+/* ---------------------- End ---------------------- */

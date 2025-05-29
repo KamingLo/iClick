@@ -1,0 +1,458 @@
+/* ----------------------------------------------- */
+/* ------------- postManagement.css -------------- */
+/* ----------------------------------------------- */
+
+:root {
+    --primary-color: #4a6cf7;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --dark-color: #343a40;
+    --border-radius: 10px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+label {
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+/* ------------- */
+/* Bagian Header */
+
+.ContainerPostManagement {
+    margin-left: 280px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+h1 {
+    width: 100%;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    font-size: 26px;
+    position: relative;
+    padding-bottom: 10px;
+    transform: translateY(-10rem);
+}
+
+h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+h2 {
+    color: var(--dark-color);
+    font-size: 20px;
+    margin: 25px 0 15px;
+    position: relative;
+    padding-bottom: 8px;
+    display: inline-block;
+    transform: translateY(-1.5rem);
+}
+
+h2:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 30%;
+    background-color: var(--primary-color);
+}
+
+/* ------------- */
+/* Bagian Alert */
+
+.alert {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* ------------- */
+/* Bagian Filter */
+
+.filter-container {
+    width: 27.2rem;
+    background-color: white;
+    padding: 20px;
+    height: 4rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+    transform: translateY(-12rem);
+    justify-content: start;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+}
+
+.filter-select {
+    width: 12rem;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: var(--transition);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M8 9.5a.5.5 0 01-.354-.146l-4-4a.5.5 0 01.708-.708L8 8.293l3.646-3.647a.5.5 0 01.708.708l-4 4A.5.5 0 018 9.5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 35px;
+}
+
+.filter-select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.2);
+}
+
+/* ------------- */
+/* Bagian Table */
+
+.table-container {
+    width: 100%;
+    height: 42rem;
+    background-color: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transform: translateY(-14.5rem);
+    margin-bottom: 30px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    color: var(--dark-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.truncate {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ------------- */
+/* Bagian Button */
+
+.btn {
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: var(--transition);
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn-primary {
+    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #3959d9;
+    border-color: #3959d9;
+}
+
+.btn-danger {
+    color: white;
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+/* ------------- */
+/* Bagian Edit Form */
+
+.edit-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transform: translateY(-10.5rem);
+}
+
+.form-container {
+    display: flex;
+    gap: 30px;
+}
+
+.form-col {
+    flex: 1;
+}
+
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--dark-color);
+    font-size: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: none;
+}
+
+/* ------------- */
+/* Bagian Preview */
+
+.preview-container {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 2px dashed #ddd;
+}
+
+.preview-container.has-content {
+    border-style: solid;
+    border-color: var(--primary-color);
+    background-color: white;
+}
+
+.preview-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.preview-title {
+    font-size: 18px;
+    color: var(--dark-color);
+    margin: 0;
+    font-weight: 500;
+}
+
+.preview-content {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-top: 15px;
+}
+
+.no-preview-message {
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+    padding: 30px 0;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .form-container {
+        flex-direction: column;
+    }
+    
+    .preview-container {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ContainerPostManagement {
+        margin-left: 0;
+    }
+}
+
+.JuduldanOpsi {
+    display: flex;
+    gap: 30px;
+}
+
+/* Tambahkan CSS ini ke ManajemenPost.css */
+
+/* Styling untuk Trix Editor agar bisa scroll */
+trix-editor {
+    height: 470px !important; /* Tetapkan tinggi fixed */
+    min-height: 300px !important;
+    max-height: 470px !important;
+    overflow-y: auto !important; /* Enable vertical scrolling */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: none; /* Mencegah resize manual */
+    box-sizing: border-box;
+}
+
+/* Styling khusus untuk area konten dalam trix-editor */
+trix-editor:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+}
+
+/* Styling untuk scrollbar di dalam trix-editor */
+trix-editor::-webkit-scrollbar {
+    width: 8px;
+}
+
+trix-editor::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+trix-editor::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+trix-editor::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Pastikan container FormKanan memiliki tinggi yang sesuai */
+.FormKanan {
+    display: flex;
+    flex-direction: column;
+}
+
+.FormKanan .IsiData {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Menggunakan tinggi penuh yang tersedia */
+}
+
+/* Styling untuk label agar tidak bergerak */
+.FormKanan .NamaLabelBar {
+    margin-bottom: 8px;
+    flex-shrink: 0; /* Mencegah label menyusut */
+}
+
+/* Container untuk editor wrapper */
+.trix-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Untuk preview container juga bisa dibuat scrollable jika diperlukan */
+.preview-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.preview-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.preview-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.preview-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.preview-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

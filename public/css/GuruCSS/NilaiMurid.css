@@ -1,0 +1,403 @@
+/* ----------------------------------------------- */
+/* -------------- nilai-murid.css -------------- */
+/* ----------------------------------------------- */
+
+:root {
+    --primary-color: #4a6cf7;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --dark-color: #343a40;
+    --light-gray: #f8f9fa;
+    --border-radius: 10px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------------------------------------------- */
+/* ----------------- Bagian Header --------------- */
+/* ----------------------------------------------- */
+
+.KontainerNilai {
+    padding: 30px;
+    min-height: 100vh;
+    margin-left: 280px;
+}
+
+.JudulHalaman {
+    color: var(--dark-color);
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.JudulHalaman:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 80px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* ----------------------------------------------- */
+/* ------------- Pesan Notifikasi --------------- */
+/* ----------------------------------------------- */
+
+.PesanSukses {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.PesanSukses:before {
+    content: "✓";
+    background-color: var(--success-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ----------------------------------------------- */
+/* ------------- Kontainer Utama ---------------- */
+/* ----------------------------------------------- */
+
+.KontainerFormNilai {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    transition: var(--transition);
+    max-width: 50rem;
+}
+
+.KontainerFormNilai:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ----------------------------------------------- */
+/* ------------- Bagian Dropdown ---------------- */
+/* ----------------------------------------------- */
+
+.GrupInput {
+    margin-bottom: 25px;
+}
+
+.LabelInput {
+    display: block;
+    color: var(--dark-color);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.DropdownPilihan {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: white;
+    transition: var(--transition);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M8 9.5a.5.5 0 01-.354-.146l-4-4a.5.5 0 01.708-.708L8 8.293l3.646-3.647a.5.5 0 01.708.708l-4 4A.5.5 0 018 9.5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 45px;
+}
+
+.DropdownPilihan:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+.DropdownPilihan:hover {
+    border-color: var(--primary-color);
+}
+
+/* ----------------------------------------------- */
+/* ------------- Bagian Tabel Nilai ------------- */
+/* ----------------------------------------------- */
+
+.JudulSeksi {
+    color: var(--dark-color);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.JudulSeksi:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 50px;
+    background-color: var(--primary-color);
+}
+
+.KontainerTabel {
+    overflow-x: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+}
+
+.TabelNilai {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    min-width: 500px;
+}
+
+.TabelNilai thead th {
+    background-color: var(--light-gray);
+    color: var(--dark-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.TabelNilai tbody td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.TabelNilai tbody tr {
+    transition: var(--transition);
+}
+
+.TabelNilai tbody tr:hover {
+    background-color: rgba(74, 108, 247, 0.05);
+}
+
+.TabelNilai tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ----------------------------------------------- */
+/* ------------ Input Nilai ------------------ */
+/* ----------------------------------------------- */
+
+.InputNilai {
+    width: 80px;
+    padding: 8px 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    transition: var(--transition);
+    background-color: white;
+}
+
+.InputNilai:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+.InputNilai:hover {
+    border-color: var(--primary-color);
+}
+
+/* ----------------------------------------------- */
+/* ------------- Pesan Kosong ------------------- */
+/* ----------------------------------------------- */
+
+.PesanKosong {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+}
+
+.PesanKosong:before {
+    content: "📝";
+    display: block;
+    font-size: 48px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+/* ----------------------------------------------- */
+/* ------------- Tombol Aksi -------------------- */
+/* ----------------------------------------------- */
+
+.KontainerTombol {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.TombolSimpan {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.TombolSimpan:hover {
+    background-color: #3959d9;
+    border-color: #3959d9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(74, 108, 247, 0.3);
+}
+
+.TombolSimpan:active {
+    transform: translateY(0);
+}
+
+.TombolSimpan:before {
+    content: "💾";
+    font-size: 16px;
+}
+
+/* ----------------------------------------------- */
+/* ------------- Responsive Design --------------- */
+/* ----------------------------------------------- */
+
+@media (max-width: 1200px) {
+    .KontainerNilai {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .KontainerNilai {
+        padding: 15px;
+    }
+    
+    .JudulHalaman {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .KontainerFormNilai {
+        padding: 20px;
+    }
+    
+    .TabelNilai thead th,
+    .TabelNilai tbody td {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .InputNilai {
+        width: 60px;
+        padding: 6px 8px;
+    }
+    
+    .TombolSimpan {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .KontainerNilai {
+        padding: 10px;
+    }
+    
+    .KontainerFormNilai {
+        padding: 15px;
+    }
+    
+    .TabelNilai {
+        font-size: 12px;
+    }
+    
+    .TabelNilai thead th,
+    .TabelNilai tbody td {
+        padding: 8px 10px;
+    }
+    
+    .InputNilai {
+        width: 50px;
+        padding: 4px 6px;
+        font-size: 12px;
+    }
+}
+
+/* ----------------------------------------------- */
+/* ------------- Animasi Loading ----------------- */
+/* ----------------------------------------------- */
+
+.Loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ----------------------------------------------- */
+/* ------------- Efek Hover Tabel --------------- */
+/* ----------------------------------------------- */
+
+.TabelNilai tbody tr:nth-child(even) {
+    background-color: rgba(248, 249, 250, 0.5);
+}
+
+.TabelNilai tbody tr:nth-child(even):hover {
+    background-color: rgba(74, 108, 247, 0.08);
+}
+
+/* ---------------------- End ---------------------- */

@@ -1,0 +1,242 @@
+/* ----------------------------------------------- */
+/* ----------------- sidebar.css ----------------- */
+/* ----------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+/* ----------------------------------------------- */
+/* Bagian Header */
+/* ----------------------------------------------- */
+
+.ContainerSideBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 270px;
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: column;
+    background: #161a2d;
+    padding: 25px 20px;
+    transition: all 0.4s ease;
+}
+
+.ContainerSideBar .HeaderUser {
+    display: flex;
+    align-items: center;
+}
+
+.ContainerSideBar .HeaderUser img {
+    width: 42px;
+    border-radius: 50%;
+    transform: translateY(0.75rem);
+    cursor: pointer;
+}
+
+.ContainerSideBar .HeaderUser h6 {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-left: 23px;
+}
+
+.UseridName {
+    margin-left: 4.07rem;
+    font-size: 20px;
+    color: #fff;
+    transform: translateY(-0.5rem);
+}
+
+.ProfileSiUser h2 {
+    color: white;
+}
+
+/* ----------------------------------------------- */
+/* Bagian ListSideBar */
+/* ----------------------------------------------- */
+
+.ListSideBar {
+    list-style: none;
+    margin-top: 25px;
+    height: 80%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    margin-bottom: 10px;
+}
+
+.IconSidebar {
+    font-size: 30px;
+}
+
+.ListSideBar h4 {
+    color: #fff;
+    font-weight: 500;
+    white-space: nowrap;
+    margin: 10px 0;
+    position: relative;
+    border-bottom: 2px solid white;
+    line-height: 30px;
+}
+
+.ListSideBar li {
+    margin-bottom: 10px;
+}
+
+.ListSideBar::-webkit-scrollbar {
+    display: none;
+}
+
+.ListSideBar li a {
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+    color: #fff;
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 15px 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.ListSideBar li a:hover {
+    background: #ffffff;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.ListSideBar li a.active-link {
+    background: #b4b34f;
+    color: #161a2d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ListSideBar li a.active-link:hover {
+    background: #ffffff;
+    color: #161a2d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ListSideBar li a i {
+    min-width: 30px;
+    text-align: center;
+}
+
+/* ----------------------------------------------- */
+/* Bagian Logout */
+/* ----------------------------------------------- */
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #fff;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 15px 10px;
+    text-decoration: none;
+    transition: 0.2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.logout-button:hover {
+    color: #161a2d;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.logout-button i {
+    font-size: 30px;
+    min-width: 30px;
+}
+
+.logout-button span {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .logout-button span {
+    opacity: 1;
+}
+
+.logout-container {
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.logout-container + .user-account {
+    margin-top: 0;
+}
+
+.logout-button button[type="submit"] {
+    grid-column: span 2;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: var(--transition);
+}
+
+.logout-button button[type="submit"]:hover {
+    background-color: var(--accent-color);
+}
+
+/* ----------------------------------------------- */
+/* Tombol Register & Configure */
+/* ----------------------------------------------- */
+
+.TombolRegister {
+    grid-column: span 2;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: var(--transition);
+}
+
+.TombolCongifure {
+    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.TombolCongifure:hover {
+    background-color: #3959d9;
+    border-color: #3959d9;
+}
+
+
+
+.sidebar:not(:hover) .sidebar-links li a.active-link {
+    background: #b4b34f;
+}

@@ -1,0 +1,240 @@
+/* ----------------------------------------------- */
+/* ---------------- default.css ------------------ */
+/* ----------------------------------------------- */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #F0F4FF;
+  padding-top: 10rem !important;
+  overflow-x: hidden;
+  position: relative;
+  user-select: none;
+}
+
+.BgPelita {
+  position: fixed;
+  width: 500%;
+  height: 500%;
+    background-image: url('/image/PatternLogo.png');
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  transform: rotate(45deg);
+  opacity: 0.05;
+  z-index: -1;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+/* ----------------------------------------------- */
+/* ------------------ navbar.css ----------------- */
+/* ----------------------------------------------- */
+
+.navbar {
+  height: 70px;
+  width: 90vw;
+  max-width: 100rem;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 0.75rem;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.1);
+  border-width: 0.1rem;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.navbar .GambarLogo {
+    width: 15rem;
+    height: auto;
+}
+
+.navbtn a {
+  padding: 0.25em 0.5em;
+  color: #000000;
+  text-decoration: none;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  transition: all ease 0.3s;
+}
+
+.sign-btn span {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.01);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.1);
+  border-width: 0.1rem;
+}
+
+.sign-btn span:hover {
+  background-color: #4e4e4e;
+  color: rgb(196, 196, 196);
+}
+
+.navbtn a:hover {
+  padding: 0.25em 1em;
+  color: #777;
+  transition: all ease 0.3s;
+}
+
+/* ----------------------------------------------- */
+/* ----------------- footer.css ------------------ */
+/* ----------------------------------------------- */
+
+footer {
+  background-color: #2563EB;
+  color: #fff;
+  padding: 25px 0 10px;
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: 5rem;
+}
+
+.containerFooter {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 150px;
+  margin-bottom: 15px;
+  padding-right: 20px;
+}
+
+.brand-column {
+  flex: 1.5;
+}
+
+.footer-logo {
+  height: 50px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.brand-description {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 15px;
+  max-width: 300px;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.footer-column h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.IconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.IconLink:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+/* ----------------------------------------------- */
+/* -------------- Tombol Clear Form  ------------- */
+/* ----------------------------------------------- */
+
+.HapusBar {
+    position: absolute; 
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.2s;
+}
+
+.HapusBar:hover {
+    transform: translateY(-50%) scale(1.2);
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+    border-radius: 20%;
+}
